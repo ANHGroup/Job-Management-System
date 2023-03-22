@@ -45,12 +45,7 @@
                                     </div>
                                 </form>
                             </div>
-                            <div class="col-lg-4">
-                                <div class="text-lg-right mt-3 mt-lg-0">
-                                    <button type="button" class="btn btn-success waves-effect waves-light mr-1"><i class="mdi mdi-settings"></i></button>
-                                    <a href="#custom-modal" class="btn btn-danger waves-effect waves-light" data-animation="fadein" data-plugin="custommodal" data-overlayColor="#fff"><i class="mdi mdi-plus-circle mr-1"></i> Add New</a>
-                                </div>
-                            </div><!-- end col-->
+                            <!-- end col-->
                         </div> <!-- end row -->
                     </div> <!-- end card-box -->
                 </div><!-- end col-->
@@ -65,6 +60,7 @@
 
                             <h4 class="mt-3"><a href="extras-profile.html" class="text-light">Software Engineer</a></h4>
                             <p class="text-muted">@website <span> | </span> <span> <a href="#" class="text-pink">anhgroupbd.com</a> </span></p>
+                            <p class="text-muted">Salary<span> <p  class="text-pink">10000 BDT</p> </span></p>
 
                             <button type="button" class="btn btn-primary btn-sm waves-effect waves-light">Job Details</button>
                         </div> <!-- end .padding -->
@@ -151,8 +147,8 @@
                             <img src="assets/images/users/user-3.jpg" class="rounded-circle img-thumbnail avatar-xl" alt="profile-image">
 
                             <h4 class="mt-3"><a href="extras-profile.html" class="text-light">Software Engineer</a></h4>
-                            <p class="text-muted">@website <span> | </span> <span> <a href="#" class="text-pink">anhgroupbd.com</a> </span></p>
-
+                            
+                            <p class="text-muted">Salary <span> | </span> <span> <a href="#" class="text-pink">anhgroupbd.com</a> </span></p>
                             <button type="button" class="btn btn-primary btn-sm waves-effect waves-light">Job Details</button>
                         </div> <!-- end .padding -->
                     </div> <!-- end card-box-->

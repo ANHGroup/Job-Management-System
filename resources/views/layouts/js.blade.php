@@ -15,3 +15,13 @@
 
 <!-- Init js -->
 <script src="{{ asset('assets/js/pages/foo-tables.init.js') }}"></script>
+ <!-- Summernote js -->
+ <script src="{{ asset('assets/libs/summernote/summernote-bs4.min.js') }}"></script>
+
+ <!-- Init js -->
+ <script src="{{ asset('assets/js/pages/form-summernote.init.js') }}"></script>
+ 
+ <!-- Select2 js-->
+ <script src="{{ asset('assets/libs/select2/select2.min.js') }}"></script>
+ <!-- Dropzone file uploads-->
+ <script src="{{ asset('assets/libs/dropzone/dropzone.min.js') }}"></script>

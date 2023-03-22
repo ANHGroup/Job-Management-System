@@ -50,7 +50,13 @@
                     </a>
                     <ul class="nav-second-level" aria-expanded="false">
                         <li>
-                            <a href="{{ route('job.index') }}">Job List</a>
+                            <a href="{{ route('job.create') }}">Create</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('job.index') }}">List</a>
+                        </li>
+                        <li>
+                            <a href="">Show</a>
                         </li>
                        
                     </ul>

@@ -24,7 +24,7 @@ class JobController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.job.create');
     }
 
     /**
@@ -44,9 +44,9 @@ class JobController extends Controller
      * @param  \App\Models\Job  $job
      * @return \Illuminate\Http\Response
      */
-    public function show(Job $job)
+    public function show()
     {
-        //
+        return view('pages.job.job_details');
     }
 
     /**
