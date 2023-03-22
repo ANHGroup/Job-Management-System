@@ -52,15 +52,16 @@ class ApplicantProfileController extends Controller
         $applicant->save();
 
         session()->flash('message', 'Successfully Save Your Information.');
-        foreach ($request->all() as $value) {
-            Education::create($value);
+        foreach ($request->exam as $key => $value) {
+            $educations = new Education;
+            $educations->applicant_id = $applicant->id;
+            $educations->exam = $value;
+            $educations->instituations = $request->instituations[$key];
+            $educations->result = $request->result[$key];
+            $educations->board = $request->board[$key];
+            $educations->save();
         }
-        // $educations = new Education;
 
-        // $educations->exam = $request->exam;
-        // $educations->instituations = $request->instituations;
-        // $educations->result = $request->result;
-        // $educations->board = $request->board;
         return redirect()->back();
     }
 

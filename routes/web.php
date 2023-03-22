@@ -14,7 +14,7 @@ use App\Http\Controllers\backend\UpdatePassController;
 use App\Http\Controllers\frontend\BlogController;
 use App\Http\Controllers\frontend\CandidateController;
 use App\Http\Controllers\frontend\EmployerController;
-use App\Http\Controllers\frontend\JobController;
+use App\Http\Controllers\JobController;
 use App\Http\Controllers\UserLogOut;
 use Illuminate\Support\Facades\Route;
 
@@ -38,7 +38,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //Jobs
-Route::resource('job', JobController::class);
+// Route::resource('job', JobController::class);
 
 //Employer
 Route::resource('employer', EmployerController::class);
@@ -79,3 +79,5 @@ Route::resource('package', PackageController::class);
 Route::resource('message', MessageController::class);
 //Applicant Profile
 Route::resource('applicant', ApplicantProfileController::class);
+//Job
+Route::resource('job', JobController::class);

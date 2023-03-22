@@ -19,15 +19,7 @@
                         <li>
                             <a href="index.html">Dashboard 1</a>
                         </li>
-                        <li>
-                            <a href="dashboard-2.html">Dashboard 2</a>
-                        </li>
-                        <li>
-                            <a href="dashboard-3.html">Dashboard 3</a>
-                        </li>
-                        <li>
-                            <a href="dashboard-4.html">Dashboard 4</a>
-                        </li>
+                       
                     </ul>
                 </li>
 
@@ -39,65 +31,28 @@
                 <li>
                     <a href="javascript: void(0);">
                         <i class="fe-mail"></i>
-                        <span> Email </span>
+                        <span> Applicant </span>
                         <span class="menu-arrow"></span>
                     </a>
                     <ul class="nav-second-level" aria-expanded="false">
                         <li>
-                            <a href="email-inbox.html">Inbox</a>
+                            <a href="{{route('applicant.create') }}">Create</a>
                         </li>
-                        <li>
-                            <a href="email-read.html">Read Email</a>
-                        </li>
-                        <li>
-                            <a href="email-compose.html">Compose Email</a>
-                        </li>
-                        <li>
-                            <a href="email-templates.html">Email Templates</a>
-                        </li>
+                       
                     </ul>
                 </li>
 
                 <li>
                     <a href="javascript: void(0);">
                         <i class="fe-file-text"></i>
-                        <span> Pages </span>
+                        <span> Job Post </span>
                         <span class="menu-arrow"></span>
                     </a>
                     <ul class="nav-second-level" aria-expanded="false">
                         <li>
-                            <a href="pages-starter.html">Starter</a>
+                            <a href="{{ route('job.index') }}">Job List</a>
                         </li>
-                        <li>
-                            <a href="pages-login.html">Log In</a>
-                        </li>
-                        <li>
-                            <a href="pages-register.html">Register</a>
-                        </li>
-                        <li>
-                            <a href="pages-signin-signup.html">Signin - Signup</a>
-                        </li>
-                        <li>
-                            <a href="pages-recoverpw.html">Recover Password</a>
-                        </li>
-                        <li>
-                            <a href="pages-lock-screen.html">Lock Screen</a>
-                        </li>
-                        <li>
-                            <a href="pages-logout.html">Logout</a>
-                        </li>
-                        <li>
-                            <a href="pages-confirm-mail.html">Confirm Mail</a>
-                        </li>
-                        <li>
-                            <a href="pages-404.html">Error 404</a>
-                        </li>
-                        <li>
-                            <a href="pages-404-alt.html">Error 404-alt</a>
-                        </li>
-                        <li>
-                            <a href="pages-500.html">Error 500</a>
-                        </li>
+                       
                     </ul>
                 </li>
 

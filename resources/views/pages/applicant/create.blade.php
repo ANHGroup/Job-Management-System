@@ -1,6 +1,6 @@
 @extends('pages.master')
 @section('content')
-    <div class="content-page">
+    <div class="content-page" style="justify-content: center;">
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
@@ -28,22 +28,22 @@
 
                                 <div class="form-group">
                                     <label for="email">Parmanent Address * :</label>
-                                    <input type="text" id="email" class="form-control" name="parmanent_address"
+                                    <input type="text"  class="form-control" name="parmanent_address"
                                         data-parsley-trigger="change">
                                 </div>
                                 <div class="form-group">
                                     <label for="email">DOB * :</label>
-                                    <input type="text" id="email" class="form-control" name="dob"
+                                    <input type="text"  class="form-control" name="dob"
                                         data-parsley-trigger="change">
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Expected Salary * :</label>
-                                    <input type="text" id="email" class="form-control" name="expected_salary"
+                                    <input type="text"  class="form-control" name="expected_salary"
                                         data-parsley-trigger="change">
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Present Salary * :</label>
-                                    <input type="text" id="email" class="form-control" name="present_salary"
+                                    <input type="text"  class="form-control" name="present_salary"
                                         data-parsley-trigger="change">
                                 </div>
 
@@ -58,83 +58,72 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Age * :</label>
-                                    <input type="text" id="email" class="form-control" name="age"
+                                    <input type="text"  class="form-control" name="age"
                                         data-parsley-trigger="change">
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Resume * :</label>
-                                    <input type="file" id="email" class="form-control" name="resume"
+                                    <input type="file"  class="form-control" name="resume"
                                         data-parsley-trigger="change">
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Skill * :</label>
-                                    <input type="skill" id="email" class="form-control" name="skill"
+                                    <input type="skill"  class="form-control" name="skill"
                                         data-parsley-trigger="change">
                                 </div>
                                 <div class="responsive" style="responsive:auto">
-                                    
-                                        <div class="card-box">
-                                             <div id="container">
-                                                <h2>Educations</h2>
-                                                <button id="add-new-btn">Add New Row
-                                                </button>
-                                                <button id="delete-btn">Delete Row
-                                                </button>
-                                                <br>
-                                                <br>
-                                                <table id="employee-table"
-                                                    class="table table-bordered table table-responsive"
-                                                    style="overflow-x:auto;">
-                                                    <tr>
-                                                        <th>Exam</th>
-                                                        <th>Board </th>
-                                                        <th>Result </th>
-                                                        <th>Instituation</th>
-                                                        <th>Action </th>
-                                                    </tr>
-                                                </table>
-                                            </div>
-                                        </div> <!-- end card-box -->
-                                    </div> <!-- end col -->
-                               
-                                <div class="responsive" style="responsive:auto">
-                                   
-                                        <div class="card-box">
-                                             <div id="container">
-                                                <h2>Experience</h2>
-                                                <button id="add-new-btn1">Add New Row
-                                                </button>
-                                                <button id="delete-btn1">Delete Row
-                                                </button>
-                                                <br>
-                                                <br>
-                                                <table id="employee-table1"
-                                                    class="table table-bordered table table-responsive"
-                                                    style="overflow-x:auto;">
-                                                    <tr>
-                                                        <th>Exam</th>
-                                                        <th>Board </th>
-                                                        <th>Result </th>
-                                                        <th>Instituation</th>
-                                                        <th>Action </th>
-                                                    </tr>
-                                                </table>
-                                            </div>
-                                        </div> <!-- end card-box -->
-                                    </div> <!-- end col -->
-                               
 
-                                <div class="form-group">
-                                    <label for="message">Message (20 chars min, 100 max) :</label>
-                                    <textarea id="message" class="form-control" name="message" data-parsley-trigger="keyup" data-parsley-minlength="20"
-                                        data-parsley-maxlength="100"
-                                        data-parsley-minlength-message="Come on! You need to enter at least a 20 character comment.."
-                                        data-parsley-validation-threshold="10">
-                                            </textarea>
-                                </div>
+                                    <div class="card-box">
+                                        <div id="container">
+                                            <h2>Educations</h2>
+                                            <button id="add-new-btn">Add New Row
+                                            </button>
+                                            <button id="delete-btn">Delete Row
+                                            </button>
+                                            <br>
+                                            <br>
+                                            <table id="employee-table" class="table table-bordered table table-responsive"
+                                                style="overflow-x:auto;">
+                                                <tr>
+                                                    <th>Exam</th>
+                                                    <th>Board </th>
+                                                    <th>Result </th>
+                                                    <th>Instituation</th>
+                                                    <th>Action </th>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div> <!-- end card-box -->
+                                </div> <!-- end col -->
+
+                                <div class="responsive" style="responsive:auto">
+
+                                    <div class="card-box">
+                                        <div id="container">
+                                            <h2>Experience</h2>
+                                            <button id="add-new-btn">Add New Row
+                                            </button>
+                                            <button id="delete-btn1">Delete Row
+                                            </button>
+                                            <br>
+                                            <br>
+                                            <table id="employee-table" class="table table-bordered table table-responsive"
+                                                style="overflow-x:auto;">
+                                                <tr>
+                                                    <th>Exam</th>
+                                                    <th>Board </th>
+                                                    <th>Result </th>
+                                                    <th>Instituation</th>
+                                                    <th>Action </th>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div> <!-- end card-box -->
+                                </div> <!-- end col -->
+
 
                                 <div class="form-group mb-0">
-                                    <input type="submit" class="btn btn-success" value="Validate">
+                                    <input type="submit" class="btn btn-success" value="Apply">
                                 </div>
 
                             </form>
@@ -149,8 +138,9 @@
     <script type="text/javascript">
         /* This event will fire on 'Add New Row' button click */
         $("#add-new-btn").on("click", function() {
+           // alert("this is call");
             //calling method to add new row
-            addNewRow();
+           addNewRow();
         });
         /* This event will fire on 'Delete Row' button click */
         $("#delete-btn").on("click", function() {
