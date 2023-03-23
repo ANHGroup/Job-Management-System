@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('phone');
             $table->string('present_address');
-            $table->string('parmanent_address');
+            $table->string('permanent_address');
             $table->string('dob');
             $table->string('expected_salary');
             $table->string('present_salary');
@@ -28,23 +28,11 @@ return new class extends Migration
                 ->on('users')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
-
-            $table->unsignedBigInteger('education_id');
-            $table->foreign('education_id')
-                ->references('id')
-                ->on('education')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
-
-            $table->unsignedBigInteger('experience_id');
-            $table->foreign('experience_id')
-                ->references('id')
-                ->on('experiences')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
-
             $table->string('gender');
+
+            $table->string('resume');
             $table->string('skill');
+            $table->string('job_experience');
             $table->timestamps();
         });
     }

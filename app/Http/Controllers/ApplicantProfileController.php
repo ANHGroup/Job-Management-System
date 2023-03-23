@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ApplicantProfile;
 use App\Models\Education;
+use App\Models\Experience;
 use Illuminate\Http\Request;
 
 class ApplicantProfileController extends Controller
@@ -49,6 +50,7 @@ class ApplicantProfileController extends Controller
         $applicant->gender = $request->gender;
         $applicant->resume = $request->resume;
         $applicant->skill = $request->skill;
+        // dd($applicant);
         $applicant->save();
 
         session()->flash('message', 'Successfully Save Your Information.');
@@ -59,7 +61,18 @@ class ApplicantProfileController extends Controller
             $educations->instituations = $request->instituations[$key];
             $educations->result = $request->result[$key];
             $educations->board = $request->board[$key];
+            //dd($educations);
             $educations->save();
+        }
+        foreach ($request->title as $key => $value) {
+            $experience = new Experience();
+            $experience->applicant_id = $applicant->id;
+            $experience->title = $value;
+            $experience->start_date = $request->start_date[$key];
+            $experience->end_date = $request->end_date[$key];
+            $experience->company = $request->company[$key];
+            //dd($educations);
+            $experience->save();
         }
 
         return redirect()->back();

@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('exam');
             $table->string('result');
+            $table->string('instituations');
+            $table->string('passing_year');
             $table->string('passing_year');
             $table->string('applicant_id');
             $table->timestamps();

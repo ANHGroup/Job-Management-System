@@ -25,24 +25,28 @@
                                     <label for="fullname">Present Address * :</label>
                                     <input type="text" class="form-control" name="present_address" id="fullname">
                                 </div>
+                                <div class="form-group">
+                                    <label for="fullname">Phone * :</label>
+                                    <input type="number" class="form-control" name="phone" id="">
+                                </div>
 
                                 <div class="form-group">
                                     <label for="email">Parmanent Address * :</label>
-                                    <input type="text"  class="form-control" name="parmanent_address"
+                                    <input type="text"  class="form-control" name="permanent_address"
                                         data-parsley-trigger="change">
                                 </div>
                                 <div class="form-group">
-                                    <label for="email">DOB * :</label>
-                                    <input type="text"  class="form-control" name="dob"
+                                    <label for="dob">DOB * :</label>
+                                    <input type="date"  class="form-control" name="dob"
                                         data-parsley-trigger="change">
                                 </div>
                                 <div class="form-group">
-                                    <label for="email">Expected Salary * :</label>
+                                    <label for="expected_salary">Expected Salary * :</label>
                                     <input type="text"  class="form-control" name="expected_salary"
                                         data-parsley-trigger="change">
                                 </div>
                                 <div class="form-group">
-                                    <label for="email">Present Salary * :</label>
+                                    <label for="present_salary">Present Salary * :</label>
                                     <input type="text"  class="form-control" name="present_salary"
                                         data-parsley-trigger="change">
                                 </div>
@@ -62,6 +66,11 @@
                                         data-parsley-trigger="change">
                                 </div>
                                 <div class="form-group">
+                                    <label for="email">Job Experience * :</label>
+                                    <input type="text"  class="form-control" name="job_experience"
+                                        data-parsley-trigger="change">
+                                </div>
+                                <div class="form-group">
                                     <label for="email">Resume * :</label>
                                     <input type="file"  class="form-control" name="resume"
                                         data-parsley-trigger="change">
@@ -75,7 +84,7 @@
 
                                     <div class="card-box">
                                         <div id="container">
-                                            <h2>Educations</h2>
+                                            <h2>Accademic Qualifications</h2>
                                             <a class="btn btn-primary" id="add-new-btn">Add New Row
                                             </a>
                                             <a class="btn btn-danger" id="delete-btn">Delete Row
@@ -101,19 +110,19 @@
                                 <div class="card-box">
                                     <div id="container">
                                         <h2>Experience</h2>
-                                        <a class="btn btn-success" id="add-new-btn">Add New Row
+                                        <a class="btn btn-success" id="add-experience">Add New Row
                                         </a>
-                                        <a class="btn btn-danger" id="delete-btn1">Delete Row
+                                        <a class="btn btn-danger" id="delete-experience">Delete Row
                                         </a>
                                         <br>
                                         <br>
-                                        <table id="employee-table" class="table table-bordered "
+                                        <table id="experience-table" class="table table-bordered "
                                             style="overflow-x:auto;">
                                             <tr>
-                                                <th>Exam</th>
-                                                <th>Board </th>
-                                                <th>Result </th>
-                                                <th>Instituation</th>
+                                                <th>Title</th>
+                                                <th>Start Date </th>
+                                                <th>End Date </th>
+                                                <th>Company</th>
                                                 <th>Action </th>
                                             </tr>
                                         </table>
@@ -178,29 +187,33 @@
         }
 
 
-        $("#add-new-btn1").on("click", function() {
+       
+    </script>
+    <script>
+
+$("#add-experience").on("click", function() {
             //calling method to add new row
-            addNewRow1();
+            addNewRowexp();
         });
         /* This event will fire on 'Delete Row' button click */
-        $("#delete-btn1").on("click", function() {
+        $("#delete-experience").on("click", function() {
             //calling method to delete the last row
-            deleteRow1();
+            deleteRowexp();
         });
         /* This method will add a new row */
-        function addNewRow1() {
-            var rowHtml = '<tr><td><input type="text" /></td>' +
-                '<td><input type="text" /></td>' +
-                '<td><input type="text" /></td>' +
-                '<td><input type="text" /></td>'
+        function addNewRowexp() {
+            var rowHtml = '<tr><td><input type="text" name="title[]" /></td>' +
+                '<td><input type="date" name="start_date[]" /></td>' +
+                '<td><input type="date"name="end_date[]" /></td>' +
+                '<td><input type="text"name="company[]" /></td>'
 
                 +
-                '<td><input type="button" class="btn btn-danger" value="delete" onclick="deleteRow1(this)" /></td></tr>';
-            $("#employee-table1").append(rowHtml);
+                '<td><input type="button" class="btn btn-danger" value="delete" onclick="deleteRowexp(this)" /></td></tr>';
+            $("#experience-table").append(rowHtml);
         }
         /* This method will delete a row */
-        function deleteRow1(ele) {
-            var table = $('#employee-table1')[0];
+        function deleteRowexp(ele) {
+            var table = $('#experience-table')[0];
             var rowCount = table.rows.length;
             if (rowCount <= 1) {
                 alert("There is no row available to delete!");
@@ -211,7 +224,7 @@
                 $(ele).parent().parent().remove();
             } else {
                 //delete last row
-                table.deleteRow1(rowCount - 1);
+                table.deleteRowexp(rowCount - 1);
             }
         }
     </script>
