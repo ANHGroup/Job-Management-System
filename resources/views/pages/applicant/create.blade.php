@@ -76,13 +76,13 @@
                                     <div class="card-box">
                                         <div id="container">
                                             <h2>Educations</h2>
-                                            <button id="add-new-btn">Add New Row
-                                            </button>
-                                            <button id="delete-btn">Delete Row
-                                            </button>
+                                            <a class="btn btn-primary" id="add-new-btn">Add New Row
+                                            </a>
+                                            <a class="btn btn-danger" id="delete-btn">Delete Row
+                                            </a>
                                             <br>
                                             <br>
-                                            <table id="employee-table" class="table table-bordered table table-responsive"
+                                            <table id="employee-table" class="table table-bordered "
                                                 style="overflow-x:auto;">
                                                 <tr>
                                                     <th>Exam</th>
@@ -96,29 +96,31 @@
                                     </div> <!-- end card-box -->
                                 </div> <!-- end col -->
 
-                                <div class="responsive" style="responsive:auto">
-
-                                    <div class="card-box">
-                                        <div id="container">
-                                            <h2>Experience</h2>
-                                            <button id="add-new-btn">Add New Row
-                                            </button>
-                                            <button id="delete-btn1">Delete Row
-                                            </button>
-                                            <br>
-                                            <br>
-                                            <table id="employee-table" class="table table-bordered table table-responsive"
-                                                style="overflow-x:auto;">
-                                                <tr>
-                                                    <th>Exam</th>
-                                                    <th>Board </th>
-                                                    <th>Result </th>
-                                                    <th>Instituation</th>
-                                                    <th>Action </th>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div> <!-- end card-box -->
+                              <div class="d-none d-sm-block">
+                                
+                                <div class="card-box">
+                                    <div id="container">
+                                        <h2>Experience</h2>
+                                        <a class="btn btn-success" id="add-new-btn">Add New Row
+                                        </a>
+                                        <a class="btn btn-danger" id="delete-btn1">Delete Row
+                                        </a>
+                                        <br>
+                                        <br>
+                                        <table id="employee-table" class="table table-bordered "
+                                            style="overflow-x:auto;">
+                                            <tr>
+                                                <th>Exam</th>
+                                                <th>Board </th>
+                                                <th>Result </th>
+                                                <th>Instituation</th>
+                                                <th>Action </th>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                    
+                                <!-- end card-box -->
                                 </div> <!-- end col -->
 
 
@@ -155,7 +157,7 @@
                 '<td><input type="text"name="board[]" /></td>'
 
                 +
-                '<td><input type="button" value="delete" onclick="deleteRow(this)" /></td></tr>';
+                '<td><input type="button" class="btn btn-danger" value="delete" onclick="deleteRow(this)" /></td></tr>';
             $("#employee-table").append(rowHtml);
         }
         /* This method will delete a row */
@@ -193,7 +195,7 @@
                 '<td><input type="text" /></td>'
 
                 +
-                '<td><input type="button" value="delete" onclick="deleteRow1(this)" /></td></tr>';
+                '<td><input type="button" class="btn btn-danger" value="delete" onclick="deleteRow1(this)" /></td></tr>';
             $("#employee-table1").append(rowHtml);
         }
         /* This method will delete a row */
