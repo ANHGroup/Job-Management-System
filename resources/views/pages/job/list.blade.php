@@ -61,10 +61,10 @@
 
                             <h4 class="mt-3"><a href="extras-profile.html" class="text-light">{{ $job->title }}</a></h4>
                             <p class="text-muted">@website <span> | </span> <span> <a href="#" class="text-pink">anhgroupbd.com</a> </span></p>
-                            <p class="text-muted">Salary<span> <p  class="text-pink">{{ $job->salary_range }}</p> </span></p>
-                            <p class="text-muted">Location<span> <p  class="text-pink">{{ $job->location }}</p> </span></p>
-                        <a href="{{ route('job.show', ['job' => $job->id]) }}" class="btn btn-primary btn-sm waves-effect waves-light">Details</a>
-                            
+                            <p class="text-muted">Salary:<span class="text-pink">{{ $job->salary_range }}BDT</span> </p>
+                            <p class="text-muted">Location:<span class="text-pink">{{ $job->location }}</span></p>
+                        <a href="{{ route('job.show',$job->id) }}" class="btn btn-primary btn-sm waves-effect waves-light">Details</a>
+                        <a href="{{ route('job.destroy',$job->id) }}" class="btn btn-danger btn-sm waves-effect waves-light">Delete</a>
                         </div> <!-- end .padding -->
                     </div> <!-- end card-box-->
                 </div> 
