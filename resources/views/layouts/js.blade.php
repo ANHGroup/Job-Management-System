@@ -25,3 +25,5 @@
  <script src="{{ asset('assets/libs/select2/select2.min.js') }}"></script>
  <!-- Dropzone file uploads-->
  <script src="{{ asset('assets/libs/dropzone/dropzone.min.js') }}"></script>
+ <script src="{{ asset('assets/js/pages/add-product.init.js') }}"></script>
+ 

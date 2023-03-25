@@ -85,7 +85,7 @@
                                     <div class="card-box">
                                         <div id="container">
                                             <h2>Accademic Qualifications</h2>
-                                            <a class="btn btn-primary" id="add-new-btn">Add New Row
+                                            <a class="btn btn-success" id="add-new-btn">Add New Row
                                             </a>
                                             <a class="btn btn-danger" id="delete-btn">Delete Row
                                             </a>

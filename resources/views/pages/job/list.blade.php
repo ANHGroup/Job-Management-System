@@ -53,118 +53,30 @@
             <!-- end row -->        
 
             <div class="row">
+                @foreach ($jobs as $job )
                 <div class="col-lg-4">
                     <div class="text-center card-box">
                         <div class="pt-2 pb-2">
                             <img src="assets/images/users/user-3.jpg" class="rounded-circle img-thumbnail avatar-xl" alt="profile-image">
 
-                            <h4 class="mt-3"><a href="extras-profile.html" class="text-light">Software Engineer</a></h4>
+                            <h4 class="mt-3"><a href="extras-profile.html" class="text-light">{{ $job->title }}</a></h4>
                             <p class="text-muted">@website <span> | </span> <span> <a href="#" class="text-pink">anhgroupbd.com</a> </span></p>
-                            <p class="text-muted">Salary<span> <p  class="text-pink">10000 BDT</p> </span></p>
-
-                            <button type="button" class="btn btn-primary btn-sm waves-effect waves-light">Job Details</button>
+                            <p class="text-muted">Salary<span> <p  class="text-pink">{{ $job->salary_range }}</p> </span></p>
+                            <p class="text-muted">Location<span> <p  class="text-pink">{{ $job->location }}</p> </span></p>
+                        <a href="{{ route('job.show', ['job' => $job->id]) }}" class="btn btn-primary btn-sm waves-effect waves-light">Details</a>
+                            
                         </div> <!-- end .padding -->
                     </div> <!-- end card-box-->
-                </div> <!-- end col -->
-
-                    <div class="col-lg-4">
-                        <div class="text-center card-box">
-                            <div class="pt-2 pb-2">
-                                <img src="assets/images/users/user-3.jpg" class="rounded-circle img-thumbnail avatar-xl" alt="profile-image">
-    
-                                <h4 class="mt-3"><a href="extras-profile.html" class="text-light">Graphic Designer</a></h4>
-                                <p class="text-muted">@website <span> | </span> <span> <a href="#" class="text-pink">anhgroupbd.com</a> </span></p>
-    
-                                <button type="button" class="btn btn-primary btn-sm waves-effect waves-light">Job Details</button>
-                            </div> <!-- end .padding -->
-                        </div> <!-- end card-box-->
-                    </div> <!-- end card-box-->
+                </div> 
+                @endforeach
                  <!-- end col -->
 
-                <div class="col-lg-4">
-                    <div class="text-center card-box">
-                        <div class="pt-2 pb-2">
-                            <img src="assets/images/users/user-3.jpg" class="rounded-circle img-thumbnail avatar-xl" alt="profile-image">
+                    <!-- end card-box-->
+                 <!-- end col -->
 
-                            <h4 class="mt-3"><a href="extras-profile.html" class="text-light">Software Engineer</a></h4>
-                            <p class="text-muted">@website <span> | </span> <span> <a href="#" class="text-pink">anhgroupbd.com</a> </span></p>
-
-                            <button type="button" class="btn btn-primary btn-sm waves-effect waves-light">Job Details</button>
-                        </div> <!-- end .padding -->
-                    </div> <!-- end card-box-->
-                </div> <!-- end col -->
-                <div class="col-lg-4">
-                    <div class="text-center card-box">
-                        <div class="pt-2 pb-2">
-                            <img src="assets/images/users/user-3.jpg" class="rounded-circle img-thumbnail avatar-xl" alt="profile-image">
-
-                            <h4 class="mt-3"><a href="extras-profile.html" class="text-light">Software Engineer</a></h4>
-                            <p class="text-muted">@website <span> | </span> <span> <a href="#" class="text-pink">anhgroupbd.com</a> </span></p>
-
-                            <button type="button" class="btn btn-primary btn-sm waves-effect waves-light">Job Details</button>
-                        </div> <!-- end .padding -->
-                    </div> <!-- end card-box-->
-                </div>
-                <div class="col-lg-4">
-                    <div class="text-center card-box">
-                        <div class="pt-2 pb-2">
-                            <img src="assets/images/users/user-3.jpg" class="rounded-circle img-thumbnail avatar-xl" alt="profile-image">
-
-                            <h4 class="mt-3"><a href="extras-profile.html" class="text-light">Software Engineer</a></h4>
-                            <p class="text-muted">@website <span> | </span> <span> <a href="#" class="text-pink">anhgroupbd.com</a> </span></p>
-
-                            <button type="button" class="btn btn-primary btn-sm waves-effect waves-light">Job Details</button>
-                        </div> <!-- end .padding -->
-                    </div> <!-- end card-box-->
-                </div>
-                <div class="col-lg-4">
-                    <div class="text-center card-box">
-                        <div class="pt-2 pb-2">
-                            <img src="assets/images/users/user-3.jpg" class="rounded-circle img-thumbnail avatar-xl" alt="profile-image">
-
-                            <h4 class="mt-3"><a href="extras-profile.html" class="text-light">Software Engineer</a></h4>
-                            <p class="text-muted">@website <span> | </span> <span> <a href="#" class="text-pink">anhgroupbd.com</a> </span></p>
-
-                            <button type="button" class="btn btn-primary btn-sm waves-effect waves-light">Job Details</button>
-                        </div> <!-- end .padding -->
-                    </div> <!-- end card-box-->
-                </div>
-                <div class="col-lg-4">
-                    <div class="text-center card-box">
-                        <div class="pt-2 pb-2">
-                            <img src="assets/images/users/user-3.jpg" class="rounded-circle img-thumbnail avatar-xl" alt="profile-image">
-
-                            <h4 class="mt-3"><a href="extras-profile.html" class="text-light">Software Engineer</a></h4>
-                            <p class="text-muted">@website <span> | </span> <span> <a href="#" class="text-pink">anhgroupbd.com</a> </span></p>
-
-                            <button type="button" class="btn btn-primary btn-sm waves-effect waves-light">Job Details</button>
-                        </div> <!-- end .padding -->
-                    </div> <!-- end card-box-->
-                </div>
-                <div class="col-lg-4">
-                    <div class="text-center card-box">
-                        <div class="pt-2 pb-2">
-                            <img src="assets/images/users/user-3.jpg" class="rounded-circle img-thumbnail avatar-xl" alt="profile-image">
-
-                            <h4 class="mt-3"><a href="extras-profile.html" class="text-light">Software Engineer</a></h4>
-                            
-                            <p class="text-muted">Salary <span> | </span> <span> <a href="#" class="text-pink">anhgroupbd.com</a> </span></p>
-                            <button type="button" class="btn btn-primary btn-sm waves-effect waves-light">Job Details</button>
-                        </div> <!-- end .padding -->
-                    </div> <!-- end card-box-->
-                </div>
-                <div class="col-lg-4">
-                    <div class="text-center card-box">
-                        <div class="pt-2 pb-2">
-                            <img src="assets/images/users/user-3.jpg" class="rounded-circle img-thumbnail avatar-xl" alt="profile-image">
-
-                            <h4 class="mt-3"><a href="extras-profile.html" class="text-light">Software Engineer</a></h4>
-                            <p class="text-muted">@website <span> | </span> <span> <a href="#" class="text-pink">anhgroupbd.com</a> </span></p>
-
-                            <button type="button" class="btn btn-primary btn-sm waves-effect waves-light">Job Details</button>
-                        </div> <!-- end .padding -->
-                    </div> <!-- end card-box-->
-                </div>
+         <!-- end col -->
+              
+             
             </div>
             <!-- end row -->
 

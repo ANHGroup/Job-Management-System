@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('result');
             $table->string('instituations');
             $table->string('passing_year');
-            $table->string('passing_year');
+
             $table->string('applicant_id');
             $table->timestamps();
         });

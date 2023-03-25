@@ -14,7 +14,8 @@ class JobController extends Controller
      */
     public function index()
     {
-        return view('pages.job.list');
+        $jobs = Job::all();
+        return view('pages.job.list', compact('jobs'));
     }
 
     /**
@@ -35,7 +36,22 @@ class JobController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $job = new Job;
+        $job->title = $request->title;
+        $job->salary_range = $request->salary_range;
+        $job->description = $request->description;
+        $job->job_category = $request->job_category;
+        $job->job_experience = $request->job_experience;
+        $job->job_qualification = $request->job_qualification;
+        $job->job_deadline = $request->job_deadline;
+        $job->gender = $request->gender;
+        $job->location = $request->location;
+        // dd($job);
+
+        $job->save();
+
+        session()->flash('message', 'Successfully Save Your Information.');
+        return redirect()->back();
     }
 
     /**
@@ -44,9 +60,11 @@ class JobController extends Controller
      * @param  \App\Models\Job  $job
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
     {
-        return view('pages.job.job_details');
+        $job = Job::find($id);
+
+        return view('pages.job.job_details', compact('job'));
     }
 
     /**

@@ -1,6 +1,4 @@
 <?php
-
-use App\Http\Controllers\AllAplicantController;
 use App\Http\Controllers\ApplicantProfileController;
 use App\Http\Controllers\backend\CompanyProfileController;
 use App\Http\Controllers\backend\DashBoardController;

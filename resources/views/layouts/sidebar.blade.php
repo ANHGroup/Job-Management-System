@@ -65,12 +65,7 @@
 
                 <li class="menu-title mt-2">Components</li>
 
-                <li>
-                    <a href="javascript: void(0);">
-                        <i class="fe-briefcase"></i>
-                        <span> UI Elements </span>
-                        <span class="menu-arrow"></span>
-                    </a>
+                
                    
 
         </div>
