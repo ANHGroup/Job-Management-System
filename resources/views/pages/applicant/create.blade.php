@@ -21,37 +21,37 @@
 
                             <form method="post" action="{{ route('applicant.store') }}" enctype='multipart/form-data'>
                                 @csrf
-                                <div class="form-group">
+                                <div class="col-6 form-group">
                                     <label for="fullname">Present Address * :</label>
                                     <input type="text" class="form-control" name="present_address" id="fullname">
                                 </div>
-                                <div class="form-group">
+                                <div class="col-6 form-group">
                                     <label for="fullname">Phone * :</label>
                                     <input type="number" class="form-control" name="phone" id="">
                                 </div>
 
-                                <div class="form-group">
+                                <div class="col-6 form-group">
                                     <label for="email">Parmanent Address * :</label>
                                     <input type="text"  class="form-control" name="permanent_address"
                                         data-parsley-trigger="change">
                                 </div>
-                                <div class="form-group">
+                                <div class="col-6 form-group">
                                     <label for="dob">DOB * :</label>
                                     <input type="date"  class="form-control" name="dob"
                                         data-parsley-trigger="change">
                                 </div>
-                                <div class="form-group">
+                                <div class="col-6 form-group">
                                     <label for="expected_salary">Expected Salary * :</label>
                                     <input type="text"  class="form-control" name="expected_salary"
                                         data-parsley-trigger="change">
                                 </div>
-                                <div class="form-group">
+                                <div class="col-6 form-group">
                                     <label for="present_salary">Present Salary * :</label>
                                     <input type="text"  class="form-control" name="present_salary"
                                         data-parsley-trigger="change">
                                 </div>
 
-                                <div class="form-group">
+                                <div class="col-6 form-group">
                                     <label for="heard">Gender *:</label>
                                     <select id="heard" class="form-control" name="gender">
                                         <option value="">Choose..</option>
@@ -60,22 +60,22 @@
 
                                     </select>
                                 </div>
-                                <div class="form-group">
+                                <div class="col-6 form-group">
                                     <label for="email">Age * :</label>
                                     <input type="text"  class="form-control" name="age"
                                         data-parsley-trigger="change">
                                 </div>
-                                <div class="form-group">
+                                <div class="col-6 form-group">
                                     <label for="email">Job Experience * :</label>
                                     <input type="text"  class="form-control" name="job_experience"
                                         data-parsley-trigger="change">
                                 </div>
-                                <div class="form-group">
+                                <div class="col-6 form-group">
                                     <label for="email">Resume * :</label>
                                     <input type="file"  class="form-control" name="resume"
                                         data-parsley-trigger="change">
                                 </div>
-                                <div class="form-group">
+                                <div class="col-6 form-group">
                                     <label for="email">Skill * :</label>
                                     <input type="skill"  class="form-control" name="skill"
                                         data-parsley-trigger="change">
