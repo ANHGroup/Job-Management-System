@@ -59,8 +59,15 @@
                                             {{ $job->salary_range }} BDT
                                         </div>
                                         <div class="col-md-12">
-                                            
+                                            @if (auth()->check())
                                             <a href="{{ route('job.destroy',$job->id) }}" class="btn btn-danger btn-sm waves-effect waves-light">Apply</a>
+                                        @else
+                                        <a href="{{ route('login') }}" class="btn btn-primary">Log
+                                            in</a>
+                                        @endif
+                                          
+                                           
+                                            
                                         </div>
                                         
                                     </div>
