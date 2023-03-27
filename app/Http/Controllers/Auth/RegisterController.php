@@ -68,10 +68,12 @@ class RegisterController extends Controller
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'phone' => $data['phone'],
             'password' => Hash::make($data['password']),
         ]);
         $applicant = new ApplicantProfile();
         $applicant->user_id = $user->id;
+        $applicant->user_id = $user->phone;
         $applicant->save();
         return $user;
     }

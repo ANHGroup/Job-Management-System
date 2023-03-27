@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Job;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class JobController extends Controller
 {
@@ -25,6 +26,10 @@ class JobController extends Controller
      */
     public function create()
     {
+
+        if (!Gate::allows('job.create')) {
+            abort(403, "You are not allowed!");
+        }
         return view('pages.job.create');
     }
 
@@ -39,7 +44,7 @@ class JobController extends Controller
         $job = new Job;
         $job->title = $request->title;
         $job->salary_range = $request->salary_range;
-        $job->description = $request->description;
+        $job->description = strip_tags($request->description);
         $job->job_category = $request->job_category;
         $job->job_experience = $request->job_experience;
         $job->job_qualification = $request->job_qualification;
@@ -96,9 +101,9 @@ class JobController extends Controller
      * @param  \App\Models\Job  $job
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Job $job)
+    public function destroy($id)
     {
-        //  $jobdelet = Job::find($id);
+        $job = Job::find($id);
         $job->delete();
         return redirect()->back();
     }

@@ -58,6 +58,10 @@
                                             <label>Salary Range:</label>
                                             {{ $job->salary_range }} BDT
                                         </div>
+                                        <div class="col-md-12">
+                                            
+                                            <a href="{{ route('job.destroy',$job->id) }}" class="btn btn-danger btn-sm waves-effect waves-light">Apply</a>
+                                        </div>
                                         
                                     </div>
                                    

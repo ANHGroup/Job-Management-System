@@ -49,9 +49,14 @@
                         <span class="menu-arrow"></span>
                     </a>
                     <ul class="nav-second-level" aria-expanded="false">
+                        @if (Gate::allows('job.create'))
                         <li>
                             <a href="{{ route('job.create') }}">Create</a>
-                        </li>
+                        </li>   
+                        @endif
+                        {{-- <li>
+                            <a href="{{ route('job.create') }}">Create</a>
+                        </li> --}}
                         <li>
                             <a href="{{ route('job.index') }}">List</a>
                         </li>
@@ -61,6 +66,20 @@
                        
                     </ul>
                 </li>
+
+                <li>
+                    <a href="{{ route('logout') }}"  onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+                    <i class="nav-icon fas fa-sign-out-alt"></i>
+                    <p>
+                      {{ __('Logout') }}
+                    </p>
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                    </form>
+                  </li>
+          
 
 
                 <li class="menu-title mt-2">Components</li>
