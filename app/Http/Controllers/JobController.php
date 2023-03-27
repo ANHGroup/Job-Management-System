@@ -101,9 +101,9 @@ class JobController extends Controller
      * @param  \App\Models\Job  $job
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Job $job)
     {
-        $job = Job::find($id);
+        //$job = Job::find($id);
         $job->delete();
         return redirect()->back();
     }
