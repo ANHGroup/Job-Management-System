@@ -26,4 +26,8 @@
  <!-- Dropzone file uploads-->
  <script src="{{ asset('assets/libs/dropzone/dropzone.min.js') }}"></script>
  <script src="{{ asset('assets/js/pages/add-product.init.js') }}"></script>
- 
+ <script src="{{ asset('assets/libs/summernote/summernote-bs4.min.js') }}"></script>
+
+ <!-- Init js -->
+ <script src="{{ asset('assets/js/pages/form-summernote.init.js') }}"></script>
+ @yield('js')

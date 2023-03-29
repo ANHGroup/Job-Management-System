@@ -15,8 +15,21 @@ class JobController extends Controller
      */
     public function index()
     {
+
+        // $applicant = Education::with('applicant_profiles')->get();
+        // //echo $applicant;
+
+        // return view('pages.applicant.list', compact('applicant'));
+        //$all_data = json_encode($all);
+
+        //$applicant = $app->educations;
+        //  echo $all_data;
+        //dd($app);
+
+        // $applicant = $applicant->;
+        // dd($applicant);
         $jobs = Job::all();
-        return view('pages.job.list', compact('jobs'));
+        return view('pages.index', compact('jobs'));
     }
 
     /**
@@ -44,14 +57,14 @@ class JobController extends Controller
         $job = new Job;
         $job->title = $request->title;
         $job->salary_range = $request->salary_range;
-        $job->description = strip_tags($request->description);
+        $job->description = $request->description;
         $job->job_category = $request->job_category;
         $job->job_experience = $request->job_experience;
         $job->job_qualification = $request->job_qualification;
         $job->job_deadline = $request->job_deadline;
         $job->gender = $request->gender;
         $job->location = $request->location;
-        // dd($job);
+        //dd($job);
 
         $job->save();
 
@@ -67,6 +80,7 @@ class JobController extends Controller
      */
     public function show($id)
     {
+        // echo "this is show page";
         $job = Job::find($id);
 
         return view('pages.job.job_details', compact('job'));
@@ -103,7 +117,8 @@ class JobController extends Controller
      */
     public function destroy(Job $job)
     {
-        //$job = Job::find($id);
+        //echo "this is delete page";
+
         $job->delete();
         return redirect()->back();
     }

@@ -16,7 +16,7 @@ class ApplicantProfileController extends Controller
      */
     public function index()
     {
-        return view('pages.master');
+        return view('layouts.index');
     }
 
     /**
@@ -50,7 +50,7 @@ class ApplicantProfileController extends Controller
         $applicant->gender = $request->gender;
         $applicant->resume = $request->resume;
         $applicant->skill = $request->skill;
-        // dd($applicant);
+        //dd($applicant);
         $applicant->save();
 
         session()->flash('message', 'Successfully Save Your Information.');
@@ -60,8 +60,8 @@ class ApplicantProfileController extends Controller
             $educations->exam = $value;
             $educations->instituations = $request->instituations[$key];
             $educations->result = $request->result[$key];
-            $educations->board = $request->board[$key];
-            //dd($educations);
+            $educations->passing_year = $request->passing_year[$key];
+            // dd($educations);
             $educations->save();
         }
         foreach ($request->title as $key => $value) {
@@ -71,7 +71,7 @@ class ApplicantProfileController extends Controller
             $experience->start_date = $request->start_date[$key];
             $experience->end_date = $request->end_date[$key];
             $experience->company = $request->company[$key];
-            //dd($educations);
+            // dd($educations);
             $experience->save();
         }
 
@@ -84,9 +84,13 @@ class ApplicantProfileController extends Controller
      * @param  \App\Models\ApplicantProfile  $applicantProfile
      * @return \Illuminate\Http\Response
      */
-    public function show(ApplicantProfile $applicantProfile)
+    public function show($id)
     {
-        //
+        $applicants = ApplicantProfile::find(4);
+        $education = $applicants->educations;
+        // dd($applicants, $educations);
+
+        return view('pages.applicant.list', compact('applicants', 'education'));
     }
 
     /**

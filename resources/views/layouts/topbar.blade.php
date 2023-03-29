@@ -1,3 +1,4 @@
+
 <div class="navbar-custom">
     <ul class="list-unstyled topnav-menu float-right mb-0">
 
@@ -113,17 +114,17 @@
             <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#"
                 role="button" aria-haspopup="false" aria-expanded="false">
                 @if (Route::has('login'))
-                    <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+                    <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block topnav">
                         @auth
                             <a href="{{ url('/') }}"
                                 class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
                         @else
-                            <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log
+                            <a href="{{ route('login') }}" class="container-fluid">Log
                                 in</a>
 
                             @if (Route::has('register'))
                                 <a href="{{ route('register') }}"
-                                    class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                                    class="navbar-header">Register</a>
                             @endif
                         @endauth
                     </div>

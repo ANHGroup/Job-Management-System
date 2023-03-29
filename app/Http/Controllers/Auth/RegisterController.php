@@ -73,7 +73,7 @@ class RegisterController extends Controller
         ]);
         $applicant = new ApplicantProfile();
         $applicant->user_id = $user->id;
-        $applicant->user_id = $user->phone;
+        $applicant->phone = $user->phone;
         $applicant->save();
         return $user;
     }

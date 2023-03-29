@@ -59,11 +59,11 @@ use Illuminate\Support\Facades\Route;
 //Route::resource('job', JobController::class);
 Route::get('/', function () {
     $jobs = Job::all();
-    return view('pages.job.list', compact('jobs'));
+    return view('pages.index', compact('jobs'));
 });
 
 Auth::routes();
-
+Route::get('/test', [App\Http\Controllers\HomeController::class, 'test'])->name('test');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('job', JobController::class);
 Route::group(['middleware' => 'auth'], function () {

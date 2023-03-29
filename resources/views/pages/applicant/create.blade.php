@@ -1,4 +1,4 @@
-@extends('pages.master')
+@extends('layouts.master')
 @section('content')
     <div class="content-page" style="justify-content: center;">
         <div class="content">
@@ -95,7 +95,7 @@
                                                 style="overflow-x:auto;">
                                                 <tr>
                                                     <th>Exam</th>
-                                                    <th>Board </th>
+                                                    <th>Passing year </th>
                                                     <th>Result </th>
                                                     <th>Instituation</th>
                                                     <th>Action </th>
@@ -163,7 +163,7 @@
             var rowHtml = '<tr><td><input type="text"name="exam[]" /></td>' +
                 '<td><input type="text" name="instituations[]" /></td>' +
                 '<td><input type="text" name="result[]" /></td>' +
-                '<td><input type="text"name="board[]" /></td>'
+                '<td><input type="text"name="passing_year[]" /></td>'
 
                 +
                 '<td><input type="button" class="btn btn-danger" value="delete" onclick="deleteRow(this)" /></td></tr>';

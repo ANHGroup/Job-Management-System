@@ -15,24 +15,24 @@ return new class extends Migration
     {
         Schema::create('applicant_profiles', function (Blueprint $table) {
             $table->id();
-            $table->string('phone');
-            $table->string('present_address');
-            $table->string('permanent_address');
-            $table->string('dob');
-            $table->string('expected_salary');
-            $table->string('present_salary');
+            $table->string('phone')->nullable();
+            $table->string('present_address')->nullable();
+            $table->string('permanent_address')->nullable();
+            $table->string('dob')->nullable();
+            $table->string('expected_salary')->nullable();
+            $table->string('present_salary')->nullable();
 
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
-            $table->string('gender');
+            $table->string('gender')->nullable();
 
-            $table->string('resume');
-            $table->string('skill');
-            $table->string('job_experience');
+            $table->string('resume')->nullable();
+            $table->string('skill')->nullable();
+            $table->string('job_experience')->nullable();
             $table->timestamps();
         });
     }

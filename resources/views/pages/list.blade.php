@@ -64,13 +64,16 @@
                                     <p class="text-muted">Location:<span class="text-pink">{{ $job->location }}</span></p>
                                     <a href="{{ route('job.show', $job->id) }}"
                                         class="btn btn-primary btn-sm waves-effect waves-light">Details</a>
-                                    <a href="{{ route('job.destroy', $job->id) }}"
-                                        class="btn btn-danger btn-sm waves-effect waves-light">Delete</a>
+                                    <form action="{{ route('job.destroy', $job->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger mt-1">Delete</button>
+                                    </form>
                                 </div> <!-- end .padding -->
                             </div> <!-- end card-box-->
                         </div>
                     @endforeach
-              </div>
+                </div>
                 <div class="row">
                     <div class="col-12">
                         <div class="text-right">

@@ -1,6 +1,13 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
+<div class="row">
+    <div class="col-12">
+        <div class="row justify-content-center">
+            <h4 class="page-title">Please Login First!</h4>
+        </div>
+    </div>
+</div>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">

@@ -13,4 +13,12 @@ class ApplicantProfile extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function educations()
+    {
+        return $this->hasMany(Education::class, 'applicant_id', 'id');
+    }
+    public function experiences()
+    {
+        return $this->hasMany(Experience::class);
+    }
 }

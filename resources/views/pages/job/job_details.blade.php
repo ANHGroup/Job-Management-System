@@ -1,4 +1,4 @@
-@extends('pages.master')
+@extends('layouts.master')
 @section('content')
 <div class="content-page">
     <div class="content">
@@ -28,12 +28,13 @@
                                 <div class="pl-xl-3 mt-3 mt-xl-0">
                                     <a href="#" class="text-primary">JOB POST</a>
                                     <h4 class="mb-3"></h4>
-                                    <h6 class="text-danger text-uppercase"><label>Job Deadline :</label>{{ $job->job_deadline }}</h6>
+                                    <label>Job Deadline :</label>
+                                    <h6 class="text-danger text-uppercase">{{ $job->job_deadline }}</h6>
                                     <h4 class="mb-4">Job Title : <span class="text-muted mr-2"></span> <b>{{ $job->title }}</b></h4>
                                       <div class="row mb-3">
                                         <div class="col-md-12">
                                         <div>
-                                            <label>Job Description:</label>{{$job->description}}</p>
+                                            <label>Job Description:</label>{!! $job->description !!}</p>
                                               
                                         </div>
                                         </div>

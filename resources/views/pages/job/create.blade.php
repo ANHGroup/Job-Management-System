@@ -1,4 +1,4 @@
-@extends('pages.master')
+@extends('layouts.master')
 @section('content')
     <div class="content-page" style="justify-content: center;">
         <div class="content">
@@ -39,9 +39,9 @@
                                 <input type="text" name="salary_range" id="product-reference" class="form-control" placeholder="Salary Range">
                             </div>
 
-                            <div class="form-group ">
-                                <label for="product-description">Job Description <span class="text-danger">*</span></label>
-                                <input  type="text" name="description" id="product-description"  placeholder="Please enter description">
+                            <div class="form-group mb-3">
+                                <label for="product-description">Product Description <span class="text-danger">*</span></label>
+                                <textarea class="form-control" id="product-description" name="description" rows="5" placeholder="Please enter description"></textarea>
                             </div>
 
                             <div class="col-lg-6 form-group mb-3">

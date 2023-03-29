@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Experience extends Model
 {
     use HasFactory;
+    public function applicant_profiles()
+    {
+        return $this->belongsTo(ApplicantProfile::class);
+    }
 }

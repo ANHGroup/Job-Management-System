@@ -2,13 +2,11 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-6">
-                2023 &copy; Developed By <a href="">ANH Group</a> 
+                @php echo date("Y") ;  @endphp &copy; Developed By <a href="https://www.anhgroupbd.com/"><span style="font-style: italic;">ANH Group</span></a> 
             </div>
             <div class="col-md-6">
                 <div class="text-md-right footer-links d-none d-sm-block">
-                    <a href="javascript:void(0);">About Us</a>
-                    <a href="javascript:void(0);">Help</a>
-                    <a href="javascript:void(0);">Contact Us</a>
+                    
                 </div>
             </div>
         </div>
