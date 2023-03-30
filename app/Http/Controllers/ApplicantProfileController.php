@@ -16,7 +16,8 @@ class ApplicantProfileController extends Controller
      */
     public function index()
     {
-        return view('layouts.index');
+        return view('pages.applicant.all_applicants');
+        // return view('layouts.index');
     }
 
     /**
@@ -58,8 +59,9 @@ class ApplicantProfileController extends Controller
             $educations = new Education;
             $educations->applicant_id = $applicant->id;
             $educations->exam = $value;
-            $educations->instituations = $request->instituations[$key];
             $educations->result = $request->result[$key];
+            $educations->instituations = $request->instituations[$key];
+
             $educations->passing_year = $request->passing_year[$key];
             // dd($educations);
             $educations->save();
@@ -86,11 +88,21 @@ class ApplicantProfileController extends Controller
      */
     public function show($id)
     {
-        $applicants = ApplicantProfile::find(4);
-        $education = $applicants->educations;
-        // dd($applicants, $educations);
+        $applicant = ApplicantProfile::findOrFail($id);
+        $education = $applicant->educations;
+        $experience = $applicant->experiences;
+        //dd($experience);
 
-        return view('pages.applicant.list', compact('applicants', 'education'));
+        return view('pages.applicant.list', compact('applicant', 'education', 'experience'));
+    }
+    public function allapplicants()
+    {
+        // $applicant = ApplicantProfile::findOrFail($id);
+        $applicants = ApplicantProfile::all();
+        // $education = $applicants->educations;
+        // dd($applicants);
+
+        return view('pages.applicant.all_applicants', compact('applicants'));
     }
 
     /**
@@ -124,6 +136,8 @@ class ApplicantProfileController extends Controller
      */
     public function destroy(ApplicantProfile $applicantProfile)
     {
-        //
+        // echo "deleted";
+        $applicantProfile->delete();
+        return redirect()->back();
     }
 }

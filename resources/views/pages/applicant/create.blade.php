@@ -95,9 +95,11 @@
                                                 style="overflow-x:auto;">
                                                 <tr>
                                                     <th>Exam</th>
-                                                    <th>Passing year </th>
                                                     <th>Result </th>
                                                     <th>Instituation</th>
+                                                    <th>Passing year </th>
+                                                  
+                                                    
                                                     <th>Action </th>
                                                 </tr>
                                             </table>
@@ -161,8 +163,9 @@
         /* This method will add a new row */
         function addNewRow() {
             var rowHtml = '<tr><td><input type="text"name="exam[]" /></td>' +
-                '<td><input type="text" name="instituations[]" /></td>' +
                 '<td><input type="text" name="result[]" /></td>' +
+                '<td><input type="text" name="instituations[]" /></td>' +
+               
                 '<td><input type="text"name="passing_year[]" /></td>'
 
                 +

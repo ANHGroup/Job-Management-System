@@ -38,6 +38,9 @@
                         <li>
                             <a href="{{route('applicant.create') }}">Create</a>
                         </li>
+                        <li>
+                            <a href="{{route('allapplicants') }}">list</a>
+                        </li>
                        
                     </ul>
                 </li>

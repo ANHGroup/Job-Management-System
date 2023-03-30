@@ -19,6 +19,6 @@ class ApplicantProfile extends Model
     }
     public function experiences()
     {
-        return $this->hasMany(Experience::class);
+        return $this->hasMany(Experience::class, 'applicant_id', 'id');
     }
 }

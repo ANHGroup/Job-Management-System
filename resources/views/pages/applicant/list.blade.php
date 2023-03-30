@@ -2,29 +2,62 @@
 @section('content')
 <div class="content-page" style="justify-content: center;">
     <div class="content">
-        <!DOCTYPE html>
-        <html>
-        
-           <head>
-              <title>HTML Table</title>
-           </head>
-            @php
-                // print_r($education);
-            @endphp
+      <div class="container-fluid">
+       
            <body>
-              <table border = "1" width = "100%">
+
+            <h2>Vertical Headings:</h2>
+
+<table border = "1" style="width:100%" class="table align-middle mb-0 bg-red" >
+  <tr>
+    <th>Present Address:</th>
+    <td> {{ $applicant->present_address }}</td>
+  </tr>
+
+  <tr>
+    <th>permanent_address:</th>
+    <td>{{ $applicant->permanent_address }}</td>
+  </tr>
+  <tr>
+   <th>Phone:</th>
+   <td>{{ $applicant->phone }}</td>
+ </tr>
+  <tr>
+    <th>Dob :</th>
+    <td>{{ $applicant->dob }}</td>
+  </tr>
+  <tr>
+    <th>Expected Salary:</th>
+    <td>{{ $applicant->expected_salary }}</td>
+  </tr>
+  <tr>
+    <th>Present Salary:</th>
+    <td>{{ $applicant->present_salary }}</td>
+  </tr>
+  <tr>
+    <th> 	Gender :</th>
+    <td>{{ $applicant->gender }}</td>
+  </tr>
+  <tr>
+    <th> Job Experience :</th>
+    <td>{{ $applicant->job_experience }}</td>
+  </tr>
+</table>
+Educations
+
+              <table border = "1" width = "100%" class="table align-middle mb-0 bg-green">
                  <thead>
                     <tr>
                        <td>Exam</td>
                        <td>Result</td>
-                       <td>This is the head of the table</td>
-                       <td>This is the head of the table</td>
+                       <td>Instituations </td>
+                       <td>Passing year </td>
                     </tr>
                  </thead>
                  
                  <tfoot>
                     <tr>
-                       <td colspan = "4">This is the foot of the table</td>
+                       <td colspan = "4">All of my educations</td>
                     </tr>
                  </tfoot>
                  
@@ -33,8 +66,9 @@
                      <tr>
                        <td>{{ $item->exam }}</td>
                        <td>{{ $item->result }}</td>
-                       <td>{{ $item->exam }}</td>
-                       <td>fds</td>
+                       <td>{{ $item->instituations }}</td>
+                       <td>{{ $item->passing_year }}</td>
+                       
                     </tr>
                     @endforeach
                  </tbody>
@@ -44,43 +78,37 @@
             
         </html>
         Educations
-        <!DOCTYPE html>
-<html>
 
-   <head>
-      <title>HTML Table</title>
-   </head>
-	
-   <body>
-      <table border = "1" width = "100%">
-         <thead>
-            <tr>
-               <td >This </td>
-            </tr>
-         </thead>
-         
-         <tfoot>
-            <tr>
-               <td colspan = "4">This is the foot </td>
-            </tr>
-         </tfoot>
-         
-         <tbody>
-            
-            <tr>
-               <td>
-                 {{ $applicants->present_address }}
-               </td>
-               <td>Cell 2</td>
-               <td>Cell 3</td>
-               <td>Cell 4</td>
-            </tr>
-         </tbody>
-         
-      </table>
-   </body>
-	
-</html>
-    </div>
-</div>
+        <table border = "1" width = "100%" class="table align-middle mb-0 bg-red">
+           <thead>
+              <tr>
+                 <td>Designation</td>
+                 <td>Start Date</td>
+                 <td>End Date </td>
+                 <td>Company </td>
+              </tr>
+           </thead>
+           
+           <tfoot>
+              <tr>
+                 <td colspan = "4">All of my experience</td>
+              </tr>
+           </tfoot>
+           
+           <tbody>
+              @foreach ($experience as $item)
+               <tr>
+                 <td>{{ $item->title  }}</td>
+                 <td>{{ $item->start_date }}</td>
+                 <td>{{ $item->end_date }}</td>
+                 <td>{{ $item->company }}</td>
+                 
+              </tr>
+              @endforeach
+           </tbody>
+           
+        </table>
+     </body>
+      
+  </html>
 @endsection
