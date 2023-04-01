@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ApplicantProfile;
 use App\Models\Education;
 use App\Models\Experience;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ApplicantProfileController extends Controller
@@ -91,16 +92,24 @@ class ApplicantProfileController extends Controller
         $applicant = ApplicantProfile::findOrFail($id);
         $education = $applicant->educations;
         $experience = $applicant->experiences;
+
+        $users = ApplicantProfile::findOrFail($id);
+        $user = $users->user;
+        // dd($user);
+
         //dd($experience);
 
-        return view('pages.applicant.list', compact('applicant', 'education', 'experience'));
+        return view('pages.applicant.list', compact('applicant', 'education', 'experience', 'user'));
     }
     public function allapplicants()
     {
         // $applicant = ApplicantProfile::findOrFail($id);
-        $applicants = ApplicantProfile::all();
+        //$applicants = ApplicantProfile::all();
+        $applicants = User::join('applicant_profiles', 'users.id', '=', 'applicant_profiles.user_id')
+            ->where('users.type', '0')
+            ->get(['applicant_profiles.*', 'users.name', 'users.phone']);
         // $education = $applicants->educations;
-        // dd($applicants);
+        //dd($applicants);
 
         return view('pages.applicant.all_applicants', compact('applicants'));
     }

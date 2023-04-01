@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\ApplicantProfileController;
+use App\Http\Controllers\AppliedJobController;
 use App\Http\Controllers\JobController;
 use App\Models\Job;
 use Illuminate\Support\Facades\Route;
@@ -65,10 +66,11 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/test', [App\Http\Controllers\HomeController::class, 'test'])->name('test');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/allapplicants', [App\Http\Controllers\ApplicantProfileController::class, 'allapplicants'])->name('allapplicants');
+Route::get('/all-applicants', [App\Http\Controllers\ApplicantProfileController::class, 'allapplicants'])->name('allapplicants');
 Route::resource('job', JobController::class);
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('applicant', ApplicantProfileController::class);
+    Route::resource('applied-job', AppliedJobController::class);
 //Job
 
 });
