@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\AppliedJob;
+use App\Models\Job;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AppliedJobController extends Controller
 {
@@ -35,7 +37,18 @@ class AppliedJobController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        // $user = ApplicantProfile::findOrFail($request->input('applicant_id'));
+        // $post = Job::findOrFail($request->input('job_id'));
+        //$post = Job::find(4);
+
+        $applied_job = new AppliedJob;
+        $applied_job->salary = $request->salary;
+        $applied_job->applicant_id = Auth::user()->id;
+        $applied_job->job_id = $request->job_id;
+        //dd($applied_job);
+        $applied_job->save();
+        return redirect()->back();
     }
 
     /**

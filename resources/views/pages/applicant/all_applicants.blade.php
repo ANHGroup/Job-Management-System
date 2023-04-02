@@ -52,6 +52,7 @@
                                                 <th>Permanent Address</th>
                                                
                                                 <th>Gender</th>
+                                                <th>resume</th>
 
                                                 {{-- <th>Status</th> --}}
                                                 <th style="width: 85px;">Action</th>
@@ -83,10 +84,12 @@
                                                     <td>
                                                         {{ $applicant->gender }}
                                                     </td>
+                                                    <td><a href="{{ asset('resume/' . $applicant->resume) }}" class="" alt="image"
+                                                        style="width:70px;">Open1</a></td>
                                                     {{-- <td>
                                                         <span class="badge bg-soft-success text-success">Active</span>
                                                     </td> --}}
-
+                                                   
                                                     <td>
                                                         <a href="{{ route('applicant.show', $applicant->id) }}"
                                                             class="btn btn-primary">Details</a>

@@ -47,6 +47,15 @@ class ApplicantProfileController extends Controller
         $applicant->permanent_address = $request->permanent_address;
         $applicant->expected_salary = $request->expected_salary;
         $applicant->present_salary = $request->present_salary;
+
+        // $image = time() . '.' . request()->resume->getClientOriginalExtension();
+        // request()->resume->move(public_path('images'), $image);
+        // $applicant->resume = $image;
+
+        $resume = time() . '.' . request()->resume->getClientOriginalExtension();
+        request()->resume->move(public_path('resume'), $resume);
+        $applicant->resume = $resume;
+
         $applicant->dob = $request->dob;
         $applicant->job_experience = $request->job_experience;
         $applicant->gender = $request->gender;

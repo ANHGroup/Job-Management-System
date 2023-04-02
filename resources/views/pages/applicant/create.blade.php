@@ -19,7 +19,7 @@
                                 <p class="mb-0">Everything seems to be ok :)</p>
                             </div>
 
-                            <form method="post" action="{{ route('applicant.store') }}" enctype='multipart/form-data'>
+                            <form method="post" action="{{ route('applicant.store') }}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="col-6 form-group">
                                     <label for="fullname">Present Address * :</label>

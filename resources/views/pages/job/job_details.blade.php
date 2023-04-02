@@ -63,17 +63,21 @@
                                             </div>
                                             <div class="col-md-12">
                                                 @if (auth()->check())
-                                                    <div class="pl-xl-3 mt-3 mt-xl-0"><input type="number"
-                                                            placeholder="e.g.20000" name="">
-                                                        <h3>Your Expected Salary*</h3>
-                                                    </div>
-                                                    <form action=""  method="post">
+                                                    <h3>Your Expected Salary*</h3>
+
+                                                    <form action="{{ route('appliedjob.store') }}" method="post">
+                                                        @csrf
                                                         <div class="row">
+                                                            <input type="hidden" name="job_id"
+                                                                value="{{ old('job_id', $job->id) }}">
+                                                            <div class="pl-xl-3 mt-3 mt-xl-0"><input type="number"
+                                                                    placeholder="e.g.20000" name="salary">
+                                                            </div>
+
                                                             <button type="submit"
                                                                 class="btn w-sm btn-danger waves-effect waves-light">Apply</button>
                                                         </div>
                                                     </form>
-                                                   
                                                 @else
                                                     <a href="{{ route('login') }}" class="btn btn-primary">Log
                                                         in</a>
@@ -89,10 +93,6 @@
                                 </div> <!-- end col -->
                             </div>
                             <!-- end row -->
-
-
-
-
                         </div> <!-- end card-->
                     </div> <!-- end col-->
                 </div>

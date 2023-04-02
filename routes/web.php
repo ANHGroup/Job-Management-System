@@ -70,7 +70,7 @@ Route::get('/all-applicants', [App\Http\Controllers\ApplicantProfileController::
 Route::resource('job', JobController::class);
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('applicant', ApplicantProfileController::class);
-    Route::resource('applied-job', AppliedJobController::class);
+    Route::resource('appliedjob', AppliedJobController::class);
 //Job
 
 });
