@@ -69,6 +69,30 @@
                        
                     </ul>
                 </li>
+                <li>
+                    <a href="javascript: void(0);">
+                        <i class="fe-file-text"></i>
+                        <span> Candidate</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        @if (Gate::allows('job.create'))
+                        <li>
+                            <a href="">Create</a>
+                        </li>   
+                        @endif
+                        {{-- <li>
+                            <a href="{{ route('job.create') }}">Create</a>
+                        </li> --}}
+                        <li>
+                            <a href="{{ route('appliedjob.index') }}">List</a>
+                        </li>
+                        <li>
+                            <a href="">Show</a>
+                        </li>
+                       
+                    </ul>
+                </li>
 
                 <li>
                     <a href="{{ route('logout') }}"  onclick="event.preventDefault();

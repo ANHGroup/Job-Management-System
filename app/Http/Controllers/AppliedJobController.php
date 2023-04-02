@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AppliedJob;
 use App\Models\Job;
+use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,7 +17,15 @@ class AppliedJobController extends Controller
      */
     public function index()
     {
-        echo "Hello Index";
+        $candidate = DB::table('users')
+            ->join('applicant_profiles', 'applicant_profiles.id', '=', 'users.id')
+            ->join('jobs', 'jobs.id', '=', 'users.id')
+            ->join('applied_jobs', 'applied_jobs.id', '=', 'users.id')
+
+            ->get();
+        // dd($candidate);
+        return view('pages.appliedjobs.list', compact('candidate'));
+
     }
 
     /**
@@ -57,9 +66,13 @@ class AppliedJobController extends Controller
      * @param  \App\Models\AppliedJob  $appliedJob
      * @return \Illuminate\Http\Response
      */
-    public function show(AppliedJob $appliedJob)
+    public function show($id)
     {
-        //
+        $job = Job::findOrFail(1);
+        $applied = $job->applied_jobs;
+        dd($applied, $job);
+
+        // $experience = $applicant->experiences;
     }
 
     /**
