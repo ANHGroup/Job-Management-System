@@ -7,6 +7,7 @@ use App\Models\Education;
 use App\Models\Experience;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class ApplicantProfileController extends Controller
@@ -18,6 +19,7 @@ class ApplicantProfileController extends Controller
      */
     public function index()
     {
+
         return view('pages.applicant.all_applicants');
         // return view('layouts.index');
     }
@@ -135,8 +137,11 @@ class ApplicantProfileController extends Controller
     {
         // $applicant = ApplicantProfile::findOrFail($id);
         //$applicants = ApplicantProfile::all();
+        // $user = Auth::User();
+        // $applicants['data'] = ApplicantProfile::where('user_id', $user->id)->get();
+        $user = Auth::User();
         $applicants = User::join('applicant_profiles', 'users.id', '=', 'applicant_profiles.user_id')
-            ->where('users.type', '0')
+            ->where('user_id', $user->id)
             ->get(['applicant_profiles.*', 'users.name', 'users.phone']);
         // $education = $applicants->educations;
         //dd($applicants);
