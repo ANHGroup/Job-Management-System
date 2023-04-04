@@ -7,6 +7,7 @@ use App\Models\Education;
 use App\Models\Experience;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ApplicantProfileController extends Controller
 {
@@ -47,14 +48,34 @@ class ApplicantProfileController extends Controller
         $applicant->permanent_address = $request->permanent_address;
         $applicant->expected_salary = $request->expected_salary;
         $applicant->present_salary = $request->present_salary;
+        // $file = $request->file('resume');
+        // $image_name = Str::of($request->phone)->slug() . '-' . time() . '.' . $file->extension();
+        // $applicant->resume = $request->file('resume')->storePubliclyAs('public', $image_name);
+        // $image_path = $request->file('resume')->store('', 'public');
+        // $applicant->resume = $image_path;
+        $fileName = time() . $request->file('resume')->getClientOriginalName();
+        $path = $request->file('resume')->storeAs('', $fileName, 'public');
+        $applicant->resume = $path;
 
-        // $image = time() . '.' . request()->resume->getClientOriginalExtension();
-        // request()->resume->move(public_path('images'), $image);
-        // $applicant->resume = $image;
+        // $image_name = Str::of($request->present_address)->slug() . '-' . time() . '.' . $file->extension();
+        // $applicant->resume = $request->file('resume')->storePubliclyAs('public', $image_name);
 
-        $resume = time() . '.' . request()->resume->getClientOriginalExtension();
-        request()->resume->move(public_path('resume'), $resume);
-        $applicant->resume = $resume;
+        // $destinationPath = public_path() . '/file/';
+        // $filename = $file->getClientOriginalName();
+
+        // $file->move($destinationPath, $filename);
+
+        // $image = $request->file('resume');
+        // $imageName = time() . '.' . $image->getClientOriginalExtension();
+        // $image->move(public_path('file'), $imageName);
+
+        // $imageName = time() . '.' . $image->getClientOriginalExtension();
+        //dd($imageName);
+
+        // $request->file('resume')->move(public_path('public'), $request->file('resume')->getClientOriginalName());
+
+        // $image_name = 'public' . $request->file('resume')->getClientOriginalName();
+        // $applicant->resume = $request->file('resume')->storePubliclyAs('storage', $image_name);
 
         $applicant->dob = $request->dob;
         $applicant->job_experience = $request->job_experience;
@@ -64,7 +85,7 @@ class ApplicantProfileController extends Controller
         //dd($applicant);
         $applicant->save();
 
-        session()->flash('message', 'Successfully Save Your Information.');
+        //session()->flash('message', 'Successfully Save Your Information.');
         foreach ($request->exam as $key => $value) {
             $educations = new Education;
             $educations->applicant_id = $applicant->id;
@@ -108,7 +129,7 @@ class ApplicantProfileController extends Controller
 
         //dd($experience);
 
-        return view('pages.applicant.list', compact('applicant', 'education', 'experience', 'user'));
+        return view('pages.applicant.details_list', compact('applicant', 'education', 'experience', 'user'));
     }
     public function allapplicants()
     {
@@ -129,9 +150,12 @@ class ApplicantProfileController extends Controller
      * @param  \App\Models\ApplicantProfile  $applicantProfile
      * @return \Illuminate\Http\Response
      */
-    public function edit(ApplicantProfile $applicantProfile)
+    public function edit($id)
     {
-        //
+        $applicantProfile = ApplicantProfile::find($id);
+        return view('pages.applicant.edit', compact('applicantProfile'));
+
+        // return redirect()->back();
     }
 
     /**
@@ -141,9 +165,54 @@ class ApplicantProfileController extends Controller
      * @param  \App\Models\ApplicantProfile  $applicantProfile
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ApplicantProfile $applicantProfile)
+    public function update(Request $request, $id)
     {
-        //
+        $applicant = ApplicantProfile::find($id);
+
+        $applicant->phone = $request->phone;
+        $applicant->present_address = $request->present_address;
+        $applicant->permanent_address = $request->permanent_address;
+        $applicant->expected_salary = $request->expected_salary;
+        $applicant->present_salary = $request->present_salary;
+        // Storage::putFile('public', $request->resume, env('public'));
+        // $image_path = $request->file('resume')->store('', 'public');
+        // $applicant->resume = $image_path;
+        // $fileName = time() . $request->file('resume')->getClientOriginalName();
+        // $path = $request->file('resume')->storeAs('', $fileName, 'public');
+        $applicant->resume = '25';
+
+        $applicant->dob = $request->dob;
+        $applicant->job_experience = $request->job_experience;
+        $applicant->gender = $request->gender;
+        $applicant->resume = $request->resume;
+        $applicant->skill = $request->skill;
+        //dd($applicant);
+        $applicant->save();
+
+        //session()->flash('message', 'Successfully Save Your Information.');
+        foreach ($request->exam as $key => $value) {
+            $educations = new Education;
+            $educations->applicant_id = $applicant->id;
+            $educations->exam = $value;
+            $educations->result = $request->result[$key];
+            $educations->instituations = $request->instituations[$key];
+
+            $educations->passing_year = $request->passing_year[$key];
+            // dd($educations);
+            $educations->save();
+        }
+        foreach ($request->title as $key => $value) {
+            $experience = new Experience();
+            $experience->applicant_id = $applicant->id;
+            $experience->title = $value;
+            $experience->start_date = $request->start_date[$key];
+            $experience->end_date = $request->end_date[$key];
+            $experience->company = $request->company[$key];
+            // dd($educations);
+            $experience->save();
+        }
+
+        return redirect()->back();
     }
 
     /**

@@ -91,8 +91,7 @@
                                                     <td>
                                                         {{ $applicant->job_experience }}
                                                     </td>
-                                                    <td><a href="{{ asset('resume/' . $applicant->resume) }}" class="" alt="image"
-                                                        style="width:70px;">Open1</a></td>
+                                                    <td> <img src="{{ Storage::url($applicant->resume) }}" alt="" width="100"></td>
                                                     {{-- <td>
                                                         <span class="badge bg-soft-success text-success">Active</span>
                                                     </td> --}}

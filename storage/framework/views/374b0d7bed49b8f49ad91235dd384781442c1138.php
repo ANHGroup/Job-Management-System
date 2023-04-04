@@ -1,5 +1,5 @@
-@extends('layouts.master')
-@section('content')
+
+<?php $__env->startSection('content'); ?>
     <div class="content-page" style="justify-content: center;">
         <div class="content">
             <div class="container-fluid">
@@ -19,8 +19,8 @@
                                 <p class="mb-0">Everything seems to be ok :)</p>
                             </div>
 
-                            <form method="post" action="{{ route('applicant.store') }}" enctype="multipart/form-data">
-                                @csrf
+                            <form method="post" action="<?php echo e(route('applicant.store')); ?>" enctype="multipart/form-data">
+                                <?php echo csrf_field(); ?>
                                 <div class="col-6 form-group">
                                     <label for="fullname">Present Address * :</label>
                                     <input type="text" class="form-control" name="present_address" id="fullname">
@@ -231,4 +231,6 @@ $("#add-experience").on("click", function() {
             }
         }
     </script>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\Career\jms\resources\views/pages/applicant/create.blade.php ENDPATH**/ ?>

@@ -1,5 +1,5 @@
-@extends('layouts.master')
-@section('content')
+
+<?php $__env->startSection('content'); ?>
     <div class="content-page" style="justify-content: center;">
         <div class="content">
             <div class="container-fluid">
@@ -19,41 +19,43 @@
                                 <p class="mb-0">Everything seems to be ok :)</p>
                             </div>
 
-                            <form method="post" action="{{ route('applicant.store') }}" enctype="multipart/form-data">
-                                @csrf
+                            <form method="post" action="<?php echo e(route('applicant.update',$applicantProfile->id)); ?>" enctype="multipart/form-data">
+                                <?php echo csrf_field(); ?>
+                                <?php echo method_field('PUT'); ?>
                                 <div class="col-6 form-group">
                                     <label for="fullname">Present Address * :</label>
-                                    <input type="text" class="form-control" name="present_address" id="fullname">
+                                    <input type="text" class="form-control" name="present_address" value="<?php echo e($applicantProfile->present_address); ?>">
+                                    <input type="hidden" class="form-control" name="id" value="<?php echo e($applicantProfile->id); ?>">
                                 </div>
                                 <div class="col-6 form-group">
                                     <label for="fullname">Phone * :</label>
-                                    <input type="number" class="form-control" name="phone" id="">
+                                    <input type="number" value="<?php echo e($applicantProfile->phone); ?>" class="form-control" name="phone" id="">
                                 </div>
 
                                 <div class="col-6 form-group">
                                     <label for="email">Parmanent Address * :</label>
-                                    <input type="text"  class="form-control" name="permanent_address"
+                                    <input type="text" value="<?php echo e($applicantProfile->permanent_address); ?>"  class="form-control" name="permanent_address"
                                         data-parsley-trigger="change">
                                 </div>
                                 <div class="col-6 form-group">
                                     <label for="dob">DOB * :</label>
-                                    <input type="date"  class="form-control" name="dob"
+                                    <input type="date" value="<?php echo e($applicantProfile->dob); ?>"  class="form-control" name="dob"
                                         data-parsley-trigger="change">
                                 </div>
                                 <div class="col-6 form-group">
                                     <label for="expected_salary">Expected Salary * :</label>
-                                    <input type="text"  class="form-control" name="expected_salary"
+                                    <input type="text"value="<?php echo e($applicantProfile->expected_salary); ?>"  class="form-control" name="expected_salary"
                                         data-parsley-trigger="change">
                                 </div>
                                 <div class="col-6 form-group">
                                     <label for="present_salary">Present Salary * :</label>
-                                    <input type="text"  class="form-control" name="present_salary"
+                                    <input type="text"value="<?php echo e($applicantProfile->present_salary); ?>"  class="form-control" name="present_salary"
                                         data-parsley-trigger="change">
                                 </div>
 
                                 <div class="col-6 form-group">
                                     <label for="heard">Gender *:</label>
-                                    <select id="heard" class="form-control" name="gender">
+                                    <select id="heard" class="form-control" name="gender" value="<?php echo e($applicantProfile->gender); ?>">
                                         <option value="">Choose..</option>
                                         <option value="Male">Male</option>
                                         <option value="Female">Female</option>
@@ -62,22 +64,22 @@
                                 </div>
                                 <div class="col-6 form-group">
                                     <label for="email">Age * :</label>
-                                    <input type="text"  class="form-control" name="age"
+                                    <input type="text" value="<?php echo e($applicantProfile->age); ?>" class="form-control" name="age"
                                         data-parsley-trigger="change">
                                 </div>
                                 <div class="col-6 form-group">
                                     <label for="email">Job Experience * :</label>
-                                    <input type="text"  class="form-control" name="job_experience"
+                                    <input type="text" value="<?php echo e($applicantProfile->job_experience); ?>"  class="form-control" name="job_experience"
                                         data-parsley-trigger="change">
                                 </div>
                                 <div class="col-6 form-group">
                                     <label for="email">Resume * :</label>
-                                    <input type="file"  class="form-control" name="resume" 
+                                    <input type="file" value="<?php echo e($applicantProfile->resume); ?>"  class="form-control" name="resume" 
                                         data-parsley-trigger="change">
                                 </div>
                                 <div class="col-6 form-group">
                                     <label for="email">Skill * :</label>
-                                    <input type="skill"  class="form-control" name="skill"
+                                    <input type="skill" value="<?php echo e($applicantProfile->skill); ?>" class="form-control" name="skill"
                                         data-parsley-trigger="change">
                                 </div>
                                 <div class="responsive" style="responsive:auto">
@@ -231,4 +233,6 @@ $("#add-experience").on("click", function() {
             }
         }
     </script>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\Career\jms\resources\views/pages/applicant/edit.blade.php ENDPATH**/ ?>

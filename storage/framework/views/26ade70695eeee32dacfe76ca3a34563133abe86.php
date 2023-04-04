@@ -36,10 +36,10 @@
                     </a>
                     <ul class="nav-second-level" aria-expanded="false">
                         <li>
-                            <a href="{{route('applicant.create') }}">Create</a>
+                            <a href="<?php echo e(route('applicant.create')); ?>">Create</a>
                         </li>
                         <li>
-                            <a href="{{route('allapplicants') }}">list</a>
+                            <a href="<?php echo e(route('allapplicants')); ?>">list</a>
                         </li>
                        
                     </ul>
@@ -52,16 +52,14 @@
                         <span class="menu-arrow"></span>
                     </a>
                     <ul class="nav-second-level" aria-expanded="false">
-                        @if (Gate::allows('job.create'))
+                        <?php if(Gate::allows('job.create')): ?>
                         <li>
-                            <a href="{{ route('job.create') }}">Create</a>
+                            <a href="<?php echo e(route('job.create')); ?>">Create</a>
                         </li>   
-                        @endif
-                        {{-- <li>
-                            <a href="{{ route('job.create') }}">Create</a>
-                        </li> --}}
+                        <?php endif; ?>
+                        
                         <li>
-                            <a href="{{ route('job.index') }}">List</a>
+                            <a href="<?php echo e(route('job.index')); ?>">List</a>
                         </li>
                        
                        
@@ -74,16 +72,10 @@
                         <span class="menu-arrow"></span>
                     </a>
                     <ul class="nav-second-level" aria-expanded="false">
-                        {{-- @if (Gate::allows('job.create'))
+                        
+                        
                         <li>
-                            <a href="">Create</a>
-                        </li>   
-                        @endif --}}
-                        {{-- <li>
-                            <a href="{{ route('job.create') }}">Create</a>
-                        </li> --}}
-                        <li>
-                            <a href="{{ route('appliedjob.index') }}">List</a>
+                            <a href="<?php echo e(route('appliedjob.index')); ?>">List</a>
                         </li>
                         
                        
@@ -91,15 +83,16 @@
                 </li>
 
                 <li>
-                    <a href="{{ route('logout') }}"  onclick="event.preventDefault();
+                    <a href="<?php echo e(route('logout')); ?>"  onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
                     <i class="nav-icon fas fa-sign-out-alt"></i>
                     <p>
-                      {{ __('Logout') }}
+                      <?php echo e(__('Logout')); ?>
+
                     </p>
                     </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    @csrf
+                    <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
+                    <?php echo csrf_field(); ?>
                     </form>
                   </li>
           
@@ -118,4 +111,4 @@
     </div>
     <!-- Sidebar -left -->
 
-</div>
+</div><?php /**PATH E:\Career\jms\resources\views/layouts/sidebar.blade.php ENDPATH**/ ?>
