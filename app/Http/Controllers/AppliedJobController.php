@@ -24,7 +24,7 @@ class AppliedJobController extends Controller
 
             ->get();
         // dd($candidate);
-        return view('pages.appliedjobs.list', compact('candidate'));
+        return view('backend.pages.appliedjobs.list', compact('candidate'));
 
     }
 
@@ -57,6 +57,7 @@ class AppliedJobController extends Controller
         $applied_job->job_id = $request->job_id;
         //dd($applied_job);
         $applied_job->save();
+
         return redirect()->back();
     }
 

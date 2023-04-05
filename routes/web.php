@@ -60,7 +60,7 @@ use Illuminate\Support\Facades\Route;
 //Route::resource('job', JobController::class);
 Route::get('/', function () {
     $jobs = Job::all();
-    return view('pages.index', compact('jobs'));
+    return view('index', compact('jobs'));
 });
 
 Auth::routes();

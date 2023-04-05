@@ -1,5 +1,5 @@
-@extends('layouts.master')
-@section('content')
+
+<?php $__env->startSection('content'); ?>
     <div class="content-page">
         <div class="content">
 
@@ -48,7 +48,7 @@
                 <!-- end row -->
 
                 <div class="row">
-                    @foreach ($jobs as $job)
+                    <?php $__currentLoopData = $jobs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $job): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <div class="col-lg-4">
                             <div class="text-center card-box">
                                 <div class="pt-2 pb-2">
@@ -56,23 +56,23 @@
                                         alt="profile-image">
 
                                     <h4 class="mt-3"><a href="extras-profile.html"
-                                            class="text-light">{{ $job->title }}</a></h4>
+                                            class="text-light"><?php echo e($job->title); ?></a></h4>
                                     <p class="text-muted">@website <span> | </span> <span> <a href="#"
                                                 class="text-pink">anhgroupbd.com</a> </span></p>
-                                    <p class="text-muted">Salary:<span class="text-pink">{{ $job->salary_range }}BDT</span>
+                                    <p class="text-muted">Salary:<span class="text-pink"><?php echo e($job->salary_range); ?>BDT</span>
                                     </p>
-                                    <p class="text-muted">Location:<span class="text-pink">{{ $job->location }}</span></p>
-                                    <a href="{{ route('job.show', $job->id) }}"
+                                    <p class="text-muted">Location:<span class="text-pink"><?php echo e($job->location); ?></span></p>
+                                    <a href="<?php echo e(route('job.show', $job->id)); ?>"
                                         class="btn btn-primary btn-sm waves-effect waves-light">Details</a>
-                                    <form action="{{ route('job.destroy', $job->id) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
+                                    <form action="<?php echo e(route('job.destroy', $job->id)); ?>" method="POST">
+                                        <?php echo csrf_field(); ?>
+                                        <?php echo method_field('DELETE'); ?>
                                         <button type="submit" class="btn btn-danger mt-1">Delete</button>
                                     </form>
                                 </div> <!-- end .padding -->
                             </div> <!-- end card-box-->
                         </div>
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>
                 <div class="row">
                     <div class="col-12">
@@ -102,4 +102,6 @@
             </div> <!-- container -->
         </div> <!-- content -->
     </div>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('backend.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\Career\jms\resources\views/index.blade.php ENDPATH**/ ?>

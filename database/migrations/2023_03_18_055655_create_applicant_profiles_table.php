@@ -27,7 +27,7 @@ return new class extends Migration
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade')
-                ->onUpdate('cascade');
+                ->onUpdate('cascade')->nullable();
             $table->string('gender')->nullable();
 
             $table->string('resume')->nullable();

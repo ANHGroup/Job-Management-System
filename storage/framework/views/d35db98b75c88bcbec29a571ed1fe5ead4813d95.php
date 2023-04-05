@@ -1,5 +1,5 @@
-@extends('layouts.master')
-@section('content')
+
+<?php $__env->startSection('content'); ?>
     <div class="content-page">
         <div class="content">
 
@@ -27,25 +27,14 @@
                                             data-animation="fadein" data-plugin="custommodal" data-overlaycolor="#38414a"><i
                                                 class="mdi mdi-plus-circle mr-1"></i> Add Customers</a>
                                     </div>
-                                    {{-- <div class="col-sm-8">
-                                    <div class="text-sm-right">
-                                        <button type="button" class="btn btn-success mb-2 mr-1"><i class="mdi mdi-settings"></i></button>
-                                        <button type="button" class="btn btn-secondary mb-2 mr-1">Import</button>
-                                        <button type="button" class="btn btn-secondary mb-2">Export</button>
-                                    </div>
-                                </div><!-- end col--> --}}
+                                    
                                 </div>
 
                                 <div class="table-responsive">
                                     <table class="table table-centered table-striped" id="products-datatable">
                                         <thead>
                                             <tr>
-                                                {{-- <th style="width: 20px;">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                                    <label class="custom-control-label" for="customCheck1">&nbsp;</label>
-                                                </div>
-                                            </th> --}}
+                                                
                                                 <th>Name</th>
                                                 <th>Phone</th>
                                                 <th>Present Address</th>
@@ -54,58 +43,56 @@
                                                 <th>Gender</th>
                                                 <th>resume</th>
 
-                                                {{-- <th>Status</th> --}}
+                                                
                                                 <th style="width: 85px;">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($applicants as $applicant)
+                                            <?php $__currentLoopData = $applicants; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $applicant): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                 <tr>
-                                                    {{-- <td>
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="customCheck2">
-                                                    <label class="custom-control-label" for="customCheck2">&nbsp;</label>
-                                                </div>
-                                            </td> --}}
+                                                    
 
                                                     <td>
-                                                        {{ $applicant->name }}
+                                                        <?php echo e($applicant->name); ?>
+
                                                     </td>
                                                     <td>
-                                                        {{ $applicant->phone }}
+                                                        <?php echo e($applicant->phone); ?>
+
                                                     </td>
                                                     <td>
-                                                        {{ $applicant->present_address }}
+                                                        <?php echo e($applicant->present_address); ?>
+
                                                     </td>
                                                     <td>
-                                                        {{ $applicant->permanent_address }}
+                                                        <?php echo e($applicant->permanent_address); ?>
+
                                                     </td>
                                                    
                                                     <td>
-                                                        {{ $applicant->gender }}
+                                                        <?php echo e($applicant->gender); ?>
+
                                                     </td>
                                                     <td>
-                                                        <img src="{{asset($applicant->resume) }}" alt="" width="100"></td>
-                                                    {{-- <td>
-                                                        <span class="badge bg-soft-success text-success">Active</span>
-                                                    </td> --}}
+                                                        <img src="<?php echo e(asset($applicant->resume)); ?>" alt="" width="100"></td>
+                                                    
                                                    
                                                     <td>
-                                                        <a href="{{ route('applicant.show', $applicant->id) }}"
+                                                        <a href="<?php echo e(route('applicant.show', $applicant->id)); ?>"
                                                             class="btn btn-primary">Details</a>
-                                                        <a href="{{ route('applicant.edit', $applicant->id) }}"
+                                                        <a href="<?php echo e(route('applicant.edit', $applicant->id)); ?>"
                                                             class="btn btn-primary">Edit</a>
 
-                                                        <form action="{{ route('applicant.destroy', $applicant->id) }}"
+                                                        <form action="<?php echo e(route('applicant.destroy', $applicant->id)); ?>"
                                                             method="POST">
-                                                            @csrf
-                                                            @method('DELETE')
+                                                            <?php echo csrf_field(); ?>
+                                                            <?php echo method_field('DELETE'); ?>
                                                             <button type="submit"
                                                                 class="btn btn-danger mt-1">Delete</button>
                                                         </form>
                                                     </td>
                                                 </tr>
-                                            @endforeach
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
 
 
@@ -148,4 +135,6 @@
         <!-- end Footer -->
 
     </div>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('backend.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\Career\jms\resources\views/backend/pages/applicant/all_applicants.blade.php ENDPATH**/ ?>

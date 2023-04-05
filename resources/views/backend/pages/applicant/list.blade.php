@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('backend.layouts.master')
 @section('content')
     <div class="content-page" style="justify-content: center;">
         <div class="content">

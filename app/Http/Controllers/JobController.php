@@ -29,7 +29,7 @@ class JobController extends Controller
         // $applicant = $applicant->;
         // dd($applicant);
         $jobs = Job::all();
-        return view('pages.index', compact('jobs'));
+        return view('index', compact('jobs'));
     }
 
     /**
@@ -40,10 +40,10 @@ class JobController extends Controller
     public function create()
     {
 
-        if (!Gate::allows('job.create')) {
+        if (!Gate::allows('backend.pages.job.create')) {
             abort(403, "You are not allowed!");
         }
-        return view('pages.job.create');
+        return view('backend.pages.job.create');
     }
 
     /**
@@ -83,7 +83,7 @@ class JobController extends Controller
         // echo "this is show page";
         $job = Job::find($id);
 
-        return view('pages.job.job_details', compact('job'));
+        return view('backend.pages.job.job_details', compact('job'));
     }
 
     /**

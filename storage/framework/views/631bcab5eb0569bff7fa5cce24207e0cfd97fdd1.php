@@ -1,5 +1,5 @@
-@extends('layouts.master')
-@section('content')
+
+<?php $__env->startSection('content'); ?>
     <div class="content-page">
         <div class="content">
 
@@ -29,47 +29,51 @@
                                         <a href="#" class="text-primary">JOB POST</a>
                                         <h4 class="mb-3"></h4>
                                         <label>Job Deadline :</label>
-                                        <h6 class="text-danger text-uppercase">{{ $job->job_deadline }}</h6>
+                                        <h6 class="text-danger text-uppercase"><?php echo e($job->job_deadline); ?></h6>
                                         <h4 class="mb-4">Job Title : <span class="text-muted mr-2"></span>
-                                            <b>{{ $job->title }}</b>
+                                            <b><?php echo e($job->title); ?></b>
                                         </h4>
                                         <div class="row mb-3">
                                             <div class="col-md-12">
                                                 <div>
-                                                    <label>Job Description:</label>{!! $job->description !!}</p>
+                                                    <label>Job Description:</label><?php echo $job->description; ?></p>
 
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <label>Gender:</label>
-                                                {{ $job->gender }}
+                                                <?php echo e($job->gender); ?>
+
                                             </div>
                                             <div class="col-md-6">
                                                 <label>Job Category:</label>
-                                                {{ $job->job_category }}
+                                                <?php echo e($job->job_category); ?>
+
                                             </div>
 
                                             <div class="col-md-6">
                                                 <label>Job Qualifications:</label>
-                                                {{ $job->job_qualification }}
+                                                <?php echo e($job->job_qualification); ?>
+
                                             </div>
                                             <div class="col-md-6">
                                                 <label>Job Location:</label>
-                                                {{ $job->location }}
+                                                <?php echo e($job->location); ?>
+
                                             </div>
                                             <div class="col-md-6">
                                                 <label>Salary Range:</label>
-                                                {{ $job->salary_range }} BDT
+                                                <?php echo e($job->salary_range); ?> BDT
                                             </div>
                                             <div class="col-md-12">
-                                                @if (auth()->check())
+                                                <?php if(auth()->check()): ?>
                                                     <h3>Your Expected Salary*</h3>
 
-                                                    <form action="{{ route('appliedjob.store') }}" method="post">
-                                                        @csrf
+                                                    <form action="<?php echo e(route('appliedjob.store')); ?>" method="post">
+                                                        <?php echo csrf_field(); ?>
                                                         <div class="row">
                                                             <input type="hidden" name="job_id"
-                                                                value="{{ old('job_id', $job->id) }}">
+                                                                value="<?php echo e(old('job_id', $job->id)); ?>">
                                                             <div class="pl-xl-3 mt-3 mt-xl-0"><input type="number"
                                                                     placeholder="e.g.20000" name="salary">
                                                             </div>
@@ -78,10 +82,10 @@
                                                                 class="btn w-sm btn-danger waves-effect waves-light">Apply</button>
                                                         </div>
                                                     </form>
-                                                @else
-                                                    <a href="{{ route('login') }}" class="btn btn-primary">Log
+                                                <?php else: ?>
+                                                    <a href="<?php echo e(route('login')); ?>" class="btn btn-primary">Log
                                                         in</a>
-                                                @endif
+                                                <?php endif; ?>
 
 
 
@@ -104,4 +108,6 @@
 
 
     </div>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('backend.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\Career\jms\resources\views/backend/pages/job/job_details.blade.php ENDPATH**/ ?>

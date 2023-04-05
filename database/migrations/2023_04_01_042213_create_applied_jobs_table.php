@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('applied_jobs', function (Blueprint $table) {
             $table->id();
             $table->string('salary')->nullable();
-            $table->unsignedBigInteger('applicant_id');
+            $table->unsignedBigInteger('applicant_id')->nullable();
             $table->foreign('applicant_id')
                 ->references('id')
                 ->on('applicant_profiles')

@@ -1,4 +1,3 @@
-
 <div class="navbar-custom">
     <ul class="list-unstyled topnav-menu float-right mb-0">
 
@@ -67,12 +66,7 @@
                 <div class="dropdown-header noti-title">
                     <h6 class="text-overflow m-0">Welcome !</h6>
                 </div>
-
-                
-
                 <div class="dropdown-divider"></div>
-
-                <!-- item-->
                 <a href="javascript:void(0);" class="dropdown-item notify-item">
                     <i class="fe-log-out"></i>
                     <span>{{ __('Logout') }}Logout</span>
@@ -86,8 +80,6 @@
                 <i class="fe-settings noti-icon"></i>
             </a>
         </li>
-
-
     </ul>
 
     <!-- LOGO -->
@@ -123,8 +115,7 @@
                                 in</a>
 
                             @if (Route::has('register'))
-                                <a href="{{ route('register') }}"
-                                    class="navbar-header">Register</a>
+                                <a href="{{ route('register') }}" class="navbar-header">Register</a>
                             @endif
                         @endauth
                     </div>

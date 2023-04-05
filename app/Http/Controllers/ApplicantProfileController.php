@@ -20,7 +20,7 @@ class ApplicantProfileController extends Controller
     public function index()
     {
 
-        return view('pages.applicant.all_applicants');
+        return view('backend.pages.applicant.all_applicants');
         // return view('layouts.index');
     }
 
@@ -32,7 +32,7 @@ class ApplicantProfileController extends Controller
     public function create()
     {
         //echo "test create";
-        return view('pages.applicant.create');
+        return view('backend.pages.applicant.create');
     }
 
     /**
@@ -131,7 +131,7 @@ class ApplicantProfileController extends Controller
 
         //dd($experience);
 
-        return view('pages.applicant.details_list', compact('applicant', 'education', 'experience', 'user'));
+        return view('backend.pages.applicant.details_list', compact('applicant', 'education', 'experience', 'user'));
     }
     public function allapplicants()
     {
@@ -146,7 +146,7 @@ class ApplicantProfileController extends Controller
         // $education = $applicants->educations;
         //dd($applicants);
 
-        return view('pages.applicant.all_applicants', compact('applicants'));
+        return view('backend.pages.applicant.all_applicants', compact('applicants'));
     }
 
     /**
@@ -158,7 +158,7 @@ class ApplicantProfileController extends Controller
     public function edit($id)
     {
         $applicantProfile = ApplicantProfile::find($id);
-        return view('pages.applicant.edit', compact('applicantProfile'));
+        return view('backend.pages.applicant.edit', compact('applicantProfile'));
 
         // return redirect()->back();
     }

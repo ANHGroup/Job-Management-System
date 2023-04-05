@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('backend.layouts.master')
 @section('content')
     <div class="content-page">
         <div class="content">
@@ -48,19 +48,18 @@
                                             </th> --}}
                                                 <th>Name</th>
                                                 <th>Phone</th>
-                                                <th>Job Title</th>
-                                                <th>Expected Salary</th>
-                                                <th>Skill</th>
+                                                <th>Present Address</th>
+                                                <th>Permanent Address</th>
+                                               
                                                 <th>Gender</th>
-                                                <th>Experience</th>
-                                              
+                                                <th>resume</th>
 
                                                 {{-- <th>Status</th> --}}
-                                                <th style="width: 85px;">Resume</th>
+                                                <th style="width: 85px;">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($candidate as $applicant)
+                                            @foreach ($applicants as $applicant)
                                                 <tr>
                                                     {{-- <td>
                                                 <div class="custom-control custom-checkbox">
@@ -76,31 +75,28 @@
                                                         {{ $applicant->phone }}
                                                     </td>
                                                     <td>
-                                                        {{ $applicant->title }}
+                                                        {{ $applicant->present_address }}
                                                     </td>
                                                     <td>
-                                                        {{ $applicant->salary }}
-                                                    </td>
-                                                    <td>
-                                                        {{ $applicant->skill }}
+                                                        {{ $applicant->permanent_address }}
                                                     </td>
                                                    
                                                     <td>
                                                         {{ $applicant->gender }}
                                                     </td>
                                                     <td>
-                                                        {{ $applicant->job_experience }}
-                                                    </td>
-                                                    <td> <img src="{{ Storage::url($applicant->resume) }}" alt="" width="100"></td>
+                                                        <img src="{{asset($applicant->resume) }}" alt="" width="100"></td>
                                                     {{-- <td>
                                                         <span class="badge bg-soft-success text-success">Active</span>
                                                     </td> --}}
                                                    
                                                     <td>
-                                                        <a href=""
+                                                        <a href="{{ route('applicant.show', $applicant->id) }}"
                                                             class="btn btn-primary">Details</a>
+                                                        <a href="{{ route('applicant.edit', $applicant->id) }}"
+                                                            class="btn btn-primary">Edit</a>
 
-                                                        <form action=""
+                                                        <form action="{{ route('applicant.destroy', $applicant->id) }}"
                                                             method="POST">
                                                             @csrf
                                                             @method('DELETE')
