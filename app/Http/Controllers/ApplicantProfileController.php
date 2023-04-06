@@ -8,6 +8,7 @@ use App\Models\Experience;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
 class ApplicantProfileController extends Controller
@@ -20,8 +21,14 @@ class ApplicantProfileController extends Controller
     public function index()
     {
 
-        return view('backend.pages.applicant.all_applicants');
-        // return view('layouts.index');
+        $user = Auth::User();
+        $applicants = User::join('applicant_profiles', 'users.id', '=', 'applicant_profiles.user_id')
+            ->where('user_id', $user->id)
+            ->get(['applicant_profiles.*', 'users.name', 'users.phone']);
+        // $education = $applicants->educations;
+        //dd($applicants);
+
+        return view('backend.layouts.topbar', compact('applicants'));
     }
 
     /**
@@ -50,39 +57,30 @@ class ApplicantProfileController extends Controller
         $applicant->permanent_address = $request->permanent_address;
         $applicant->expected_salary = $request->expected_salary;
         $applicant->present_salary = $request->present_salary;
-        // $file = $request->file('resume');
-        // $image_name = Str::of($request->phone)->slug() . '-' . time() . '.' . $file->extension();
-        // $applicant->resume = $request->file('resume')->storePubliclyAs('public', $image_name);
-        // $image_path = $request->file('resume')->store('', 'public');
-        // $applicant->resume = $image_path;
-        $fileName = time() . $request->file('resume')->getClientOriginalName();
-        $path = $request->file('resume')->storeAs('', $fileName, 'public');
-        $applicant->resume = $path;
 
-        // $image_name = Str::of($request->present_address)->slug() . '-' . time() . '.' . $file->extension();
-        // $applicant->resume = $request->file('resume')->storePubliclyAs('public', $image_name);
+        if ($request->hasfile('resume')) {
 
-        // $destinationPath = public_path() . '/file/';
-        // $filename = $file->getClientOriginalName();
+            // if($request->resume){
+            //     $prv_file = public_path().'/'.$request->resume;
+            //     unlink($prv_file);
+            // }
 
-        // $file->move($destinationPath, $filename);
+            $file = $request->resume;
+            $fileExtension = $file->extension();
+            $file_name = 'resume' . '' . time() . '.' . $fileExtension;
+            Storage::disk('public')->put('resume/' . $file_name, File::get($file));
 
-        // $image = $request->file('resume');
-        // $imageName = time() . '.' . $image->getClientOriginalExtension();
-        // $image->move(public_path('file'), $imageName);
+            $file_path = 'storage/resume/' . $file_name;
 
-        // $imageName = time() . '.' . $image->getClientOriginalExtension();
-        //dd($imageName);
+        } else {
+            $file_path = '';
+        }
 
-        // $request->file('resume')->move(public_path('public'), $request->file('resume')->getClientOriginalName());
-
-        // $image_name = 'public' . $request->file('resume')->getClientOriginalName();
-        // $applicant->resume = $request->file('resume')->storePubliclyAs('storage', $image_name);
-
+        $applicant->resume = $file_path;
         $applicant->dob = $request->dob;
         $applicant->job_experience = $request->job_experience;
         $applicant->gender = $request->gender;
-        $applicant->resume = $request->resume;
+        //$applicant->resume = $request->resume;
         $applicant->skill = $request->skill;
         //dd($applicant);
         $applicant->save();

@@ -1,7 +1,9 @@
 <?php
+namespace Illuminate\Pagination\Paginator;
 
 namespace App\Http\Controllers;
 
+use App\Models\ApplicantProfile;
 use App\Models\Job;
 
 class HomeController extends Controller
@@ -13,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -25,11 +27,18 @@ class HomeController extends Controller
     {
         $jobs = Job::all();
         //return view('pages.index', compact('jobs'));
-        return view('home', compact('jobs'));
+        return view('frontend.index', compact('jobs'));
     }
     public function test()
     {
         $jobs = Job::all();
         return view('test', compact('jobs'));
+    }
+    public function profile()
+    {
+
+        $profile = ApplicantProfile::all();
+        //dd($profile);
+        return view('backend.layouts.topbar', compact('profile'));
     }
 }

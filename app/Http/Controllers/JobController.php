@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Job;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
 
 class JobController extends Controller
 {
@@ -29,7 +28,7 @@ class JobController extends Controller
         // $applicant = $applicant->;
         // dd($applicant);
         $jobs = Job::all();
-        return view('index', compact('jobs'));
+        return view('backend.pages.job.all_jobs', compact('jobs'));
     }
 
     /**
@@ -40,9 +39,9 @@ class JobController extends Controller
     public function create()
     {
 
-        if (!Gate::allows('backend.pages.job.create')) {
-            abort(403, "You are not allowed!");
-        }
+        // if (!Gate::allows('backend.pages.job.create')) {
+        //     abort(403, "You are not allowed!");
+        // }
         return view('backend.pages.job.create');
     }
 

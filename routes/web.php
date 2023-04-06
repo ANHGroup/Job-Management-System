@@ -1,8 +1,8 @@
 <?php
 use App\Http\Controllers\ApplicantProfileController;
 use App\Http\Controllers\AppliedJobController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JobController;
-use App\Models\Job;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -58,14 +58,15 @@ use Illuminate\Support\Facades\Route;
 // Route::resource('message', MessageController::class);
 //Applicant Profile
 //Route::resource('job', JobController::class);
-Route::get('/', function () {
-    $jobs = Job::all();
-    return view('index', compact('jobs'));
-});
+// Route::get('/', function () {
+//     $jobs = Job::all();
+//     return view('index', compact('jobs'));
+// });
 
 Auth::routes();
-Route::get('/test', [App\Http\Controllers\HomeController::class, 'test'])->name('test');
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index']);
+// Route::get('/profile_edit', [HomeController::class, 'edit']);
+//Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
 Route::get('/all-applicants', [ApplicantProfileController::class, 'allapplicants'])->name('allapplicants');
 Route::resource('job', JobController::class);
 Route::group(['middleware' => 'auth'], function () {

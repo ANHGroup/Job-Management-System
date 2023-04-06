@@ -15,9 +15,7 @@
                     </div>
                 </div>
                 <!-- end page title -->
-
-
-                <div class="row">
+ <div class="row">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
@@ -26,22 +24,19 @@
                                         <a href="#custom-modal" class="btn btn-danger waves-effect waves-light"
                                             data-animation="fadein" data-plugin="custommodal" data-overlaycolor="#38414a"><i
                                                 class="mdi mdi-plus-circle mr-1"></i> Add Customers</a>
+                                                <a href="<?php echo e(route('applicant.edit',$applicants->edit)); ?>">Edit Profile</a>
                                     </div>
-                                    
-                                </div>
-
-                                <div class="table-responsive">
+                                 </div>
+<div class="table-responsive">
                                     <table class="table table-centered table-striped" id="products-datatable">
                                         <thead>
                                             <tr>
-                                                
-                                                <th>Name</th>
+                                               <th>Name</th>
                                                 <th>Phone</th>
                                                 <th>Present Address</th>
                                                 <th>Permanent Address</th>
-                                               
-                                                <th>Gender</th>
-                                                <th>resume</th>
+                                               <th>Gender</th>
+                                                <th>Resume</th>
 
                                                 
                                                 <th style="width: 85px;">Action</th>
@@ -73,8 +68,8 @@
                                                         <?php echo e($applicant->gender); ?>
 
                                                     </td>
-                                                    <td>
-                                                        <img src="<?php echo e(asset($applicant->resume)); ?>" alt="" width="100"></td>
+                                                    
+                                                        <td><a href="<?php echo e(asset($applicant->resume)); ?>" class="fa fa-eye btn btn-primary" style="width:70px;">open</a></td>
                                                     
                                                    
                                                     <td>

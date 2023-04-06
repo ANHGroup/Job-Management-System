@@ -7,6 +7,10 @@
                 @if (auth()->check())
                     <span>{{ auth()->user()->name ?? null }}</span>
                 @endif
+            {{-- <a href="" class="{{ route('applicant.edit',$profile->id) }}">Edit</a> --}}
+            </div>
+            <div class="card-body">
+               
             </div>
 
         </li>
@@ -55,7 +59,7 @@
 
         <li class="dropdown notification-list">
             <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown"
-                href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                href="" role="button" aria-haspopup="false" aria-expanded="false">
                 <img src="assets/images/users/user-1.jpg" alt="user-image" class="rounded-circle">
                 <span class="pro-user-name ml-1">
                     {{-- {{ Auth::user()->name }} <i class="mdi mdi-chevron-down"></i>  --}}
@@ -68,8 +72,11 @@
                 </div>
                 <div class="dropdown-divider"></div>
                 <a href="javascript:void(0);" class="dropdown-item notify-item">
+                   
+                    <span><a href="">Edit</span>
+                   
                     <i class="fe-log-out"></i>
-                    <span>{{ __('Logout') }}Logout</span>
+                  
                 </a>
 
             </div>
@@ -86,7 +93,7 @@
     <div class="logo-box">
         <a href="index.html" class="logo text-center">
             <span class="logo-lg">
-                <img src="{{ asset('assets/images/logo/ANH_Group_logo_white.jpg') }}" alt="" height="90">
+                <img src="{{ asset('assets/images/logo/ANH_Group_logo_white.jpg') }}" alt="" height="60">
                 <!-- <span class="logo-lg-text-light">UBold</span> -->
             </span>
             <span class="logo-sm">
