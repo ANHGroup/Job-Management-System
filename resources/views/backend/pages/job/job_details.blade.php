@@ -33,6 +33,29 @@
                                         <h4 class="mb-4">Job Title : <span class="text-muted mr-2"></span>
                                             <b>{{ $job->title }}</b>
                                         </h4>
+                                        @if (session()->has('success'))
+                                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                                {{-- <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Success:">
+            <use xlink:href="#check-circle-fill" />
+        </svg> --}}
+                                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                    aria-label="Close"></button>
+                                                <div>
+                                                    {{ session()->get('success') }}
+                                                </div>
+                                            </div>
+                                        @endif
+
+                                        {{-- If has any error --}}
+                                        @if (count($errors) > 0)
+                                            <div class="alert alert-danger">
+                                                <ul>
+                                                    @foreach ($errors->all() as $error)
+                                                        <li>{{ $error }}</li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        @endif
                                         <div class="row mb-3">
                                             <div class="col-md-12">
                                                 <div>
@@ -79,8 +102,8 @@
                                                         </div>
                                                     </form>
                                                 @else
-                                                    <a href="{{ route('login') }}" class="btn btn-primary">Log
-                                                        in</a>
+                                                    <a href="{{ route('login') }}" class="btn btn-primary">Apply
+                                                        </a>
                                                 @endif
 
 

@@ -1,4 +1,9 @@
 @include('frontend.layouts.css')
+<style>
+    .container-fluid {
+        width: 80%;
+    }
+</style>
 
 <body>
     <!-- wrapper  -->
@@ -7,21 +12,14 @@
         <!-- Topbar Start -->
         @include('frontend.layouts.topbar')
         <!-- end Topbar -->
-
-        <!-- ========== Left Sidebar Start ========== -->
-        @include('frontend.layouts.sidebar')
-        <!-- Left Sidebar End -->
-
         @yield('content')
-        <!-- Footer Start -->
-        @include('frontend.layouts.footer')
-        <!-- end Footer -->
+       
+   
+    <!-- Footer Start -->
+    @include('frontend.layouts.footer')
+    <!-- end Footer -->
 
-        @include('frontend.layouts.js')
+    @include('frontend.layouts.js')
 
-    </div>
-    <!-- END wrapper -->
-
+</div>
 </body>
-
-

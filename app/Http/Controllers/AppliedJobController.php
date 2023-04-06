@@ -50,6 +50,10 @@ class AppliedJobController extends Controller
         // $user = ApplicantProfile::findOrFail($request->input('applicant_id'));
         // $post = Job::findOrFail($request->input('job_id'));
         //$post = Job::find(4);
+        $this->validate($request, [
+            'salary' => 'required|min:4',
+
+        ]);
 
         $applied_job = new AppliedJob;
         $applied_job->salary = $request->salary;
@@ -57,7 +61,7 @@ class AppliedJobController extends Controller
         $applied_job->job_id = $request->job_id;
         //dd($applied_job);
         $applied_job->save();
-
+        session()->flash('success', 'Your online applied successfully.');
         return redirect()->back();
     }
 
