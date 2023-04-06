@@ -65,6 +65,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 Route::get('/', [HomeController::class, 'index']);
+Route::get('/create', [HomeController::class, 'create']);
 // Route::get('/profile_edit', [HomeController::class, 'edit']);
 //Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
 Route::get('/all-applicants', [ApplicantProfileController::class, 'allapplicants'])->name('allapplicants');

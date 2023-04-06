@@ -41,4 +41,11 @@ class HomeController extends Controller
         //dd($profile);
         return view('backend.layouts.topbar', compact('profile'));
     }
+    public function create()
+    {
+        $jobs = Job::all();
+        //return view('pages.index', compact('jobs'));
+        return view('frontend.index', compact('jobs'));
+        // return view('frontend.layouts.master');
+    }
 }

@@ -1,5 +1,5 @@
-
-<?php $__env->startSection('content'); ?>
+@extends('backend.layouts.master')
+@section('content')
     <div class="content-page">
         <div class="content">
 
@@ -24,7 +24,7 @@
                                         <a href="#custom-modal" class="btn btn-danger waves-effect waves-light"
                                             data-animation="fadein" data-plugin="custommodal" data-overlaycolor="#38414a"><i
                                                 class="mdi mdi-plus-circle mr-1"></i> Add Customers</a>
-                                                
+                                                {{-- <a href="{{ route('applicant.edit',$applicants->edit) }}">Edit Profile</a> --}}
                                     </div>
                                  </div>
 <div class="table-responsive">
@@ -38,56 +38,60 @@
                                                <th>Gender</th>
                                                 <th>Resume</th>
 
-                                                
+                                                {{-- <th>Status</th> --}}
                                                 <th style="width: 85px;">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php $__currentLoopData = $applicants; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $applicant): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            @foreach ($applicants as $applicant)
                                                 <tr>
-                                                    
+                                                    {{-- <td>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck2">
+                                                    <label class="custom-control-label" for="customCheck2">&nbsp;</label>
+                                                </div>
+                                            </td> --}}
 
                                                     <td>
-                                                        <?php echo e($applicant->name); ?>
-
+                                                        {{ $applicant->name }}
                                                     </td>
                                                     <td>
-                                                        <?php echo e($applicant->phone); ?>
-
+                                                        {{ $applicant->phone }}
                                                     </td>
                                                     <td>
-                                                        <?php echo e($applicant->present_address); ?>
-
+                                                        {{ $applicant->present_address }}
                                                     </td>
                                                     <td>
-                                                        <?php echo e($applicant->permanent_address); ?>
-
+                                                        {{ $applicant->permanent_address }}
                                                     </td>
                                                    
                                                     <td>
-                                                        <?php echo e($applicant->gender); ?>
-
+                                                        {{ $applicant->gender }}
                                                     </td>
-                                                    
-                                                        <td><a href="<?php echo e(asset($applicant->resume)); ?>" class="fa fa-eye btn btn-primary" style="width:70px;">open</a></td>
-                                                    
+                                                    {{-- <td>
+                                                        <a href="{{($applicant->resume) }}" class="eye-" alt="" width="100"></a>
+                                                        </td> --}}
+                                                        <td><a href="{{ asset($applicant->resume) }}" class="fa fa-eye btn btn-primary" style="width:70px;">open</a></td>
+                                                    {{-- <td>
+                                                        <span class="badge bg-soft-success text-success">Active</span>
+                                                    </td> --}}
                                                    
                                                     <td>
-                                                        <a href="<?php echo e(route('applicant.show', $applicant->id)); ?>"
+                                                        <a href="{{ route('applicant.show', $applicant->id) }}"
                                                             class="btn btn-primary">Details</a>
-                                                        <a href="<?php echo e(route('applicant.edit', $applicant->id)); ?>"
+                                                        <a href="{{ route('applicant.edit', $applicant->id) }}"
                                                             class="btn btn-primary">Edit</a>
 
-                                                        <form action="<?php echo e(route('applicant.destroy', $applicant->id)); ?>"
+                                                        <form action="{{ route('applicant.destroy', $applicant->id) }}"
                                                             method="POST">
-                                                            <?php echo csrf_field(); ?>
-                                                            <?php echo method_field('DELETE'); ?>
+                                                            @csrf
+                                                            @method('DELETE')
                                                             <button type="submit"
                                                                 class="btn btn-danger mt-1">Delete</button>
                                                         </form>
                                                     </td>
                                                 </tr>
-                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                            @endforeach
 
 
 
@@ -130,6 +134,4 @@
         <!-- end Footer -->
 
     </div>
-<?php $__env->stopSection(); ?>
-
-<?php echo $__env->make('backend.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\Career\jms\resources\views/backend/pages/applicant/all_applicants.blade.php ENDPATH**/ ?>
+@endsection

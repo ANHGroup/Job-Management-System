@@ -1,5 +1,5 @@
 
-<?php echo $__env->make('backend.layouts.css', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<?php echo $__env->make('frontend.layouts.css', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <style>
     .container-fluid {
   width: 80%;
@@ -10,7 +10,7 @@
     <div id="wrapper">
 
         <!-- Topbar Start -->
-        <?php echo $__env->make('backend.layouts.topbar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+        <?php echo $__env->make('frontend.layouts.topbar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
         <!-- end Topbar -->
 
         <!-- ========== Left Sidebar Start ========== -->
@@ -73,7 +73,7 @@
                                         
     
                                         <h4 class="mt-3"><a href="extras-profile.html"
-                                                class="text-light"><?php echo e($job->title); ?></a></h4>
+                                                class=""><?php echo e($job->title); ?></a></h4>
                                        <p class="text-muted">Location:<span class="text-pink"><?php echo e($job->location); ?></span></p>
                                         <a href="<?php echo e(route('job.show', $job->id)); ?>"
                                             class="btn btn-primary btn-sm waves-effect waves-light">Details</a>
@@ -111,10 +111,10 @@
             </div> <!-- content -->
         </div>
         <!-- Footer Start -->
-        <?php echo $__env->make('backend.layouts.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+        <?php echo $__env->make('frontend.layouts.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
         <!-- end Footer -->
 
-        <?php echo $__env->make('backend.layouts.js', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+        <?php echo $__env->make('frontend.layouts.js', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
     </div>
     <!-- END wrapper -->

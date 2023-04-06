@@ -1,5 +1,5 @@
 
-@include('backend.layouts.css')
+@include('frontend.layouts.css')
 <style>
     .container-fluid {
   width: 80%;
@@ -10,7 +10,7 @@
     <div id="wrapper">
 
         <!-- Topbar Start -->
-        @include('backend.layouts.topbar')
+        @include('frontend.layouts.topbar')
         <!-- end Topbar -->
 
         <!-- ========== Left Sidebar Start ========== -->
@@ -74,7 +74,7 @@
                                             alt="profile-image"> --}}
     
                                         <h4 class="mt-3"><a href="extras-profile.html"
-                                                class="text-light">{{ $job->title }}</a></h4>
+                                                class="">{{ $job->title }}</a></h4>
                                        <p class="text-muted">Location:<span class="text-pink">{{ $job->location }}</span></p>
                                         <a href="{{ route('job.show', $job->id) }}"
                                             class="btn btn-primary btn-sm waves-effect waves-light">Details</a>
@@ -112,10 +112,10 @@
             </div> <!-- content -->
         </div>
         <!-- Footer Start -->
-        @include('backend.layouts.footer')
+        @include('frontend.layouts.footer')
         <!-- end Footer -->
 
-        @include('backend.layouts.js')
+        @include('frontend.layouts.js')
 
     </div>
     <!-- END wrapper -->
