@@ -9,7 +9,7 @@
 </div>
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-9">
             <div class="card">
                 <div class="card-header"><?php echo e(__('Register')); ?></div>
 
@@ -153,4 +153,4 @@ unset($__errorArgs, $__bag); ?>
 </div>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('backend.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\Career\jms\resources\views/auth/register.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('frontend.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\Career\jms\resources\views/auth/register.blade.php ENDPATH**/ ?>

@@ -28,7 +28,7 @@ return new class extends Migration
                 ->on('jobs')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
-
+            $table->unique(['applicant_id', 'job_id']);
             $table->timestamps();
         });
     }

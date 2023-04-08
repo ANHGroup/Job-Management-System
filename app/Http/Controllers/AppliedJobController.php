@@ -60,7 +60,21 @@ class AppliedJobController extends Controller
         $applied_job->applicant_id = Auth::user()->id;
         $applied_job->job_id = $request->job_id;
         //dd($applied_job);
+        // $result = $applied_job->save();
+        // if ($result < 2) {
+        //     echo "you have already applied!";
+        // }
         $applied_job->save();
+
+        $user = auth()->user();
+
+        // $existingApplication = AppliedJob::where('applicant_id', $user->id)
+        //     ->where('job_id', $applied_job->job_id)
+        //     ->first();
+
+        // if ($existingApplication) {
+        //     return redirect()->back()->with('error', 'You have already applied for this post.');
+        // }
         session()->flash('success', 'Your online applied successfully.');
         return redirect()->back();
     }

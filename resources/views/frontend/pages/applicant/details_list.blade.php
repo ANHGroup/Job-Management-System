@@ -1,4 +1,4 @@
-@extends('backend.layouts.master')
+@extends('frontend.layouts.master')
 @section('content')
     <div class="content-page" style="justify-content: center;">
         <div class="content">
@@ -6,7 +6,7 @@
 
                 <body>
                     <h3 style="color: green">Name :{{ $applicant->user_id ? $user->name : '' }}</h3>
-                       <table border="1" style="width:100%" class="table align-middle mb-0 bg-red">
+                       <table border="1" style="width:100%" class="table table-striped">
                         <tr>
                             <th>Present Address:</th>
                             <td> {{ $applicant->present_address }}</td>

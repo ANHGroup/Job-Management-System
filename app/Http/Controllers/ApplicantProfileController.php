@@ -129,7 +129,12 @@ class ApplicantProfileController extends Controller
 
         //dd($experience);
 
-        return view('backend.pages.applicant.details_list', compact('applicant', 'education', 'experience', 'user'));
+        return view('frontend.pages.applicant.details_list', compact('applicant', 'education', 'experience', 'user'));
+    }
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('login');
     }
     public function allapplicants()
     {
@@ -156,7 +161,7 @@ class ApplicantProfileController extends Controller
     public function edit($id)
     {
         $applicantProfile = ApplicantProfile::find($id);
-        return view('backend.pages.applicant.edit', compact('applicantProfile'));
+        return view('frontend.pages.applicant.edit', compact('applicantProfile'));
 
         // return redirect()->back();
     }

@@ -69,6 +69,7 @@ Route::get('/create', [HomeController::class, 'create']);
 // Route::get('/profile_edit', [HomeController::class, 'edit']);
 //Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
 Route::get('/all-applicants', [ApplicantProfileController::class, 'allapplicants'])->name('allapplicants');
+// Route::post('/logout', [ApplicantProfileController::class, 'logout'])->name('logout');
 Route::resource('job', JobController::class);
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('applicant', ApplicantProfileController::class);
