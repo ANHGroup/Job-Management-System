@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Gate::define('job.create', function (User $user) {
-            return $user->email === 'tuhincse20@gmail.com';
+            return $user->type === '1';
         });
     }
 
