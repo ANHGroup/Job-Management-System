@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 
 use App\Models\ApplicantProfile;
 use App\Models\Job;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
-class HomeController extends Controller
+class LoginController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -25,9 +27,19 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $jobs = Job::all();
-        //return view('pages.index', compact('jobs'));
-        return view('frontend.index', compact('jobs'));
+
+        $role = (Auth::user())->type;
+        if ($role == '1') {
+            $jobs = Job::all();
+            return view('backend.index', compact('jobs'));
+        } elseif ($role == '0') {
+            $jobs = Job::all();
+            return view('frontend.index', compact('jobs'));
+        }
+
+        // $jobs = Job::all();
+        // //return view('pages.index', compact('jobs'));
+        // return view('frontend.index', compact('jobs'));
     }
     public function test()
     {
@@ -36,7 +48,6 @@ class HomeController extends Controller
     }
     public function profile()
     {
-
         $profile = ApplicantProfile::all();
         //dd($profile);
         return view('backend.layouts.topbar', compact('profile'));

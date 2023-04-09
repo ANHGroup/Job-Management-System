@@ -52,6 +52,7 @@ class AppliedJobController extends Controller
         //$post = Job::find(4);
         $this->validate($request, [
             'salary' => 'required|min:4',
+            //'applicant_id' => 'required|unique:applicant_profiles,applicant_id,NULL,id,job_id,' . $request->job_id . '|unique:jobs,job_id,NULL,id,job_id,' . $request->job_id,
 
         ]);
 
@@ -65,8 +66,14 @@ class AppliedJobController extends Controller
         //     echo "you have already applied!";
         // }
         $applied_job->save();
-
-        $user = auth()->user();
+        // if ($applied_job->save()) {
+        //     session()->flash('success', 'Your online applied successfully.');
+        //     return redirect()->back();
+        // } else {
+        //     echo "you have already applied!";
+        //     return redirect()->back();
+        // }
+        //  $user = auth()->user();
 
         // $existingApplication = AppliedJob::where('applicant_id', $user->id)
         //     ->where('job_id', $applied_job->job_id)

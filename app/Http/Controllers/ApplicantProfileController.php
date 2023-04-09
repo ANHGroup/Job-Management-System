@@ -50,6 +50,10 @@ class ApplicantProfileController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'resume' => 'required|mimetypes:application/pdf|max:1024',
+
+        ]);
         $applicant = new ApplicantProfile;
 
         $applicant->phone = $request->phone;

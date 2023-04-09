@@ -1,28 +1,12 @@
 <div class="navbar-custom">
     <ul class="list-unstyled topnav-menu float-right mb-0">
 
-        <li class="">
-
-            <div class="card-body">
-                @if (auth()->check())
-                    <span>
-                        <a href="{{ route('applicant.edit', auth()->user()->name) }}">{{ Auth::user()->name }}
-                    </span>
-                @endif
-
-            </div>
-            <div class="card-body">
-
-            </div>
-
-        </li>
-
-       
-
-        <li class="dropdown notification-list">
+      <li class="dropdown notification-list">
             <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown"
                 href="" role="button" aria-haspopup="false" aria-expanded="false">
-                <img src="assets/images/users/user-1.jpg" alt="Profile edit" class="rounded-circle">
+                @if (auth()->check())
+                <img src="{{ asset('assets/images/logo/ANH_Group_logo_white.jpg') }}" alt="" class="rounded-circle">{{ Auth::user()->name }}
+                @endif
                 <span class="pro-user-name ml-1">
                     {{-- {{ Auth::user()->name }} <i class="mdi mdi-chevron-down"></i>  --}}
                 </span>
