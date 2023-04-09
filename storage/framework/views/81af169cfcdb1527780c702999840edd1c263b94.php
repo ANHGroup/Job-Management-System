@@ -14,13 +14,10 @@
             </div>
 
         </li>
-
-        
-
-        <li class="dropdown notification-list">
+ <li class="dropdown notification-list">
             <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown"
                 href="" role="button" aria-haspopup="false" aria-expanded="false">
-                <img src="assets/images/users/user-1.jpg" alt="user-image" class="rounded-circle">
+                <img src="<?php echo e(asset('assets/images/logo/ANH_Group_logo_white.jpg')); ?>" alt="" class="rounded-circle">
                 <span class="pro-user-name ml-1">
                     
                 </span>
@@ -40,12 +37,6 @@
                 </a>
 
             </div>
-        </li>
-
-        <li class="dropdown notification-list">
-            <a href="javascript:void(0);" class="nav-link right-bar-toggle waves-effect waves-light">
-                <i class="fe-settings noti-icon"></i>
-            </a>
         </li>
     </ul>
 
