@@ -22,32 +22,32 @@
                             <form method="post" action="{{ route('applicant.update',$applicantProfile->id) }}" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
-                                <div class="col-6 form-group">
+                                <div class="col-9 form-group">
                                     <label for="fullname">Present Address * :</label>
                                     <input type="text" class="form-control" name="present_address" value="{{ $applicantProfile->present_address }}">
                                     <input type="hidden" class="form-control" name="id" value="{{ $applicantProfile->id }}">
                                 </div>
-                                <div class="col-6 form-group">
+                                <div class="col-9 form-group">
                                     <label for="fullname">Phone * :</label>
                                     <input type="number" value="{{ $applicantProfile->phone }}" class="form-control" name="phone" id="">
                                 </div>
 
-                                <div class="col-6 form-group">
+                                <div class="col-9 form-group">
                                     <label for="email">Parmanent Address * :</label>
                                     <input type="text" value="{{ $applicantProfile->permanent_address }}"  class="form-control" name="permanent_address"
                                         data-parsley-trigger="change">
                                 </div>
-                                <div class="col-6 form-group">
+                                <div class="col-9 form-group">
                                     <label for="dob">DOB * :</label>
                                     <input type="date" value="{{ $applicantProfile->dob }}"  class="form-control" name="dob"
                                         data-parsley-trigger="change">
                                 </div>
-                                <div class="col-6 form-group">
+                                <div class="col-9 form-group">
                                     <label for="expected_salary">Expected Salary * :</label>
                                     <input type="text"value="{{ $applicantProfile->expected_salary }}"  class="form-control" name="expected_salary"
                                         data-parsley-trigger="change">
                                 </div>
-                                <div class="col-6 form-group">
+                                <div class="col-9 form-group">
                                     <label for="present_salary">Present Salary * :</label>
                                     <input type="text"value="{{ $applicantProfile->present_salary }}"  class="form-control" name="present_salary"
                                         data-parsley-trigger="change">
@@ -62,7 +62,7 @@
 
                                     </select>
                                 </div>
-                                <div class="col-6 form-group">
+                                <div class="col-9 form-group">
                                     <label for="email">Age * :</label>
                                     <input type="text" value="{{ $applicantProfile->age }}" class="form-control" name="age"
                                         data-parsley-trigger="change">
@@ -77,7 +77,7 @@
                                     <input type="file" value="{{ $applicantProfile->resume }}"  class="form-control" name="resume" 
                                         data-parsley-trigger="change">
                                 </div>
-                                <div class="col-6 form-group">
+                                <div class="col-9 form-group">
                                     <label for="email">Skill * :</label>
                                     <input type="skill" value="{{ $applicantProfile->skill }}" class="form-control" name="skill"
                                         data-parsley-trigger="change">
