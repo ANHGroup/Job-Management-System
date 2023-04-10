@@ -2,7 +2,6 @@
 use App\Http\Controllers\ApplicantProfileController;
 use App\Http\Controllers\AppliedJobController;
 use App\Http\Controllers\JobController;
-use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 Auth::routes();
@@ -10,12 +9,13 @@ Auth::routes();
 // Route::post('/logout', [ApplicantProfileController::class, 'logout'])->name('logout');
 /* All Jobs start */
 Route::get('/', [JobController::class, 'index'])->name('index');
+Route::get('/recentJobs', [JobController::class, 'recentJobs'])->name('recentJobs');
 Route::resource('/job', JobController::class);
 /* All Jobs end */
 Route::group(['middleware' => 'auth'], function () {
     /* User type wise authentication user type 1 for admin ,0 for user */
-    Route::get('/admin', [LoginController::class, 'index']);
-    Route::get('/create', [LoginController::class, 'create']);
+    // Route::get('/admin', [LoginController::class, 'index']);
+    // Route::get('/create', [LoginController::class, 'create']);
     /* Applicant profile start */
     Route::resource('applicant', ApplicantProfileController::class);
     Route::get('/all-applicants', [ApplicantProfileController::class, 'allapplicants'])->name('allapplicants');

@@ -5,25 +5,37 @@ namespace App\Http\Controllers;
 use App\Models\Job;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Request;
 
 class JobController extends Controller
 {
 
     public function index()
     {
-
+        $recentJobs = Job::where('created_at', '>=', date('Y-m-d H:i:s', strtotime('-7 days')))
+            ->count();
         $jobs = Job::all();
         if (!Auth::check()) {
 
-            return view('frontend.pages.index', compact('jobs'));
+            return view('frontend.pages.index', compact('jobs', 'recentJobs'));
         } elseif (Auth::user()->type == 1) {
 
-            return view('backend.pages.index', compact('jobs'));
+            return view('backend.pages.index', compact('jobs', 'recentJobs'));
         } elseif (Auth::user()->type == 0) {
 
-            return view('frontend.pages.index', compact('jobs'));
+            return view('frontend.pages.index', compact('jobs', 'recentJobs'));
         }
 
+    }
+    public function recentJobs()
+    {
+        //$recentJobs = date('Y-m-d H:i:s');
+
+// Count the jobs that were created within the last 7 days
+        $recentJobs = Job::where('created_at', '>=', date('Y-m-d H:i:s', strtotime('-7 days')))
+            ->count();
+        // dd($recentJobs);
+        return view('frontend.pages.index', compact('recentJobs'));
     }
 
     /**

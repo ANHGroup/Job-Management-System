@@ -59,6 +59,11 @@
                     </div> <!-- end card-box -->
                 </div><!-- end col-->
             </div>
+            <div class="row">
+                <div class="col-12">
+                    <h3 style="color:#005eef">There are {{ $recentJobs }} recent jobs in last 30days.</h3>
+                </div><!-- end col-->
+            </div>
 
             <!-- end row -->
 
