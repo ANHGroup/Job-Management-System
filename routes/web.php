@@ -8,12 +8,18 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 // Route::post('/logout', [ApplicantProfileController::class, 'logout'])->name('logout');
-Route::resource('job', JobController::class);
+/* All Jobs start */
+Route::get('/', [JobController::class, 'index'])->name('index');
+Route::resource('/job', JobController::class);
+/* All Jobs end */
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/', [LoginController::class, 'index']);
+    /* User type wise authentication user type 1 for admin ,0 for user */
+    Route::get('/admin', [LoginController::class, 'index']);
     Route::get('/create', [LoginController::class, 'create']);
+    /* Applicant profile start */
     Route::resource('applicant', ApplicantProfileController::class);
-    Route::resource('appliedjob', AppliedJobController::class);
     Route::get('/all-applicants', [ApplicantProfileController::class, 'allapplicants'])->name('allapplicants');
+    /*Job post start */
+    Route::resource('appliedjob', AppliedJobController::class);
 
 });

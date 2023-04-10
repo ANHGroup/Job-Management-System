@@ -38,12 +38,6 @@ class AppliedJobController extends Controller
         echo "Hello Create";
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
 
@@ -66,6 +60,7 @@ class AppliedJobController extends Controller
         //     echo "you have already applied!";
         // }
         $applied_job->save();
+        return redirect()->back();
         // if ($applied_job->save()) {
         //     session()->flash('success', 'Your online applied successfully.');
         //     return redirect()->back();
@@ -73,25 +68,19 @@ class AppliedJobController extends Controller
         //     echo "you have already applied!";
         //     return redirect()->back();
         // }
-        //  $user = auth()->user();
+        // $user = auth()->user();
 
         // $existingApplication = AppliedJob::where('applicant_id', $user->id)
         //     ->where('job_id', $applied_job->job_id)
         //     ->first();
 
         // if ($existingApplication) {
-        //     return redirect()->back()->with('error', 'You have already applied for this post.');
+        //     echo 'error', 'You have already applied for this post.';
         // }
-        session()->flash('success', 'Your online applied successfully.');
-        return redirect()->back();
+        // session()->flash('success', 'Your online applied successfully.');
+        // return redirect()->back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\AppliedJob  $appliedJob
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         $job = Job::findOrFail(1);
@@ -101,35 +90,15 @@ class AppliedJobController extends Controller
         // $experience = $applicant->experiences;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\AppliedJob  $appliedJob
-     * @return \Illuminate\Http\Response
-     */
     public function edit(AppliedJob $appliedJob)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\AppliedJob  $appliedJob
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, AppliedJob $appliedJob)
     {
         //
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\AppliedJob  $appliedJob
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(AppliedJob $appliedJob)
     {
         //

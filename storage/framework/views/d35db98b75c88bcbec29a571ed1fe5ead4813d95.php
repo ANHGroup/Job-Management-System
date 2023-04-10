@@ -56,6 +56,11 @@
 
                                                     </td>
                                                     <td>
+                                                        <?php
+                                                            if (!$applicant->present_address) {
+                                                               echo "Profile not completed yet";
+                                                            }
+                                                        ?>
                                                         <?php echo e($applicant->present_address); ?>
 
                                                     </td>

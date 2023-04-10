@@ -3,32 +3,27 @@
 namespace App\Http\Controllers;
 
 use App\Models\Job;
-use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class JobController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
 
-        // $applicant = Education::with('applicant_profiles')->get();
-        // //echo $applicant;
-
-        // return view('pages.applicant.list', compact('applicant'));
-        //$all_data = json_encode($all);
-
-        //$applicant = $app->educations;
-        //  echo $all_data;
-        //dd($app);
-
-        // $applicant = $applicant->;
-        // dd($applicant);
         $jobs = Job::all();
-        return view('backend.pages.job.all_jobs', compact('jobs'));
+        if (!Auth::check()) {
+
+            return view('frontend.pages.index', compact('jobs'));
+        } elseif (Auth::user()->type == 1) {
+
+            return view('backend.pages.index', compact('jobs'));
+        } elseif (Auth::user()->type == 0) {
+
+            return view('frontend.pages.index', compact('jobs'));
+        }
+
     }
 
     /**
@@ -79,41 +74,20 @@ class JobController extends Controller
      */
     public function show($id)
     {
-        // echo "this is show page";
+
         $job = Job::find($id);
-
-        return view('backend.pages.job.job_details', compact('job'));
+        return view('frontend.pages.job.job_details', compact('job'));
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Job  $job
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Job $job)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Job  $job
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Job $job)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Job  $job
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Job $job)
     {
         //echo "this is delete page";

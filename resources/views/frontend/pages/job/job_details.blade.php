@@ -1,4 +1,4 @@
-@extends('backend.layouts.master')
+@extends('frontend.layouts.master')
 @section('content')
     <div class="content-page">
         <div class="content">
@@ -79,8 +79,8 @@
                                                         </div>
                                                     </form>
                                                 @else
-                                                    <a href="{{ route('login') }}" class="btn btn-primary">Log
-                                                        in</a>
+                                                    <a href="{{ route('login') }}" class="btn btn-primary">Apply
+                                                        </a>
                                                 @endif
 
 
