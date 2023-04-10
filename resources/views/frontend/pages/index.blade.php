@@ -19,6 +19,21 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card-box">
+                        <div class="scam-banner" style="text-align: center; ">
+                            <div class="col-lg-12">
+                               <h1 style="color: #005eef">Recruitment scams & fraud warning</h1>
+                            </div>
+                            <div class="col-lg-12 ">
+                               <p class="">We will never ask for the exchange of money or credit card details in the Recruitment process. Please be aware of any suspicious email activity from people who could be pretending to be recruiters or senior individuals at Unilever. If in doubt, please ignore the message.</p>
+                            </div>
+                            <!-- end col-->
+                        </div> <!-- end row -->
+                    </div> <!-- end card-box -->
+                </div><!-- end col-->
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card-box">
                         <div class="row">
                             <div class="col-lg-12">
                                 <form class="form-inline">

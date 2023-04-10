@@ -105,7 +105,7 @@ class ApplicantProfileController extends Controller
         $user = $users->users;
         // dd($user);
         //dd($experience);
-        return view('backend.pages.applicant.details_list', compact('applicant', 'education', 'experience', 'user'));
+        return view('frontend.pages.applicant.details_list', compact('applicant', 'education', 'experience', 'user'));
     }
     public function logout()
     {

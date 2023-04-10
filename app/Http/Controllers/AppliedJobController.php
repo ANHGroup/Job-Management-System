@@ -7,6 +7,7 @@ use App\Models\Job;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class AppliedJobController extends Controller
 {
@@ -46,7 +47,12 @@ class AppliedJobController extends Controller
         //$post = Job::find(4);
         $this->validate($request, [
             'salary' => 'required|min:4',
-            //'applicant_id' => 'required|unique:applicant_profiles,applicant_id,NULL,id,job_id,' . $request->job_id . '|unique:jobs,job_id,NULL,id,job_id,' . $request->job_id,
+            'jobId' => ['required' |
+                Rule::unique('jobs', 'job_id')
+                    ->join('applicant_profiles', 'jobs.id', '=', 'applicant_profiles.id'),
+            ],
+        ]);
+        request()->validate([
 
         ]);
 

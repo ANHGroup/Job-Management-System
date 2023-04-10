@@ -11,9 +11,13 @@
                     <div class="col-12">
                         <div class="page-title-box">
                             <div class="page-title-right">
-
+                                @if ($errors->any())
+                                @foreach ($errors->all() as $error)
+                                    <div>{{$error}}</div>
+                                @endforeach
+                            @endif
                             </div>
-                            <h4 class="page-title">Job Detail</h4>
+                            <h4 class="page-title">Job Details given, Please apply from below.</h4>
                         </div>
                     </div>
                 </div>
@@ -24,7 +28,7 @@
                         <div class="card-box">
                             <div class="row">
                                 <!-- end col -->
-                                <div class="col-xl-7">
+                                <div class="col-xl-8">
                                     <div class="pl-xl-3 mt-3 mt-xl-0">
                                         <a href="#" class="text-primary">JOB POST</a>
                                         <h4 class="mb-3"></h4>
@@ -90,6 +94,17 @@
                                         </div>
 
                                     </div>
+                                </div>
+                                <div>
+                                <div class="form-group">
+                                    <div class="pl-xl-3 mt-3 mt-xl-0">
+                                        <h3>Website:<span><a href="https://www.anhgroupbd.com/">anhgroup.com</span></h3>
+                                       
+                                </div>
+                                </div>    
+                                <div class="form-group">
+                                   
+                                </div>    
                                 </div> <!-- end col -->
                             </div>
                             <!-- end row -->
