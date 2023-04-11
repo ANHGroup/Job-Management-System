@@ -1,11 +1,12 @@
 <div class="navbar-custom">
     <ul class="list-unstyled topnav-menu float-right mb-0">
 
-      <li class="dropdown notification-list">
+        <li class="dropdown notification-list">
             <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown"
                 href="" role="button" aria-haspopup="false" aria-expanded="false">
                 @if (auth()->check())
-                <img src="{{ asset('assets/images/logo/ANH_Group_logo_white.jpg') }}" alt="" class="rounded-circle">{{ Auth::user()->name }}
+                    <img src="{{ asset('assets/images/logo/ANH_Group_logo_white.jpg') }}" alt=""
+                        class="rounded-circle">{{ Auth::user()->name }}
                 @endif
                 <span class="pro-user-name ml-1">
                     {{-- {{ Auth::user()->name }} <i class="mdi mdi-chevron-down"></i>  --}}
@@ -20,8 +21,8 @@
                     <h6 class="text-overflow m-0">
                         @if (auth()->check())
                             <span>
-                                <a href="{{ route('applicant.edit', auth()->user()->id) }}"
-                                    class="">Edit Profile</a></span>
+                                <a href="{{ route('applicant.edit', auth()->user()->id) }}" class="">Edit
+                                    Profile</a></span>
                             </span>
                         @endif
 

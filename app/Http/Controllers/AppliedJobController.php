@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\AppliedJob;
 use App\Models\Job;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 
 class AppliedJobController extends Controller
@@ -45,20 +45,21 @@ class AppliedJobController extends Controller
         // $user = ApplicantProfile::findOrFail($request->input('applicant_id'));
         // $post = Job::findOrFail($request->input('job_id'));
         //$post = Job::find(4);
-        $this->validate($request, [
-            'salary' => 'required|min:4',
-            'jobId' => ['required' |
-                Rule::unique('jobs', 'job_id')
-                    ->join('applicant_profiles', 'jobs.id', '=', 'applicant_profiles.id'),
-            ],
-        ]);
-        request()->validate([
 
+        $this->validate($request, [
+            'job_id' => [
+                'required',
+                Rule::unique('applied_jobs')->where(function ($query) use ($request) {
+                    return $query->where('email', $request->email)
+                        ->where('job_id', $request->job_id);
+                }),
+            ],
         ]);
 
         $applied_job = new AppliedJob;
         $applied_job->salary = $request->salary;
         $applied_job->applicant_id = Auth::user()->id;
+        $applied_job->email = Auth::user()->email;
         $applied_job->job_id = $request->job_id;
         //dd($applied_job);
         // $result = $applied_job->save();

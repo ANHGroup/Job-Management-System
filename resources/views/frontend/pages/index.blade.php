@@ -1,4 +1,5 @@
 @extends('frontend.layouts.master')
+
 @section('content')
 <div class="">
     <div class="content">
@@ -66,7 +67,7 @@
             </div>
 
             <!-- end row -->
-
+<table>
             <div class="row">
                 @foreach ($jobs as $job)
                     <div class="col-sm-4 border border-4">
@@ -86,31 +87,17 @@
                             </div> <!-- end .padding -->
                         </div> <!-- end card-box-->
                     </div>
+                   
                 @endforeach
+              
             </div>
-            <div class="row">
-                <div class="d-flex justify-content-center">
-
-                </div>
-                <div class="text-right">
-                    <ul class="pagination pagination-rounded justify-content-end">
-                        <li class="page-item">
-                            <a class="page-link" href="javascript: void(0);" aria-label="Previous">
-                                <span aria-hidden="true">«</span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                        </li>
-
-                        <li class="page-item">
-                            <a class="page-link" href="javascript: void(0);" aria-label="Next">
-                                <span aria-hidden="true">»</span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+        </table>
+        <div class="d-flex justify-content-center">
+            {{$jobs->links() }}
+        </div>
+            
         </div>
     </div> <!-- container -->
 </div>
+
 @endsection
