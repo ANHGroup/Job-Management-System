@@ -140,6 +140,14 @@ class ApplicantProfileController extends Controller
 
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'present_address' => 'required|max:50',
+            'expected_salary' => 'required|max:8',
+            'resume' => 'required|mimes:pdf|max:2048',
+            'gender' => 'required',
+            'dob' => 'required',
+            'present_salary' => 'required',
+        ]);
         $applicant = ApplicantProfile::find($id);
 
         $applicant->phone = $request->phone;
