@@ -12,9 +12,10 @@ class JobController extends Controller
 
     public function index()
     {
-        $recentJobs = Job::where('created_at', '>=', date('Y-m-d H:i:s', strtotime('-7 days')))
+        $recentJobs = Job::where('created_at', '>=', date('Y-m-d', strtotime('-30 days')))
             ->count();
-        $jobs = Job::all();
+        //dd($recentJobs);
+        $jobs = Job::paginate(10);
         if (!Auth::check()) {
 
             return view('frontend.pages.index', compact('jobs', 'recentJobs'));
@@ -32,7 +33,7 @@ class JobController extends Controller
         //$recentJobs = date('Y-m-d H:i:s');
 
 // Count the jobs that were created within the last 7 days
-        $recentJobs = Job::where('created_at', '>=', date('Y-m-d H:i:s', strtotime('-7 days')))
+        $recentJobs = Job::where('created_at', '>=', date('Y-m-d H:i:s', strtotime('-30 days')))
             ->count();
         // dd($recentJobs);
         return view('frontend.pages.index', compact('recentJobs'));
@@ -70,7 +71,7 @@ class JobController extends Controller
         $job->job_deadline = $request->job_deadline;
         $job->gender = $request->gender;
         $job->location = $request->location;
-        //dd($job);
+        dd($job);
 
         $job->save();
 
