@@ -21,7 +21,7 @@
                         @if (auth()->check())
                             <span>
                                 <a href="{{ route('applicant.edit', auth()->user()->id) }}"
-                                    class="">Edit</a></span>
+                                    class="">Edit Profile</a></span>
                             </span>
                         @endif
 
