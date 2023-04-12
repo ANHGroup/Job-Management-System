@@ -10,17 +10,24 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box">
-                            <div class="page-title-right">
-                                @if (Session::has('message'))
-                                    <div class="alert alert-success" role="alert">
-                                        {{ Session::get('message') }}
-                                    </div>
-                                @elseif (Session::has('error'))
-                                    <div class="alert alert-warning" role="alert">
-                                        {{ Session::get('error') }}
-                                    </div>
-                                @endif
+                            <div class="card-box">
+                                @if (session('success'))
+                                <div class="alert alert-success">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
+                            
+                            @if (count($errors) > 0)
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                             </div>
+                          
                             <h4 class="page-title">Job Details given, Please apply from below.</h4>
                         </div>
                     </div>
@@ -35,15 +42,7 @@
                                 <div class="col-xl-8">
                                     <div class="pl-xl-3 mt-3 mt-xl-0">
                                         <a href="#" class="text-primary">JOB POST</a>
-                                        @if (count($errors) > 0)
-                                            <div class="alert alert-danger">
-                                                <ul>
-                                                    @foreach ($errors->all() as $error)
-                                                        <li>{{ $error }}</li>
-                                                    @endforeach
-                                                </ul>
-                                            </div>
-                                        @endif
+                                       
                                         <h4 class="mb-3"></h4>
                                         <label>Job Deadline :</label>
                                         <h6 class="text-danger text-uppercase">{{ $job->job_deadline }}</h6>
@@ -129,7 +128,7 @@
                         </div> <!-- end card-->
                     </div>
                     <div>
-                        <h1><u> Information</u><br/> </h1>
+                        <h1><u> Information</u><br /> </h1>
                         <p>AnH Enterprise Limited:
                             House# 04 , Probal Housing, Ring Road, Mohammadpur, Dhaka-1207, Bangladesh
                             Web: www.anhenterprise.com</p>
