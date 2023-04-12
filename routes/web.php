@@ -10,7 +10,7 @@ Auth::routes();
 /* All Jobs start */
 Route::get('/', [JobController::class, 'index'])->name('index');
 Route::get('/recentJobs', [JobController::class, 'recentJobs'])->name('recentJobs');
-Route::resource('/job', JobController::class);
+
 /* All Jobs end */
 Route::group(['middleware' => 'auth'], function () {
     /* User type wise authentication user type 1 for admin ,0 for user */
@@ -19,7 +19,10 @@ Route::group(['middleware' => 'auth'], function () {
     /* Applicant profile start */
     Route::resource('applicant', ApplicantProfileController::class);
     Route::get('/all-applicants', [ApplicantProfileController::class, 'allapplicants'])->name('allapplicants');
-    /*Job post start */
+    /*Job Applied start */
     Route::resource('appliedjob', AppliedJobController::class);
+
+    // Job Post
+    Route::resource('job', JobController::class);
 
 });

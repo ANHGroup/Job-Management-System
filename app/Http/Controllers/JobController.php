@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Job;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Request;
 
 class JobController extends Controller
 {
@@ -71,7 +71,7 @@ class JobController extends Controller
         $job->job_deadline = $request->job_deadline;
         $job->gender = $request->gender;
         $job->location = $request->location;
-        dd($job);
+        //dd($job);
 
         $job->save();
 

@@ -67,7 +67,7 @@ class AppliedJobController extends Controller
         //     echo "you have already applied!";
         // }
         $applied_job->save();
-        return redirect()->back();
+        return redirect('error',"You already applied for first time!")->back();
         // if ($applied_job->save()) {
         //     session()->flash('success', 'Your online applied successfully.');
         //     return redirect()->back();
