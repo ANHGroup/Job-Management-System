@@ -7,7 +7,6 @@ use App\Models\Job;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Validation\Rule;
 
 class AppliedJobController extends Controller
 {
@@ -49,12 +48,18 @@ class AppliedJobController extends Controller
         $this->validate($request, [
             'job_id' => [
                 'required',
-                Rule::unique('applied_jobs')->where(function ($query) use ($request) {
-                    return $query->where('email', $request->email)
-                        ->where('job_id', $request->job_id);
-                }),
+
             ],
         ]);
+        $user = $request->user();
+        $jobId = $request->input('job_id');
+        $applicationExists = AppliedJob::where('applicant_id', $user->id)
+            ->where('job_id', $jobId)
+            ->exists();
+
+        if ($applicationExists) {
+            return redirect()->back()->withErrors(['You have already applied for this job.']);
+        }
 
         $applied_job = new AppliedJob;
         $applied_job->salary = $request->salary;
@@ -67,7 +72,8 @@ class AppliedJobController extends Controller
         //     echo "you have already applied!";
         // }
         $applied_job->save();
-        return redirect('error',"You already applied for first time!")->back();
+        return redirect()->back()->with('success', 'Your application has been submitted.');
+
         // if ($applied_job->save()) {
         //     session()->flash('success', 'Your online applied successfully.');
         //     return redirect()->back();

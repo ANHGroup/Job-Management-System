@@ -85,8 +85,8 @@
                                         </p>
                                         <a href="{{ route('job.show', $job->id) }}"
                                             class="btn btn-primary btn-sm waves-effect waves-light">Details</a>
-                                        <a href="{{ route('job.destroy', $job->id) }}"
-                                            class="btn btn-danger btn-sm waves-effect waves-light">Delete</a>
+                                        {{-- <a href="{{ route('job.destroy', $job->id) }}"
+                                            class="btn btn-danger btn-sm waves-effect waves-light">Delete</a> --}}
                                     </div> <!-- end .padding -->
                                 </div> <!-- end card-box-->
                             </div>
