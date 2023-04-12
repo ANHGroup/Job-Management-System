@@ -10,17 +10,12 @@
                 <li class="menu-title">Navigation</li>
 
                 <li>
-                    <a href="javascript: void(0);">
+                    <a href="{{ route('job.index') }}">
                         <i class="fe-airplay"></i>
-                        <span class="badge badge-success badge-pill float-right">4</span>
-                        <span> Dashboards </span>
+                        
+                        <span> Dashboard </span>
                     </a>
-                    <ul class="nav-second-level" aria-expanded="false">
-                        <li>
-                            <a href="index.html">Dashboard 1</a>
-                        </li>
-
-                    </ul>
+                   
                 </li>
                 <li>
                     <a href="javascript: void(0);">
@@ -29,9 +24,9 @@
                         <span class="menu-arrow"></span>
                     </a>
                     <ul class="nav-second-level" aria-expanded="false">
-                        <li>
+                        {{-- <li>
                             <a href="{{ route('applicant.create') }}">Create</a>
-                        </li>
+                        </li> --}}
                         <li>
                             <a href="{{ route('allapplicants') }}">list</a>
                         </li>

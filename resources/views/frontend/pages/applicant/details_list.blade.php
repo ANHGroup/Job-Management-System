@@ -1,12 +1,11 @@
-@extends('backend.layouts.master')
+@extends('frontend.layouts.master')
 @section('content')
-    <div class="content-page" style="justify-content: center;">
+    <div class="content-page" style="">
         <div class="content">
             <div class="container-fluid">
-
-                <body>
+                   <body>
                     <h3 style="color: green">Name :{{ $applicant->user_id ? $user->name : '' }}</h3>
-                       <table border="1" style="width:100%" class="table align-middle mb-0 bg-red">
+                       <table  style="width:100%;border:2px;" class="table table-striped">
                         <tr>
                             <th>Present Address:</th>
                             <td> {{ $applicant->present_address }}</td>
@@ -43,7 +42,7 @@
                     </table>
                     <h3 style="color: rgb(95, 160, 95)">Educations</h3>
 
-                    <table border="1" width="100%" class="table align-middle mb-0 bg-green">
+                    <table  width="100%" class="table align-middle mb-0 bg-green">
                         <thead style="font-weight: bold;">
                             <tr>
                                 <td>Exam</td>
@@ -75,7 +74,7 @@
 
                     <h3 style="color: rgb(95, 160, 95)">Experiences</h3>
 
-                    <table border="1" width="100%" class="table align-middle mb-0 bg-green">
+                    <table  width="100%" class="table align-middle mb-0 bg-green">
                         <thead style="font-weight: bold;">
                             <tr>
                                 <td>Designation</td>

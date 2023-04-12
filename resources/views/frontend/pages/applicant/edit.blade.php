@@ -1,4 +1,4 @@
-@extends('backend.layouts.master')
+@extends('frontend.layouts.master')
 @section('content')
     <div class="content-page" style="justify-content: center;">
         <div class="content">
@@ -6,8 +6,14 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card-box">
+                            <div class="alert alert-warning">
                             <h4 class="header-title">Applicant Profile</h4>
-
+                            @if ($errors->any())
+                            @foreach ($errors->all() as $error)
+                                <div>{{ $error }}</div>
+                            @endforeach
+                        @endif
+                            </div>
 
                             <div class="alert alert-warning d-none fade show">
                                 <h4 class="text-warning mt-0">Oh snap!</h4>
@@ -17,70 +23,76 @@
                             <div class="alert alert-info d-none fade show">
                                 <h4 class="text-info mt-0">Yay!</h4>
                                 <p class="mb-0">Everything seems to be ok :)</p>
+                               
                             </div>
 
-                            <form method="post" action="{{ route('applicant.update',$applicantProfile->id) }}" enctype="multipart/form-data">
+                            <form method="post" action="{{ route('applicant.update', $applicantProfile->id) }}"
+                                enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
-                                <div class="col-6 form-group">
+                                <div class="col-9 form-group">
                                     <label for="fullname">Present Address * :</label>
-                                    <input type="text" class="form-control" name="present_address" value="{{ $applicantProfile->present_address }}">
-                                    <input type="hidden" class="form-control" name="id" value="{{ $applicantProfile->id }}">
+                                    <input type="text" class="form-control" name="present_address"
+                                        value="{{ $applicantProfile->present_address }}">
+                                    <input type="hidden" class="form-control" name="id"
+                                        value="{{ $applicantProfile->id }}">
                                 </div>
-                                <div class="col-6 form-group">
+                                <div class="col-9 form-group">
                                     <label for="fullname">Phone * :</label>
-                                    <input type="number" value="{{ $applicantProfile->phone }}" class="form-control" name="phone" id="">
+                                    <input type="number" value="{{ $applicantProfile->phone }}" class="form-control"
+                                        name="phone" id="">
                                 </div>
 
-                                <div class="col-6 form-group">
+                                <div class="col-9 form-group">
                                     <label for="email">Parmanent Address * :</label>
-                                    <input type="text" value="{{ $applicantProfile->permanent_address }}"  class="form-control" name="permanent_address"
-                                        data-parsley-trigger="change">
+                                    <input type="text" value="{{ $applicantProfile->permanent_address }}"
+                                        class="form-control" name="permanent_address" data-parsley-trigger="change">
                                 </div>
-                                <div class="col-6 form-group">
+                                <div class="col-9 form-group">
                                     <label for="dob">DOB * :</label>
-                                    <input type="date" value="{{ $applicantProfile->dob }}"  class="form-control" name="dob"
-                                        data-parsley-trigger="change">
+                                    <input type="date" value="{{ $applicantProfile->dob }}" class="form-control"
+                                        name="dob" data-parsley-trigger="change">
                                 </div>
-                                <div class="col-6 form-group">
+                                <div class="col-9 form-group">
                                     <label for="expected_salary">Expected Salary * :</label>
-                                    <input type="text"value="{{ $applicantProfile->expected_salary }}"  class="form-control" name="expected_salary"
-                                        data-parsley-trigger="change">
+                                    <input type="text"value="{{ $applicantProfile->expected_salary }}"
+                                        class="form-control" name="expected_salary" data-parsley-trigger="change">
                                 </div>
-                                <div class="col-6 form-group">
+                                <div class="col-9 form-group">
                                     <label for="present_salary">Present Salary * :</label>
-                                    <input type="text"value="{{ $applicantProfile->present_salary }}"  class="form-control" name="present_salary"
-                                        data-parsley-trigger="change">
+                                    <input type="text"value="{{ $applicantProfile->present_salary }}"
+                                        class="form-control" name="present_salary" data-parsley-trigger="change">
                                 </div>
 
                                 <div class="col-6 form-group">
                                     <label for="heard">Gender *:</label>
-                                    <select id="heard" class="form-control" name="gender" value="{{ $applicantProfile->gender }}">
+                                    <select id="heard" class="form-control" name="gender"
+                                        value="{{ $applicantProfile->gender }}">
                                         <option value="">Choose..</option>
                                         <option value="Male">Male</option>
                                         <option value="Female">Female</option>
 
                                     </select>
                                 </div>
-                                <div class="col-6 form-group">
+                                <div class="col-9 form-group">
                                     <label for="email">Age * :</label>
-                                    <input type="text" value="{{ $applicantProfile->age }}" class="form-control" name="age"
-                                        data-parsley-trigger="change">
+                                    <input type="text" value="{{ $applicantProfile->age }}" class="form-control"
+                                        name="age" data-parsley-trigger="change">
                                 </div>
                                 <div class="col-6 form-group">
                                     <label for="email">Job Experience * :</label>
-                                    <input type="text" value="{{ $applicantProfile->job_experience }}"  class="form-control" name="job_experience"
-                                        data-parsley-trigger="change">
+                                    <input type="text" value="{{ $applicantProfile->job_experience }}"
+                                        class="form-control" name="job_experience" data-parsley-trigger="change">
                                 </div>
                                 <div class="col-6 form-group">
                                     <label for="email">Resume * :</label>
-                                    <input type="file" value="{{ $applicantProfile->resume }}"  class="form-control" name="resume" 
-                                        data-parsley-trigger="change">
+                                    <input type="file" value="{{ $applicantProfile->resume }}" class="form-control"
+                                        name="resume" data-parsley-trigger="change">
                                 </div>
-                                <div class="col-6 form-group">
+                                <div class="col-9 form-group">
                                     <label for="email">Skill * :</label>
-                                    <input type="skill" value="{{ $applicantProfile->skill }}" class="form-control" name="skill"
-                                        data-parsley-trigger="change">
+                                    <input type="skill" value="{{ $applicantProfile->skill }}" class="form-control"
+                                        name="skill" data-parsley-trigger="change">
                                 </div>
                                 <div class="responsive" style="responsive:auto">
 
@@ -100,8 +112,8 @@
                                                     <th>Result </th>
                                                     <th>Instituation</th>
                                                     <th>Passing year </th>
-                                                  
-                                                    
+
+
                                                     <th>Action </th>
                                                 </tr>
                                             </table>
@@ -109,31 +121,31 @@
                                     </div> <!-- end card-box -->
                                 </div> <!-- end col -->
 
-                              <div class="d-none d-sm-block">
-                                
-                                <div class="card-box">
-                                    <div id="container">
-                                        <h2>Experience</h2>
-                                        <a class="btn btn-success" id="add-experience">Add New Row
-                                        </a>
-                                        <a class="btn btn-danger" id="delete-experience">Delete Row
-                                        </a>
-                                        <br>
-                                        <br>
-                                        <table id="experience-table" class="table table-bordered "
-                                            style="overflow-x:auto;">
-                                            <tr>
-                                                <th>Title</th>
-                                                <th>Start Date </th>
-                                                <th>End Date </th>
-                                                <th>Company</th>
-                                                <th>Action </th>
-                                            </tr>
-                                        </table>
+                                <div class="d-none d-sm-block">
+
+                                    <div class="card-box">
+                                        <div id="container">
+                                            <h2>Experience</h2>
+                                            <a class="btn btn-success" id="add-experience">Add New Row
+                                            </a>
+                                            <a class="btn btn-danger" id="delete-experience">Delete Row
+                                            </a>
+                                            <br>
+                                            <br>
+                                            <table id="experience-table" class="table table-bordered "
+                                                style="overflow-x:auto;">
+                                                <tr>
+                                                    <th>Title</th>
+                                                    <th>Start Date </th>
+                                                    <th>End Date </th>
+                                                    <th>Company</th>
+                                                    <th>Action </th>
+                                                </tr>
+                                            </table>
+                                        </div>
                                     </div>
-                                </div>
-                                    
-                                <!-- end card-box -->
+
+                                    <!-- end card-box -->
                                 </div> <!-- end col -->
 
 
@@ -153,9 +165,9 @@
     <script type="text/javascript">
         /* This event will fire on 'Add New Row' button click */
         $("#add-new-btn").on("click", function() {
-           // alert("this is call");
+            // alert("this is call");
             //calling method to add new row
-           addNewRow();
+            addNewRow();
         });
         /* This event will fire on 'Delete Row' button click */
         $("#delete-btn").on("click", function() {
@@ -167,7 +179,7 @@
             var rowHtml = '<tr><td><input type="text"name="exam[]" /></td>' +
                 '<td><input type="text" name="result[]" /></td>' +
                 '<td><input type="text" name="instituations[]" /></td>' +
-               
+
                 '<td><input type="text"name="passing_year[]" /></td>'
 
                 +
@@ -190,13 +202,9 @@
                 table.deleteRow(rowCount - 1);
             }
         }
-
-
-       
     </script>
     <script>
-
-$("#add-experience").on("click", function() {
+        $("#add-experience").on("click", function() {
             //calling method to add new row
             addNewRowexp();
         });
