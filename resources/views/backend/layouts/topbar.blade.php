@@ -14,53 +14,10 @@
             </div>
 
         </li>
-
-        {{-- <li class="dropdown notification-list">
-            <a class="nav-link dropdown-toggle  waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                <i class="fe-bell noti-icon"></i>
-                <span class="badge badge-danger rounded-circle noti-icon-badge">9</span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right dropdown-lg">
-
-                <!-- item-->
-                <div class="dropdown-item noti-title">
-                    <h5 class="m-0">
-                        <span class="float-right">
-                            <a href="" class="text-light">
-                                <small>Clear All</small>
-                            </a>
-                        </span>Notification
-                    </h5>
-                </div>
-
-                <div class="slimscroll noti-scroll">
-
-                 
-
-                    <!-- item-->
-                 
-
-                    <!-- item-->
-                   
-
-                    <!-- item-->
-                  
-                  
-                </div>
-
-                <!-- All-->
-                <a href="javascript:void(0);" class="dropdown-item text-center text-light notify-item notify-all">
-                    View all
-                    <i class="fi-arrow-right"></i>
-                </a>
-
-            </div>
-        </li> --}}
-
-        <li class="dropdown notification-list">
+ <li class="dropdown notification-list">
             <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown"
                 href="" role="button" aria-haspopup="false" aria-expanded="false">
-                <img src="assets/images/users/user-1.jpg" alt="user-image" class="rounded-circle">
+                <img src="{{ asset('assets/images/logo/ANH_Group_logo_white.jpg') }}" alt="" class="rounded-circle">
                 <span class="pro-user-name ml-1">
                     {{-- {{ Auth::user()->name }} <i class="mdi mdi-chevron-down"></i>  --}}
                 </span>
@@ -80,12 +37,6 @@
                 </a>
 
             </div>
-        </li>
-
-        <li class="dropdown notification-list">
-            <a href="javascript:void(0);" class="nav-link right-bar-toggle waves-effect waves-light">
-                <i class="fe-settings noti-icon"></i>
-            </a>
         </li>
     </ul>
 

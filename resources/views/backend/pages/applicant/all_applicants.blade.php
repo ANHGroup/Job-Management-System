@@ -59,6 +59,11 @@
                                                         {{ $applicant->phone }}
                                                     </td>
                                                     <td>
+                                                        @php
+                                                            if (!$applicant->present_address) {
+                                                               echo "Profile not completed yet";
+                                                            }
+                                                        @endphp
                                                         {{ $applicant->present_address }}
                                                     </td>
                                                     <td>

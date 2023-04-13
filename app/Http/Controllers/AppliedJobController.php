@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\AppliedJob;
 use App\Models\Job;
-use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AppliedJobController extends Controller
 {
@@ -38,39 +38,44 @@ class AppliedJobController extends Controller
         echo "Hello Create";
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
 
         // $user = ApplicantProfile::findOrFail($request->input('applicant_id'));
         // $post = Job::findOrFail($request->input('job_id'));
         //$post = Job::find(4);
-        $this->validate($request, [
-            'salary' => 'required|min:4',
 
+        $this->validate($request, [
+            'job_id' => [
+                'required',
+
+            ],
         ]);
+        $user = $request->user();
+        $jobId = $request->input('job_id');
+        $applicationExists = AppliedJob::where('applicant_id', $user->id)
+            ->where('job_id', $jobId)
+            ->exists();
+
+        if ($applicationExists) {
+            return redirect()->back()->withErrors(['You have already applied for this job!']);
+        }
 
         $applied_job = new AppliedJob;
         $applied_job->salary = $request->salary;
         $applied_job->applicant_id = Auth::user()->id;
+        $applied_job->email = Auth::user()->email;
         $applied_job->job_id = $request->job_id;
         //dd($applied_job);
+        // $result = $applied_job->save();
+        // if ($result < 2) {
+        //     echo "you have already applied!";
+        // }
         $applied_job->save();
-        session()->flash('success', 'Your online applied successfully.');
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Your application has been submitted.');
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\AppliedJob  $appliedJob
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         $job = Job::findOrFail(1);
@@ -80,35 +85,15 @@ class AppliedJobController extends Controller
         // $experience = $applicant->experiences;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\AppliedJob  $appliedJob
-     * @return \Illuminate\Http\Response
-     */
     public function edit(AppliedJob $appliedJob)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\AppliedJob  $appliedJob
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, AppliedJob $appliedJob)
     {
         //
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\AppliedJob  $appliedJob
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(AppliedJob $appliedJob)
     {
         //

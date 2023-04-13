@@ -4,31 +4,39 @@ namespace App\Http\Controllers;
 
 use App\Models\Job;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class JobController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
+        $recentJobs = Job::where('created_at', '>=', date('Y-m-d', strtotime('-30 days')))
+            ->count();
+        //dd($recentJobs);
+        $jobs = Job::paginate(10);
+        if (!Auth::check()) {
 
-        // $applicant = Education::with('applicant_profiles')->get();
-        // //echo $applicant;
+            return view('frontend.pages.index', compact('jobs', 'recentJobs'));
+        } elseif (Auth::user()->type == 1) {
 
-        // return view('pages.applicant.list', compact('applicant'));
-        //$all_data = json_encode($all);
+            return view('backend.pages.index', compact('jobs', 'recentJobs'));
+        } elseif (Auth::user()->type == 0) {
 
-        //$applicant = $app->educations;
-        //  echo $all_data;
-        //dd($app);
+            return view('frontend.pages.index', compact('jobs', 'recentJobs'));
+        }
 
-        // $applicant = $applicant->;
-        // dd($applicant);
-        $jobs = Job::all();
-        return view('backend.pages.job.all_jobs', compact('jobs'));
+    }
+    public function recentJobs()
+    {
+        //$recentJobs = date('Y-m-d H:i:s');
+
+// Count the jobs that were created within the last 7 days
+        $recentJobs = Job::where('created_at', '>=', date('Y-m-d H:i:s', strtotime('-30 days')))
+            ->count();
+        // dd($recentJobs);
+        return view('frontend.pages.index', compact('recentJobs'));
     }
 
     /**
@@ -79,41 +87,20 @@ class JobController extends Controller
      */
     public function show($id)
     {
-        // echo "this is show page";
+
         $job = Job::find($id);
-
-        return view('backend.pages.job.job_details', compact('job'));
+        return view('frontend.pages.job.job_details', compact('job'));
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Job  $job
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Job $job)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Job  $job
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Job $job)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Job  $job
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Job $job)
     {
         //echo "this is delete page";

@@ -1,7 +1,7 @@
 @include('frontend.layouts.css')
 <style>
     .container-fluid {
-        width: 80%;
+        width: 85%;
     }
 </style>
 
