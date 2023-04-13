@@ -6,7 +6,6 @@ use App\Models\AppliedJob;
 use App\Models\Job;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 class AppliedJobController extends Controller
 {
@@ -17,14 +16,6 @@ class AppliedJobController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
-        $candidate = DB::table('applied_jobs')
-            ->join('applicant_profiles', 'applicant_profiles.id', '=', 'applied_jobs.applicant_id')
-            ->join('jobs', 'jobs.id', '=', 'applied_jobs.job_id')
-            ->where('user_id', $user->id)
-            ->get();
-        dd($candidate);
-        return view('frontend.pages.appliedjobs.list', compact('candidate'));
 
     }
 
