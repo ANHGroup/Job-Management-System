@@ -17,14 +17,14 @@ class AppliedJobController extends Controller
      */
     public function index()
     {
-        $candidate = DB::table('users')
-            ->join('applicant_profiles', 'applicant_profiles.id', '=', 'users.id')
-            ->join('jobs', 'jobs.id', '=', 'users.id')
-            ->join('applied_jobs', 'applied_jobs.id', '=', 'users.id')
-
+        $user = Auth::user();
+        $candidate = DB::table('applied_jobs')
+            ->join('applicant_profiles', 'applicant_profiles.id', '=', 'applied_jobs.applicant_id')
+            ->join('jobs', 'jobs.id', '=', 'applied_jobs.job_id')
+            ->where('user_id', $user->id)
             ->get();
         // dd($candidate);
-        return view('backend.pages.appliedjobs.list', compact('candidate'));
+        return view('frontend.pages.appliedjobs.list', compact('candidate'));
 
     }
 
