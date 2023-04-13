@@ -60,7 +60,7 @@
                                 </div>
                                 <div class="col-9 form-group">
                                     <label for="present_salary">Present Salary * :</label>
-                                    <input type="text"value="{{ $applicantProfile->present_salary }}"
+                                    <input type="number"value="{{ $applicantProfile->present_salary }}"
                                         class="form-control" name="present_salary" data-parsley-trigger="change">
                                 </div>
 
