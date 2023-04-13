@@ -23,7 +23,7 @@ class AppliedJobController extends Controller
             ->join('jobs', 'jobs.id', '=', 'applied_jobs.job_id')
             ->where('user_id', $user->id)
             ->get();
-        // dd($candidate);
+        dd($candidate);
         return view('frontend.pages.appliedjobs.list', compact('candidate'));
 
     }
