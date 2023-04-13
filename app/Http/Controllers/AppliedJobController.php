@@ -56,7 +56,7 @@ class AppliedJobController extends Controller
             ->exists();
 
         if ($applicationExists) {
-            return redirect()->back()->withErrors(['You have already applied for this job.']);
+            return redirect()->back()->withErrors(['You have already applied for this job!']);
         }
 
         $applied_job = new AppliedJob;
@@ -72,24 +72,6 @@ class AppliedJobController extends Controller
         $applied_job->save();
         return redirect()->back()->with('success', 'Your application has been submitted.');
 
-        // if ($applied_job->save()) {
-        //     session()->flash('success', 'Your online applied successfully.');
-        //     return redirect()->back();
-        // } else {
-        //     echo "you have already applied!";
-        //     return redirect()->back();
-        // }
-        // $user = auth()->user();
-
-        // $existingApplication = AppliedJob::where('applicant_id', $user->id)
-        //     ->where('job_id', $applied_job->job_id)
-        //     ->first();
-
-        // if ($existingApplication) {
-        //     echo 'error', 'You have already applied for this post.';
-        // }
-        // session()->flash('success', 'Your online applied successfully.');
-        // return redirect()->back();
     }
 
     public function show($id)
