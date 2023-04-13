@@ -10,6 +10,11 @@ class AppliedJob extends Model
     use HasFactory;
     public function jobs()
     {
-        return $this->belongsToMany(Jobs::class);
+        return $this->belongsToMany(Job::class);
     }
+    public function applicant_profiles()
+    {
+        return $this->belongsToMany(ApplicantProfile::class, 'applicant_id', 'id');
+    }
+
 }

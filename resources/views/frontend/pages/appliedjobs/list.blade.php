@@ -1,4 +1,4 @@
-@extends('backend.layouts.master')
+@extends('frontend.layouts.master')
 @section('content')
     <div class="content-page">
         <div class="content">
@@ -23,9 +23,7 @@
                             <div class="card-body">
                                 <div class="row mb-2">
                                     <div class="col-sm-4">
-                                        <a href="#custom-modal" class="btn btn-danger waves-effect waves-light"
-                                            data-animation="fadein" data-plugin="custommodal" data-overlaycolor="#38414a"><i
-                                                class="mdi mdi-plus-circle mr-1"></i> Add Customers</a>
+                                     <h1> {{ Auth::user()->name }}</h1>  
                                     </div>
                                     {{-- <div class="col-sm-8">
                                     <div class="text-sm-right">
@@ -46,21 +44,24 @@
                                                     <label class="custom-control-label" for="customCheck1">&nbsp;</label>
                                                 </div>
                                             </th> --}}
-                                                <th>Name</th>
+                                               
                                                 <th>Phone</th>
                                                 <th>Job Title</th>
                                                 <th>Expected Salary</th>
-                                                <th>Skill</th>
+                                                <th>Job Category</th>
                                                 <th>Gender</th>
                                                 <th>Experience</th>
+                                                
+                                                <th>Present Address</th>
+                                                <th>Permanent Address</th>
                                               
 
                                                 {{-- <th>Status</th> --}}
-                                                <th style="width: 85px;">Resume</th>
+                                                {{-- <th style="width: 85px;">Resume</th> --}}
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($candidate as $applicant)
+                                            @foreach ($jobs as $applicant)
                                                 <tr>
                                                     {{-- <td>
                                                 <div class="custom-control custom-checkbox">
@@ -69,9 +70,7 @@
                                                 </div>
                                             </td> --}}
 
-                                                    <td>
-                                                        {{ $applicant->name }}
-                                                    </td>
+                                                    
                                                     <td>
                                                         {{ $applicant->phone }}
                                                     </td>
@@ -79,10 +78,10 @@
                                                         {{ $applicant->title }}
                                                     </td>
                                                     <td>
-                                                        {{ $applicant->salary }}
+                                                        {{ $applicant->expected_salary }}
                                                     </td>
                                                     <td>
-                                                        {{ $applicant->skill }}
+                                                        {{ $applicant->job_category }}
                                                     </td>
                                                    
                                                     <td>
@@ -91,12 +90,18 @@
                                                     <td>
                                                         {{ $applicant->job_experience }}
                                                     </td>
-                                                    <td> <img src="{{ Storage::url($applicant->resume) }}" alt="" width="100"></td>
+                                                    <td>
+                                                        {{ $applicant->present_address }}
+                                                    </td>
+                                                    <td>
+                                                        {{ $applicant->permanent_address }}
+                                                    </td>
+                                                    {{-- <td> <img src="{{ Storage::url($applicant->resume) }}" alt="" width="100"></td> --}}
                                                     {{-- <td>
                                                         <span class="badge bg-soft-success text-success">Active</span>
                                                     </td> --}}
                                                    
-                                                    <td>
+                                                    {{-- <td>
                                                         <a href=""
                                                             class="btn btn-primary">Details</a>
 
@@ -107,7 +112,7 @@
                                                             <button type="submit"
                                                                 class="btn btn-danger mt-1">Delete</button>
                                                         </form>
-                                                    </td>
+                                                    </td> --}}
                                                 </tr>
                                             @endforeach
 

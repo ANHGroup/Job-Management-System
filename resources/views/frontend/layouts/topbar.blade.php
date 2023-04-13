@@ -42,6 +42,17 @@
                 </div>
                 <div class="dropdown-header noti-title">
                     <h6 class="text-overflow m-0">
+                        @if (auth()->check())
+                            <span>
+                                <a href="{{ route('appliedjob.index', auth()->user()->id) }}" class="">My
+                                    My Applied Jobs</a></span>
+                            </span>
+                        @endif
+
+                    </h6>
+                </div>
+                <div class="dropdown-header noti-title">
+                    <h6 class="text-overflow m-0">
                         <a href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
