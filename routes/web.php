@@ -21,7 +21,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/all-applicants', [ApplicantProfileController::class, 'allapplicants'])->name('allapplicants');
     /*Job Applied start */
     Route::resource('appliedjob', AppliedJobController::class);
-
+    Route::get('/all-candidate', [AppliedJobController::class, 'allcandidate'])->name('allcandidate');;
     // Job Post
     Route::resource('job', JobController::class);
 
