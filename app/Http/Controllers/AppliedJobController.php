@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\AppliedJob;
 use App\Models\Job;
+use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 class AppliedJobController extends Controller
 {
