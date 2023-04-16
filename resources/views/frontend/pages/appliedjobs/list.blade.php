@@ -15,9 +15,7 @@
                     </div>
                 </div>
                 <!-- end page title -->
-
-
-                <div class="row">
+               <div class="row">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
@@ -71,17 +69,12 @@
                                                     <td>
                                                         {{ $applicant->job_category }}
                                                     </td>
-
                                                     <td>
                                                         {{ $applicant->job_experience }}
                                                     </td>
-
                                                 </tr>
                                             @endforeach
-
-
-
-                                        </tbody>
+                                       </tbody>
                                     </table>
                                 </div>
 
