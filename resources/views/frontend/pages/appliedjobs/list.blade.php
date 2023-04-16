@@ -45,17 +45,10 @@
                                                 </div>
                                             </th> --}}
 
-                                                <th>Phone</th>
                                                 <th>Job Title</th>
                                                 <th>Expected Salary</th>
                                                 <th>Job Category</th>
-                                                <th>Gender</th>
                                                 <th>Experience</th>
-                                                {{--                                                 
-                                                <th>Present Address</th>
-                                                <th>Permanent Address</th> --}}
-
-
                                                 {{-- <th>Status</th> --}}
                                                 {{-- <th style="width: 85px;">Resume</th> --}}
                                             </tr>
@@ -69,11 +62,6 @@
                                                     <label class="custom-control-label" for="customCheck2">&nbsp;</label>
                                                 </div>
                                             </td> --}}
-
-
-                                                    <td>
-                                                        {{ $applicant->phone }}
-                                                    </td>
                                                     <td>
                                                         {{ $applicant->title }}
                                                     </td>
@@ -85,34 +73,9 @@
                                                     </td>
 
                                                     <td>
-                                                        {{ $applicant->gender }}
-                                                    </td>
-                                                    <td>
                                                         {{ $applicant->job_experience }}
                                                     </td>
-                                                    {{-- <td>
-                                                        {{ $applicant->present_address }}
-                                                    </td>
-                                                    <td>
-                                                        {{ $applicant->permanent_address }}
-                                                    </td> --}}
-                                                    {{-- <td> <img src="{{ Storage::url($applicant->resume) }}" alt="" width="100"></td> --}}
-                                                    {{-- <td>
-                                                        <span class="badge bg-soft-success text-success">Active</span>
-                                                    </td> --}}
 
-                                                    {{-- <td>
-                                                        <a href=""
-                                                            class="btn btn-primary">Details</a>
-
-                                                        <form action=""
-                                                            method="POST">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit"
-                                                                class="btn btn-danger mt-1">Delete</button>
-                                                        </form>
-                                                    </td> --}}
                                                 </tr>
                                             @endforeach
 
