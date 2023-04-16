@@ -1,4 +1,4 @@
-@extends('backend.layouts.master')
+@extends('frontend.layouts.master')
 @section('content')
     <div class="content-page">
         <div class="content">
@@ -22,11 +22,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="row mb-2">
-                                    <div class="col-sm-4">
-                                        <a href="#custom-modal" class="btn btn-danger waves-effect waves-light"
-                                            data-animation="fadein" data-plugin="custommodal" data-overlaycolor="#38414a"><i
-                                                class="mdi mdi-plus-circle mr-1"></i> Add Customers</a>
-                                    </div>
+                                   View All Applied jobs: {{ Auth::user()->name }}
                                     {{-- <div class="col-sm-8">
                                     <div class="text-sm-right">
                                         <button type="button" class="btn btn-success mb-2 mr-1"><i class="mdi mdi-settings"></i></button>
@@ -46,7 +42,7 @@
                                                     <label class="custom-control-label" for="customCheck1">&nbsp;</label>
                                                 </div>
                                             </th> --}}
-                                                <th>Name</th>
+                                           
                                                 <th>Phone</th>
                                                 <th>Job Title</th>
                                                 <th>Expected Salary</th>
@@ -56,7 +52,7 @@
                                               
 
                                                 {{-- <th>Status</th> --}}
-                                                <th style="width: 85px;">Resume</th>
+                                                
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -69,9 +65,7 @@
                                                 </div>
                                             </td> --}}
 
-                                                    <td>
-                                                        {{ $applicant->name }}
-                                                    </td>
+                                                   
                                                     <td>
                                                         {{ $applicant->phone }}
                                                     </td>
@@ -91,23 +85,12 @@
                                                     <td>
                                                         {{ $applicant->job_experience }}
                                                     </td>
-                                                    <td> <img src="{{ Storage::url($applicant->resume) }}" alt="" width="100"></td>
+                                                  
                                                     {{-- <td>
                                                         <span class="badge bg-soft-success text-success">Active</span>
                                                     </td> --}}
                                                    
-                                                    <td>
-                                                        <a href=""
-                                                            class="btn btn-primary">Details</a>
-
-                                                        <form action=""
-                                                            method="POST">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit"
-                                                                class="btn btn-danger mt-1">Delete</button>
-                                                        </form>
-                                                    </td>
+                 
                                                 </tr>
                                             @endforeach
 
