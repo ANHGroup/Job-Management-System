@@ -46,7 +46,7 @@
                                                     <label class="custom-control-label" for="customCheck1">&nbsp;</label>
                                                 </div>
                                             </th> --}}
-                                                <th>Name</th>
+                                                
                                                 <th>Phone</th>
                                                 <th>Job Title</th>
                                                 <th>Expected Salary</th>
@@ -69,9 +69,7 @@
                                                 </div>
                                             </td> --}}
 
-                                                    <td>
-                                                        {{ $applicant->name }}
-                                                    </td>
+                                                    
                                                     <td>
                                                         {{ $applicant->phone }}
                                                     </td>

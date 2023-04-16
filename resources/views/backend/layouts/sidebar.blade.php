@@ -72,7 +72,7 @@
                             <a href="{{ route('job.create') }}">Create</a>
                         </li> --}}
                         <li>
-                            <a href="{{ route('appliedjob.index') }}">List</a>
+                            <a href="{{ route('allcandidate') }}">List</a>
                         </li>
 
 
