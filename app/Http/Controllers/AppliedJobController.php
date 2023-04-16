@@ -18,9 +18,7 @@ class AppliedJobController extends Controller
     public function index()
     {
         $user = Auth::user();
-
         $jobs = DB::table('applied_jobs')
-
             ->join('applicant_profiles', 'applicant_profiles.id', '=', 'applied_jobs.applicant_id')
 
             ->join('jobs', 'jobs.id', '=', 'applied_jobs.job_id')
@@ -29,7 +27,6 @@ class AppliedJobController extends Controller
 
             ->get();
         return view('frontend.pages.appliedjobs.list', compact('jobs'));
-
     }
 
     /**
