@@ -23,7 +23,7 @@
                             <div class="card-body">
                                 <div class="row mb-2">
                                     <div class="col-sm-4">
-                                     <h1> {{ Auth::user()->name }}</h1>  
+                                        <h1> {{ Auth::user()->name }}</h1>
                                     </div>
                                     {{-- <div class="col-sm-8">
                                     <div class="text-sm-right">
@@ -44,17 +44,17 @@
                                                     <label class="custom-control-label" for="customCheck1">&nbsp;</label>
                                                 </div>
                                             </th> --}}
-                                               
+
                                                 <th>Phone</th>
                                                 <th>Job Title</th>
                                                 <th>Expected Salary</th>
                                                 <th>Job Category</th>
                                                 <th>Gender</th>
                                                 <th>Experience</th>
-                                                
+                                                {{--                                                 
                                                 <th>Present Address</th>
-                                                <th>Permanent Address</th>
-                                              
+                                                <th>Permanent Address</th> --}}
+
 
                                                 {{-- <th>Status</th> --}}
                                                 {{-- <th style="width: 85px;">Resume</th> --}}
@@ -70,7 +70,7 @@
                                                 </div>
                                             </td> --}}
 
-                                                    
+
                                                     <td>
                                                         {{ $applicant->phone }}
                                                     </td>
@@ -83,24 +83,24 @@
                                                     <td>
                                                         {{ $applicant->job_category }}
                                                     </td>
-                                                   
+
                                                     <td>
                                                         {{ $applicant->gender }}
                                                     </td>
                                                     <td>
                                                         {{ $applicant->job_experience }}
                                                     </td>
-                                                    <td>
+                                                    {{-- <td>
                                                         {{ $applicant->present_address }}
                                                     </td>
                                                     <td>
                                                         {{ $applicant->permanent_address }}
-                                                    </td>
+                                                    </td> --}}
                                                     {{-- <td> <img src="{{ Storage::url($applicant->resume) }}" alt="" width="100"></td> --}}
                                                     {{-- <td>
                                                         <span class="badge bg-soft-success text-success">Active</span>
                                                     </td> --}}
-                                                   
+
                                                     {{-- <td>
                                                         <a href=""
                                                             class="btn btn-primary">Details</a>
