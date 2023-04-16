@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AppliedJob;
 use App\Models\Job;
+use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,7 +23,7 @@ class AppliedJobController extends Controller
             ->join('jobs', 'jobs.id', '=', 'applied_jobs.job_id')
             ->where('user_id', $user->id)
             ->get();
-        return view('frontend.pages.appliedjobs.list', compact('jobs'));
+        return view('frontend.pages.appliedjobs.list', compact('candidate'));
     }
 
     /**
