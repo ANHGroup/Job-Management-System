@@ -18,12 +18,21 @@ class AppliedJobController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $candidate = DB::table('applied_jobs')
+        $jobs = DB::table('applied_jobs')//this is for user
             ->join('applicant_profiles', 'applicant_profiles.id', '=', 'applied_jobs.applicant_id')
             ->join('jobs', 'jobs.id', '=', 'applied_jobs.job_id')
             ->where('user_id', $user->id)
             ->get();
         return view('frontend.pages.appliedjobs.list', compact('candidate'));
+    }
+    public function allcandidate()
+    {
+        $candidate = DB::table('applied_jobs')
+            ->join('applicant_profiles', 'applicant_profiles.id', '=', 'applied_jobs.applicant_id')
+            ->join('jobs', 'jobs.id', '=', 'applied_jobs.job_id')
+            ->get();
+        //dd($candidate);
+        return view('backend.pages.appliedjobs.list', compact('candidate'));
     }
 
     /**
