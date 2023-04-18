@@ -2,7 +2,9 @@
 <style>
     .container-fluid {
         width: 85%;
+        line-height: 2.5;
     }
+    
 </style>
 
 <body>

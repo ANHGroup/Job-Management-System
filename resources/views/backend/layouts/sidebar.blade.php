@@ -12,28 +12,11 @@
                 <li>
                     <a href="{{ route('job.index') }}">
                         <i class="fe-airplay"></i>
-                        
+
                         <span> Dashboard </span>
                     </a>
-                   
-                </li>
-                <li>
-                    <a href="javascript: void(0);">
-                        <i class="fe-mail"></i>
-                        <span> Applicant Profile</span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <ul class="nav-second-level" aria-expanded="false">
-                        {{-- <li>
-                            <a href="{{ route('applicant.create') }}">Create</a>
-                        </li> --}}
-                        <li>
-                            <a href="{{ route('allapplicants') }}">list</a>
-                        </li>
 
-                    </ul>
                 </li>
-
                 <li>
                     <a href="javascript: void(0);">
                         <i class="fe-file-text"></i>
@@ -42,21 +25,17 @@
                     </a>
                     <ul class="nav-second-level" aria-expanded="false">
                         @if (Gate::allows('job.create'))
-                            <li>
-                                <a href="{{ route('job.create') }}">Create</a>
-                            </li>
-                        @endif
-                        {{-- <li>
-                            <a href="{{ route('job.create') }}">Create</a>
-                        </li> --}}
                         <li>
-                            <a href="{{ route('job.index') }}">List</a>
+                            <a href="{{ route('job.create') }}">Add Job</a>
                         </li>
-
-
+                        @endif
+                        <li>
+                            <a href="{{ route('job.index') }}">Job List</a>
+                        </li>
                     </ul>
                 </li>
-                <li>
+
+                <!-- <li>
                     <a href="javascript: void(0);">
                         <i class="fe-file-text"></i>
                         <span> Candidate</span>
@@ -66,22 +45,21 @@
                         {{-- @if (Gate::allows('job.create'))
                         <li>
                             <a href="">Create</a>
-                        </li>   
+                        </li>
                         @endif --}}
                         {{-- <li>
                             <a href="{{ route('job.create') }}">Create</a>
                         </li> --}}
                         <li>
-                            <a href="{{ route('appliedjob.index') }}">List</a>
+                            <a href="{{ route('allcandidate') }}">List</a>
                         </li>
 
 
                     </ul>
-                </li>
+                </li> -->
 
                 <li>
-                    <a href="{{ route('logout') }}"
-                        onclick="event.preventDefault();
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
                         <i class="nav-icon fas fa-sign-out-alt"></i>
                         <p>
