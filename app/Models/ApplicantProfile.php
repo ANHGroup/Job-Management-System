@@ -21,4 +21,8 @@ class ApplicantProfile extends Model
     {
         return $this->hasMany(Experience::class, 'applicant_id', 'id');
     }
+    public function applied_jobs()
+    {
+        return $this->hasMany(AppliedJob::class, 'applicant_id', 'id');
+    }
 }

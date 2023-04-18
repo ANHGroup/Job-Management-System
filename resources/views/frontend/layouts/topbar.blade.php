@@ -44,8 +44,9 @@
                     <h6 class="text-overflow m-0">
                         @if (auth()->check())
                             <span>
-                                <a href="{{ route('appliedjob.index')}}" class="">My
+                                <a href="{{ route('appliedjob.index') }}" class="">My
                                     Applied jobs</a></span>
+
                             </span>
                         @endif
 
