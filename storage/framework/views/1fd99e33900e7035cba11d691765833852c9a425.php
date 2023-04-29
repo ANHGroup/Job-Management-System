@@ -12,26 +12,11 @@
                 <li>
                     <a href="<?php echo e(route('job.index')); ?>">
                         <i class="fe-airplay"></i>
-                        
+
                         <span> Dashboard </span>
                     </a>
-                   
-                </li>
-                <li>
-                    <a href="javascript: void(0);">
-                        <i class="fe-mail"></i>
-                        <span> Applicant Profile</span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <ul class="nav-second-level" aria-expanded="false">
-                        
-                        <li>
-                            <a href="<?php echo e(route('allapplicants')); ?>">list</a>
-                        </li>
 
-                    </ul>
                 </li>
-
                 <li>
                     <a href="javascript: void(0);">
                         <i class="fe-file-text"></i>
@@ -40,19 +25,17 @@
                     </a>
                     <ul class="nav-second-level" aria-expanded="false">
                         <?php if(Gate::allows('job.create')): ?>
-                            <li>
-                                <a href="<?php echo e(route('job.create')); ?>">Create</a>
-                            </li>
-                        <?php endif; ?>
-                        
                         <li>
-                            <a href="<?php echo e(route('job.index')); ?>">List</a>
+                            <a href="<?php echo e(route('job.create')); ?>">Add Job</a>
                         </li>
-
-
+                        <?php endif; ?>
+                        <li>
+                            <a href="<?php echo e(route('job.index')); ?>">Job List</a>
+                        </li>
                     </ul>
                 </li>
-                <li>
+
+                <!-- <li>
                     <a href="javascript: void(0);">
                         <i class="fe-file-text"></i>
                         <span> Candidate</span>
@@ -62,16 +45,15 @@
                         
                         
                         <li>
-                            <a href="<?php echo e(route('appliedjob.index')); ?>">List</a>
+                            <a href="<?php echo e(route('allcandidate')); ?>">List</a>
                         </li>
 
 
                     </ul>
-                </li>
+                </li> -->
 
                 <li>
-                    <a href="<?php echo e(route('logout')); ?>"
-                        onclick="event.preventDefault();
+                    <a href="<?php echo e(route('logout')); ?>" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
                         <i class="nav-icon fas fa-sign-out-alt"></i>
                         <p>
@@ -99,5 +81,4 @@
     </div>
     <!-- Sidebar -left -->
 
-</div>
-<?php /**PATH E:\Career\jms\resources\views/backend/layouts/sidebar.blade.php ENDPATH**/ ?>
+</div><?php /**PATH E:\Career\jms\resources\views/backend/layouts/sidebar.blade.php ENDPATH**/ ?>
