@@ -22,7 +22,7 @@ Route::group(['middleware' => 'auth'], function () {
     /*Job Applied start */
     Route::resource('appliedjob', AppliedJobController::class);
 
-    Route::get('/apply-job', [AppliedJobController::class, 'applyjob'])->name('applyjob');
+    // Route::get('/apply-job', [AppliedJobController::class, 'applyjob'])->name('applyjob');
     Route::get('/all-candidate', [AppliedJobController::class, 'allcandidate'])->name('allcandidate');;
 
 // Job Post
