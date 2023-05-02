@@ -23,9 +23,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('appliedjob', AppliedJobController::class);
 
     // Route::get('/apply-job', [AppliedJobController::class, 'applyjob'])->name('applyjob');
-    Route::get('/all-candidate', [AppliedJobController::class, 'allcandidate'])->name('allcandidate');;
+    Route::get('/all-candidate', [AppliedJobController::class, 'allcandidate'])->name('allcandidate');
 
 // Job Post
     Route::resource('job', JobController::class);
-
+    //Route::resource('admin', AdminController::class);
+    Route::get('/applicantlist/{id}', [JobController::class, 'applicantlist'])->name('applicantlist');;
 });

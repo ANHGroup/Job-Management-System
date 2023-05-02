@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ApplicantProfile;
+use App\Models\AppliedJob;
 use App\Models\Job;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -27,6 +30,12 @@ class JobController extends Controller
             return view('frontend.pages.index', compact('jobs', 'recentJobs'));
         }
 
+    }
+    public function categories($job_id)
+    {
+        $job = AppliedJob::all()->where('job_id');
+        //$applied = $job->jobs;
+        dd($job);
     }
     public function recentJobs()
     {
@@ -90,6 +99,18 @@ class JobController extends Controller
 
         $job = Job::find($id);
         return view('frontend.pages.job.job_details', compact('job'));
+    }
+    public function applicantlist($id)
+    {
+// $job = Job::with('applied_jobs.applicant_profiles')->find($id)->toArray();
+        $applicant_ids = AppliedJob::where('job_id', $id)->pluck('applicant_id');
+        $applicant_list = ApplicantProfile::WhereIn('id', $applicant_ids)->get();
+        // $applicant = $applicant_list->dob;
+        echo '<pre>';
+        print_r($applicant_list);
+
+        dd($applicant_ids, $applicant_list);
+        return view('backend.pages.index', compact('applicant_list'));
     }
     public function edit(Job $job)
     {
