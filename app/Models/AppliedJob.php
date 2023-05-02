@@ -8,13 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class AppliedJob extends Model
 {
     use HasFactory;
+
     public function jobs()
     {
-        return $this->belongsToMany(Job::class);
+        return $this->belongsTo(Job::class,'job_id', 'id');
     }
+
     public function applicant_profiles()
     {
-        return $this->belongsToMany(ApplicantProfile::class, 'applicant_id', 'id');
+        return $this->belongsTo(ApplicantProfile::class, 'applicant_id', 'id');
     }
 
 }

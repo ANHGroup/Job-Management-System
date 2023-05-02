@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ApplicantProfile;
+use App\Models\AppliedJob;
 use App\Models\Job;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -88,7 +90,13 @@ class JobController extends Controller
     public function show($id)
     {
 
-        $job = Job::find($id);
+        $job = Job::with('applied_jobs.applicant_profiles.user')->find($id)->toArray();
+
+        dd($job );
+
+//         $applicatnt_ids =  AppliedJob::where('job_id',$id)->pluck('applicant_id');
+//          $applicant_list =  ApplicantProfile::whereIn('id',$applicatnt_ids)->get();
+// dd($applicant_list);
         return view('frontend.pages.job.job_details', compact('job'));
     }
     public function edit(Job $job)

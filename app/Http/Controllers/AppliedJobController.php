@@ -30,6 +30,9 @@ class AppliedJobController extends Controller
     }
     public function allcandidate()
     {
+        $test= AppliedJob::where('applicant_id',Auth::user()->id)->get();
+        dd($test);
+        
         $candidate = DB::table('applied_jobs')
             ->join('applicant_profiles', 'applicant_profiles.id', '=', 'applied_jobs.applicant_id')
             ->join('jobs', 'jobs.id', '=', 'applied_jobs.job_id')
@@ -45,7 +48,7 @@ class AppliedJobController extends Controller
      */
     public function create()
     {
-        echo "Hello Create";
+       
     }
 
     public function store(Request $request)

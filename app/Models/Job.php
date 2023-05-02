@@ -8,8 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Job extends Model
 {
     use HasFactory;
+
     public function applied_jobs()
     {
-        return $this->hasMany(AppliedJob::class);
+        return $this->hasMany(AppliedJob::class,'job_id','id');
     }
 }

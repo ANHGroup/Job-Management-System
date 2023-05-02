@@ -9,7 +9,7 @@ class ApplicantProfile extends Model
 {
     use HasFactory;
     protected $table = 'applicant_profiles';
-    public function users()
+    public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
