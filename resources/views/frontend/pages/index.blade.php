@@ -75,7 +75,7 @@
                 <div class="col-sm-4">
                     <div class="card-box jobShow">
                         <div class="card-body">
-                            <a href="{{ route('job.show', $job->id) }}">
+                            <a href="{{ route('jobdetails', $job->id) }}">
                                 <h3 class="mt-3">{{ $job->title }}</h3>
                                 <h4 class="text-muted">Location: <span class="text-pink">{{ $job->location }}</span>
                                 </h4>

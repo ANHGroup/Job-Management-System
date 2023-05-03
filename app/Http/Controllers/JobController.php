@@ -94,7 +94,7 @@ class JobController extends Controller
      * @param  \App\Models\Job  $job
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function jobdetails($id)
     {
 
         $job = Job::find($id);

@@ -10,6 +10,7 @@ Auth::routes();
 /* All Jobs start */
 Route::get('/', [JobController::class, 'index'])->name('index');
 Route::get('/recentJobs', [JobController::class, 'recentJobs'])->name('recentJobs');
+Route::get('/jobdetails/{id}', [JobController::class, 'jobdetails'])->name('jobdetails');
 
 /* All Jobs end */
 Route::group(['middleware' => 'auth'], function () {
