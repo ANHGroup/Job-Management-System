@@ -102,15 +102,15 @@ class JobController extends Controller
     }
     public function applicantlist($id)
     {
-// $job = Job::with('applied_jobs.applicant_profiles')->find($id)->toArray();
+        // $job = Job::with('applied_jobs.applicant_profiles.users')->find($id)->toArray();
         $applicant_ids = AppliedJob::where('job_id', $id)->pluck('applicant_id');
-        $applicant_list = ApplicantProfile::WhereIn('id', $applicant_ids)->get();
+        $jobs = ApplicantProfile::with('users')->WhereIn('id', $applicant_ids)->get();
         // $applicant = $applicant_list->dob;
-        echo '<pre>';
-        print_r($applicant_list);
+        // echo '<pre>';
+        // print_r($applicant_list);
 
-        dd($applicant_ids, $applicant_list);
-        return view('backend.pages.index', compact('applicant_list'));
+        //dd($job);
+        return view('backend.pages.job.candidates', compact('jobs'));
     }
     public function edit(Job $job)
     {

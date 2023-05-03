@@ -5,18 +5,18 @@
 
             <div class="card-body">
                 <?php if(auth()->check()): ?>
-                    <span><?php echo e(auth()->user()->name ?? null); ?></span>
+                <span><?php echo e(auth()->user()->name ?? null); ?></span>
                 <?php endif; ?>
-            
+                
             </div>
             <div class="card-body">
-               
+
             </div>
 
         </li>
- <li class="dropdown notification-list">
-            <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown"
-                href="" role="button" aria-haspopup="false" aria-expanded="false">
+        <li class="dropdown notification-list">
+            <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href=""
+                role="button" aria-haspopup="false" aria-expanded="false">
                 <img src="<?php echo e(asset('assets/images/logo/ANH_Group_logo_white.jpg')); ?>" alt="" class="rounded-circle">
                 <span class="pro-user-name ml-1">
                     
@@ -29,11 +29,11 @@
                 </div>
                 <div class="dropdown-divider"></div>
                 <a href="javascript:void(0);" class="dropdown-item notify-item">
-                   
+
                     <span><a href="">Edit</span>
-                   
+
                     <i class="fe-log-out"></i>
-                  
+
                 </a>
 
             </div>
@@ -42,7 +42,7 @@
 
     <!-- LOGO -->
     <div class="logo-box">
-        <a href="index.html" class="logo text-center">
+        <a href="<?php echo e(route('job.index')); ?>" class="logo text-center">
             <span class="logo-lg">
                 <img src="<?php echo e(asset('assets/images/logo/ANH_Group_logo_white.jpg')); ?>" alt="" height="60">
                 <!-- <span class="logo-lg-text-light">UBold</span> -->
@@ -61,26 +61,24 @@
             </button>
         </li>
         <li class="">
-            <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#"
-                role="button" aria-haspopup="false" aria-expanded="false">
+            <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#" role="button"
+                aria-haspopup="false" aria-expanded="false">
                 <?php if(Route::has('login')): ?>
-                    <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block topnav">
-                        <?php if(auth()->guard()->check()): ?>
-                            <a href="<?php echo e(url('/')); ?>"
-                                class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
-                        <?php else: ?>
-                            <a href="<?php echo e(route('login')); ?>" class="container-fluid">Log
-                                in</a>
+                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block topnav">
+                    <?php if(auth()->guard()->check()): ?>
+                    <a href="<?php echo e(url('/')); ?>" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
+                    <?php else: ?>
+                    <a href="<?php echo e(route('login')); ?>" class="container-fluid">Log
+                        in</a>
 
-                            <?php if(Route::has('register')): ?>
-                                <a href="<?php echo e(route('register')); ?>" class="navbar-header">Register</a>
-                            <?php endif; ?>
-                        <?php endif; ?>
-                    </div>
+                    <?php if(Route::has('register')): ?>
+                    <a href="<?php echo e(route('register')); ?>" class="navbar-header">Register</a>
+                    <?php endif; ?>
+                    <?php endif; ?>
+                </div>
                 <?php endif; ?>
             </a>
 
         </li>
     </ul>
-</div>
-<?php /**PATH E:\Career\jms\resources\views/backend/layouts/topbar.blade.php ENDPATH**/ ?>
+</div><?php /**PATH E:\Career\jms\resources\views/backend/layouts/topbar.blade.php ENDPATH**/ ?>
