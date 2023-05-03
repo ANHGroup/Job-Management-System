@@ -13,7 +13,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                               <div class="table-responsive">
+                                <div class="table-responsive">
                                     <table class="table table-centered table-striped" id="products-datatable">
                                         <thead>
                                             <tr>
@@ -23,7 +23,7 @@
                                                     <label class="custom-control-label" for="customCheck1">&nbsp;</label>
                                                 </div>
                                             </th> --}}
-               
+
                                                 <th>Name</th>
                                                 <th>Phone</th>
                                                 <th>Skill</th>
@@ -60,7 +60,7 @@
                                                     <td>
                                                         {{ $item->dob }}
                                                     </td>
-                                                    
+
                                                 </tr>
                                             @endforeach
                                         </tbody>
