@@ -35,14 +35,14 @@
                     </ul>
                 </li>
 
-                <!-- <li>
+                <li>
                     <a href="javascript: void(0);">
                         <i class="fe-file-text"></i>
                         <span> Candidate</span>
                         <span class="menu-arrow"></span>
                     </a>
                     <ul class="nav-second-level" aria-expanded="false">
-                        
+                       
                         
                         <li>
                             <a href="<?php echo e(route('allcandidate')); ?>">List</a>
@@ -50,7 +50,7 @@
 
 
                     </ul>
-                </li> -->
+                </li>
 
                 <li>
                     <a href="<?php echo e(route('logout')); ?>" onclick="event.preventDefault();
