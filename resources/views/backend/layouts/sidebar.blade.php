@@ -47,7 +47,7 @@
                             <a href="{{ route('job.create') }}">Create</a>
                         </li> --}}
                         <li>
-                            <a href="{{ route('allcandidate') }}">List</a>
+                            <a href="{{ route('allapplicants') }}">List</a>
                         </li>
 
 

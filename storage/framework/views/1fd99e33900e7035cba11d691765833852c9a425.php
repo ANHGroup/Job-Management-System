@@ -45,7 +45,7 @@
                        
                         
                         <li>
-                            <a href="<?php echo e(route('allcandidate')); ?>">List</a>
+                            <a href="<?php echo e(route('allapplicants')); ?>">List</a>
                         </li>
 
 
