@@ -31,6 +31,7 @@
                                                 <th>Experience</th>
                                                 <th>DOB</th>
                                                 <th>Resume</th>
+                                                <th>Shortlist</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -61,7 +62,7 @@
                                                         {{ $item->dob }}
                                                     </td>
                                                     <td><a href="{{ asset($item->resume) }}" class="fa fa-eye btn btn-primary" style="width:70px;">open</a></td>
-
+                                              <td><a href="" class="btn btn-primary" style="width:70px;">Shortlist</a></td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
