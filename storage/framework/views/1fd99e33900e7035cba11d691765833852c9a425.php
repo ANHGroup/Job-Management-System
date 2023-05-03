@@ -50,7 +50,7 @@
 
 
                     </ul>
-                </li> -->
+                </li>
 
                 <li>
                     <a href="<?php echo e(route('logout')); ?>" onclick="event.preventDefault();
