@@ -60,6 +60,7 @@
                                                     <td>
                                                         {{ $item->dob }}
                                                     </td>
+                                                    <td><a href="{{ asset($item->resume) }}" class="fa fa-eye btn btn-primary" style="width:70px;">open</a></td>
 
                                                 </tr>
                                             @endforeach
