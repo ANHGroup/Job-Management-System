@@ -13,7 +13,29 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <div class="table-responsive">
+                                <div class="table-responsive">   @if (session()->has('success'))
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        {{-- <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Success:">
+    <use xlink:href="#check-circle-fill" />
+</svg> --}}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                        <div>
+                                            {{ session()->get('success') }}
+                                        </div>
+                                    </div>
+                                @endif
+
+                                {{-- If has any error --}}
+                                @if (count($errors) > 0)
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
                                     <table class="table table-centered table-striped" id="products-datatable">
                                         <thead>
                                             <tr>
@@ -63,7 +85,7 @@
                                                     </td>
                                                     <td><a href="{{ asset($item->resume) }}" class="fa fa-eye btn btn-primary" style="width:70px;">open</a></td>
                                               <td>
-                                                <form action="{{ route('replacestore') }}" method="post">
+                                                <form action="{{ route('shortlist', $item->id) }}" method="post">
                                                     @csrf
                                                     <button type="submit">Shortlist</button>
                                                 </form>

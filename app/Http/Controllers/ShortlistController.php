@@ -34,13 +34,14 @@ class ShortlistController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function replacestore(Request $request)
+    public function shortlist(Request $request, $id)
     {
-        $oldTask = ApplicantProfile::find(4);
-        $newTask = $oldTask->replicate();
+        $shortList = ApplicantProfile::findOrFail($id);
+        $newTask = $shortList->replicate();
         $newTask->setTable('shortlists');
+        $newTask->shortlist = "yes";
         $newTask->save();
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Your Shortlist has been added!');
     }
 
     /**
