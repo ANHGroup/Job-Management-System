@@ -30,10 +30,11 @@ class AppliedJobController extends Controller
     }
     public function allcandidate()
     {
-        $candidate = DB::table('applied_jobs')
-            ->join('applicant_profiles', 'applicant_profiles.id', '=', 'applied_jobs.applicant_id')
-            ->join('jobs', 'jobs.id', '=', 'applied_jobs.job_id')
-            ->get();
+        
+        // $candidate = DB::table('applied_jobs')
+        //     ->join('applicant_profiles', 'applicant_profiles.id', '=', 'applied_jobs.applicant_id')
+        //     ->join('jobs', 'jobs.id', '=', 'applied_jobs.job_id')
+        //     ->get();
         //dd($candidate);
         return view('backend.pages.appliedjobs.list', compact('candidate'));
     }
