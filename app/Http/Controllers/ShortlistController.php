@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ApplicantProfile;
 use App\Models\Shortlist;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ShortlistController extends Controller
@@ -15,7 +16,12 @@ class ShortlistController extends Controller
      */
     public function index()
     {
-        //
+
+        $shortlists = User::join('shortlists', 'users.id', '=', 'shortlists.user_id')
+
+            ->get(['shortlists.*', 'users.name', 'users.phone']);
+        //dd($shortlists);
+        return view('backend.pages.shortlist.list', compact('shortlists'));
     }
 
     /**
