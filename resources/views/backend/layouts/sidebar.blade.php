@@ -34,29 +34,38 @@
                         </li>
                     </ul>
                 </li>
+                <li>
+                    <a href="javascript: void(0);">
+                        <i class="fe-file-text"></i>
+                        <span>Shortlist</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        
+                        <li>
+                            <a href="">List</a>
+                        </li>
+                    </ul>
+                </li>
 
-                <!-- <li>
+                <li>
                     <a href="javascript: void(0);">
                         <i class="fe-file-text"></i>
                         <span> Candidate</span>
                         <span class="menu-arrow"></span>
                     </a>
                     <ul class="nav-second-level" aria-expanded="false">
-                        {{-- @if (Gate::allows('job.create'))
-                        <li>
-                            <a href="">Create</a>
-                        </li>
-                        @endif --}}
+                       
                         {{-- <li>
                             <a href="{{ route('job.create') }}">Create</a>
                         </li> --}}
                         <li>
-                            <a href="{{ route('allcandidate') }}">List</a>
+                            <a href="{{ route('allapplicants') }}">List</a>
                         </li>
 
 
                     </ul>
-                </li> -->
+                </li>
 
                 <li>
                     <a href="{{ route('logout') }}" onclick="event.preventDefault();

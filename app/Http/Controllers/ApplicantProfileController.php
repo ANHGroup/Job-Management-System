@@ -122,6 +122,7 @@ class ApplicantProfileController extends Controller
         $applicants = User::join('applicant_profiles', 'users.id', '=', 'applicant_profiles.user_id')
 
             ->get(['applicant_profiles.*', 'users.name', 'users.phone']);
+
         // $applicants = ApplicantProfile::all();
         // $applicant = $applicants->users->name;
         //$applicants = $applicants->users;

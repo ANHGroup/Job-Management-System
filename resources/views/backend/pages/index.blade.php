@@ -52,23 +52,17 @@
                         <div class="col-lg-4">
                             <div class="text-center card-box">
                                 <div class="pt-2 pb-2">
-                                    <img src="assets/images/users/user-3.jpg" class="rounded-circle img-thumbnail avatar-xl"
-                                        alt="profile-image">
-
-                                    <h4 class="mt-3"><a href="extras-profile.html"
+                     <h4 class="mt-3"><a href="extras-profile.html"
                                             class="text-light">{{ $job->title }}</a></h4>
                                     <p class="text-muted">@website <span> | </span> <span> <a href="#"
                                                 class="text-pink">anhgroupbd.com</a> </span></p>
-                                    <p class="text-muted">Salary:<span class="text-pink">{{ $job->salary_range }}BDT</span>
-                                    </p>
-                                    <p class="text-muted">Location:<span class="text-pink">{{ $job->location }}</span></p>
-                                    <a href="{{ route('job.show', $job->id) }}"
+                                    <a href="{{ route('applicantlist', $job->id) }}"
                                         class="btn btn-primary btn-sm waves-effect waves-light">Details</a>
-                                    <form action="{{ route('job.destroy', $job->id) }}" method="POST">
+                                    {{-- <form action="{{ route('job.destroy', $job->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger mt-1">Delete</button>
-                                    </form>
+                                    </form> --}}
                                 </div> <!-- end .padding -->
                             </div> <!-- end card-box-->
                         </div>
