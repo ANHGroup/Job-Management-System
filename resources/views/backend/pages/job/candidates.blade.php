@@ -62,7 +62,12 @@
                                                         {{ $item->dob }}
                                                     </td>
                                                     <td><a href="{{ asset($item->resume) }}" class="fa fa-eye btn btn-primary" style="width:70px;">open</a></td>
-                                              <td><a href="" class="btn btn-primary" style="width:70px;">Shortlist</a></td>
+                                              <td>
+                                                <form action="{{ route('replacestore') }}" method="post">
+                                                    @csrf
+                                                    <button type="submit">Shortlist</button>
+                                                </form>
+                                            </td>
                                                 </tr>
                                             @endforeach
                                         </tbody>

@@ -2,6 +2,7 @@
 use App\Http\Controllers\ApplicantProfileController;
 use App\Http\Controllers\AppliedJobController;
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\ShortlistController;
 use Illuminate\Support\Facades\Route;
 
 Auth::routes();
@@ -28,6 +29,8 @@ Route::group(['middleware' => 'auth'], function () {
 
 // Job Post
     Route::resource('job', JobController::class);
+    Route::resource('shortlist', ShortlistController::class);
     //Route::resource('admin', AdminController::class);
-    Route::get('/applicantlist/{id}', [JobController::class, 'applicantlist'])->name('applicantlist');;
+    Route::get('/applicantlist/{id}', [JobController::class, 'applicantlist'])->name('applicantlist');
+    Route::post('/replacestore', [ShortlistController::class, 'replacestore'])->name('replacestore');
 });
