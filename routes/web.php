@@ -29,7 +29,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 // Job Post
     Route::resource('job', JobController::class);
-    //Route::resource('shortlist', ShortlistController::class);
+    Route::resource('shortlist', ShortlistController::class);
     //Route::resource('admin', AdminController::class);
     Route::get('/applicantlist/{id}', [JobController::class, 'applicantlist'])->name('applicantlist');
     Route::post('/shortlist/{id}', [ShortlistController::class, 'shortlist'])->name('shortlist');
