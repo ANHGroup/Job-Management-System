@@ -1,6 +1,5 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://www.anhgroupbd.com/wp-content/uploads/2023/03/ANH-Group-Logo_for_Website-1.png" width="400"></a></p>
 
-
 ## About Job Management System
 
 This is a Job Management System designed using Laravel framework to help companies manage their job postings and applicants. The system allows for easy job posting creation, application management, and candidate tracking.
@@ -33,8 +32,8 @@ Technologies Used
 
 Contributors
 
-   - Mohibbulla Munshi
-   - Mainuddin Tuhin
+-   Mohibbulla Munshi
+-   Mainuddin Tuhin
 
 License
 

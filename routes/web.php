@@ -1,36 +1,38 @@
 <?php
-use App\Http\Controllers\ApplicantProfileController;
-use App\Http\Controllers\AppliedJobController;
-use App\Http\Controllers\JobController;
-use App\Http\Controllers\ShortlistController;
+
+use App\Http\Controllers\ProfileController;
+use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
-Auth::routes();
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
 
-// Route::post('/logout', [ApplicantProfileController::class, 'logout'])->name('logout');
-/* All Jobs start */
-Route::get('/', [JobController::class, 'index'])->name('index');
-Route::get('/recentJobs', [JobController::class, 'recentJobs'])->name('recentJobs');
-Route::get('/jobdetails/{id}', [JobController::class, 'jobdetails'])->name('jobdetails');
-
-/* All Jobs end */
-Route::group(['middleware' => 'auth'], function () {
-    /* User type wise authentication user type 1 for admin ,0 for user  */
-    // Route::get('/admin', [LoginController::class, 'index']);
-    // Route::get('/create', [LoginController::class, 'create']);
-    /* Applicant profile start */
-    Route::resource('applicant', ApplicantProfileController::class);
-    Route::get('/all-applicants', [ApplicantProfileController::class, 'allapplicants'])->name('allapplicants');
-    /*Job Applied start */
-    Route::resource('appliedjob', AppliedJobController::class);
-
-    // Route::get('/apply-job', [AppliedJobController::class, 'applyjob'])->name('applyjob');
-    Route::get('/all-candidate', [AppliedJobController::class, 'allcandidate'])->name('allcandidate');
-
-// Job Post
-    Route::resource('job', JobController::class);
-    Route::resource('shortlist', ShortlistController::class);
-    //Route::resource('admin', AdminController::class);
-    Route::get('/applicantlist/{id}', [JobController::class, 'applicantlist'])->name('applicantlist');
-    Route::post('/shortlist/{id}', [ShortlistController::class, 'shortlist'])->name('shortlist');
+Route::get('/', function () {
+    return Inertia::render('Welcome', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
 });
+
+Route::get('/dashboard', function () {
+    return Inertia::render('Dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
