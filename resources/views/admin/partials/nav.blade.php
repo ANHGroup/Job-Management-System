@@ -31,7 +31,7 @@
 
   <!-- LOGO -->
   <div class="logo-box">
-    <a href="index.html" class="logo text-center">
+    <a href="{{ url('admin/dashboard') }}" class="logo text-center">
       <span class="logo-lg">
         <img src="{{ asset('assets/images/ANH-Group-Logo.png')}}" alt="" height="40">
       </span>
