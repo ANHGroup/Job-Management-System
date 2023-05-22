@@ -1,4 +1,4 @@
-@extends('frontend.layouts.master')
+@extends('users.layouts.master')
 @section('content')
 <div class="wrapper">
   <div class="container-fluid">
@@ -27,7 +27,7 @@
               </a>
             </form>
           </div>
-          <h4 class="page-title">Dashboard</h4>
+          <h4 class="page-title">Welcome, {{ $user ? $user->name : 'Please login to apply jobs!!' }}</h4>
         </div>
       </div>
     </div>
