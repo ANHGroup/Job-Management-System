@@ -5,35 +5,28 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\User\UserDashboardController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
+//Home route
 Route::get('/', function () {
-    $user = auth()->user();
-    return view('users.pages.home', compact('user'));
+    return view('users.pages.home')->with('user', auth()->user());
 });
 
 // Normal user dashboard route
+Route::middleware(['auth', 'verified'])->prefix('user')->group(function () {
+    Route::get('dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
+});
 
-Route::resource('user/dashboard', UserDashboardController::class)->middleware(['auth', 'verified']);
 
 // Admin dashboard route
-Route::resource('admin/dashboard', AdminDashboardController::class);
+Route::get('admin/dashboard', [AdminDashboardController::class, 'index']);
 
 
+//User Profiles
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 
-// Route::middleware('auth')->group(function () {
-//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-// });
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
 require __DIR__.'/auth.php';

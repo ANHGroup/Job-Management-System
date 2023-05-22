@@ -6,28 +6,18 @@
     <div class="container-fluid">
       <ul class="list-unstyled topnav-menu float-right mb-0">
 
-        <li class="dropdown notification-list">
-          <!-- Mobile menu toggle-->
-          <a class="navbar-toggle nav-link">
-            <div class="lines">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-          </a>
-          <!-- End mobile menu toggle-->
-        </li>
         @if(auth()->check())
         <li class="dropdown notification-list">
           <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect" data-toggle="dropdown" href="#" role="button"
             aria-haspopup="false" aria-expanded="false">
+            <img src="{{ asset('assets/images/users/user-1.jpg') }}" alt="user-image" class="rounded-circle">
             <span class="pro-user-name ml-1">
               {{ auth()->user()->name }} <i class="mdi mdi-chevron-down"></i>
             </span>
           </a>
           <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
             <!-- item-->
-            <a href="javascript:void(0);" class="dropdown-item notify-item">
+            <a href="{{ url('profile') }}" class="dropdown-item notify-item">
               <i class="fe-user"></i>
               <span>My Account</span>
             </a>
