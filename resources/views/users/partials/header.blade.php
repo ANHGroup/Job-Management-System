@@ -9,7 +9,7 @@
   <meta content="Coderthemes" name="author" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <!-- App favicon -->
-  <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
+  <link rel="shortcut icon" href="{{ asset('assets/images/ANH-Group-Logo.png') }}">
 
   <!-- Plugins css -->
   <link href="{{ asset('assets/libs/flatpickr/flatpickr.min.css') }}" rel="stylesheet" type="text/css" />
