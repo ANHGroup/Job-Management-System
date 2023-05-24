@@ -15,22 +15,24 @@
               <div class="card-body p-4">
 
                 <div class="text-center w-75 m-auto">
-                  <a href="index.html">
+                  <a href="{{ route('admin.login.index') }}">
                     <span><img src="{{ asset('assets/images/ANH-Group-Logo.png')}}" alt="" height="60"></span>
                   </a>
                 </div>
-
-                <form action="#">
-
+                @error('email')
+                <div class="text-danger">{{ $message }}</div>
+                @enderror
+                <form action="{{ route('admin.login.store') }}" method="POST">
+                  @csrf
                   <div class="form-group mb-3">
                     <label for="emailaddress">Email address</label>
-                    <input class="form-control" type="email" id="emailaddress" required=""
+                    <input name="email" class="form-control" type="email" id="emailaddress" required=""
                       placeholder="Enter your email">
                   </div>
 
                   <div class="form-group mb-3">
                     <label for="password">Password</label>
-                    <input class="form-control" type="password" required="" id="password"
+                    <input name="password" class="form-control" type="password" required="" id="password"
                       placeholder="Enter your password">
                   </div>
 
@@ -72,7 +74,7 @@
                   <div class="col-12 text-center">
                     <p> <a href="pages-recoverpw.html" class="text-decoration-none">Forgot your
                         password?</a></p>
-                    <p class="text-black-50">Don't have an account? <a href="pages-register.html"
+                    <p class="text-black-50">Don't have an account? <a href="{{ url('admin/registration') }}"
                         class="text-black ml-1"><b>Sign
                           Up</b></a></p>
                   </div> <!-- end col -->

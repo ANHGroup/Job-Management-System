@@ -15,24 +15,26 @@
               <div class="card-body p-4">
 
                 <div class="text-center w-75 m-auto">
-                  <a href="index.html">
+                  <a href="{{ route('admin.registration.index') }}">
                     <span><img src="{{ asset('assets/images/ANH-Group-Logo.png')}}" alt="" height="60"></span>
                   </a>
                 </div>
 
-                <form action="#">
-
+                <form action="{{ route('admin.registration.store') }}" method="POST">
+                  @csrf
                   <div class="form-group">
                     <label for="fullname">Full Name</label>
-                    <input class="form-control" type="text" id="fullname" placeholder="Enter your name" required>
+                    <input name="name" class="form-control" type="text" id="fullname" placeholder="Enter your name"
+                      required>
                   </div>
                   <div class="form-group">
                     <label for="emailaddress">Email address</label>
-                    <input class="form-control" type="email" id="emailaddress" required placeholder="Enter your email">
+                    <input name="email" class="form-control" type="email" id="emailaddress" required
+                      placeholder="Enter your email">
                   </div>
                   <div class="form-group">
                     <label for="password">Password</label>
-                    <input class="form-control" type="password" required id="password"
+                    <input name="password" class="form-control" type="password" required id="password"
                       placeholder="Enter your password">
                   </div>
                   <div class="form-group">
@@ -69,7 +71,7 @@
                 </div> -->
                 <div class="row mt-3">
                   <div class="col-12 text-center">
-                    <p class="text-black-50">Already have account? <a href="pages-login.html"
+                    <p class="text-black-50">Already have account? <a href="{{ route('admin.login.index') }}"
                         class="text-black ml-1"><b>Sign
                           In</b></a></p>
                   </div> <!-- end col -->

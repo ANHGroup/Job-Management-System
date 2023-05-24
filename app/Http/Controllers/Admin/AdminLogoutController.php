@@ -4,17 +4,18 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Admin;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
-class AminRegistrationController extends Controller
+class AdminLogoutController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('admin.pages.registration');
+        Auth::guard('admin')->logout();
+        return redirect()->route('admin.login.index');
+
     }
 
     /**
@@ -30,19 +31,7 @@ class AminRegistrationController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:admins',
-            'password' => 'required|min:8',
-        ]);
-        $admin = new Admin();
-        $admin->name = $request->input('name');
-        $admin->email = $request->input('email');
-        $admin->password = Hash::make($request->input('password'));
-        $admin->save();
-        return redirect()->route('admin.login.index');
-
-
+        //
     }
 
     /**
