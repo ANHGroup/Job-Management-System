@@ -21,12 +21,11 @@ Route::middleware(['auth', 'verified'])->prefix('user')->group(function () {
 
 // Admin route
 Route::prefix('admin')->group(function () {
-    Route::get('login', [AminLoginController::class, 'index']);
-    Route::post('login', [AminLoginController::class, 'create']);
-    Route::get('registration', [AminRegistrationController::class, 'index']);
-    Route::post('registration', [AminRegistrationController::class, 'store']);
-
-    Route::get('dashboard', [AdminDashboardController::class, 'index']);
+    Route::get('login', [AminLoginController::class, 'index'])->name('admin.login');
+    Route::post('login', [AminLoginController::class, 'create'])->name('admin.login.post');
+    Route::get('registration', [AminRegistrationController::class, 'index'])->name('admin.registration');
+    Route::post('registration', [AminRegistrationController::class, 'store'])->name('admin.registration.post');
+    Route::get('dashboard', [AdminDashboardController::class, 'index'])->middleware('admin');
 });
 
 //Normal User Profiles
