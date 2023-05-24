@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AminLoginController extends Controller
 {
@@ -18,9 +19,10 @@ class AminLoginController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        
+
     }
 
     /**
@@ -28,7 +30,14 @@ class AminLoginController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::guard('admin')->attempt($credentials)) {
+            return redirect()->route('admin.dashboard'); // Modify 'admin.dashboard' with your actual admin dashboard route
+        }
+
+        return redirect()->back()->withInput()->withErrors(['email' => 'Invalid credentials']);
+
     }
 
     /**

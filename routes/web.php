@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AminLoginController;
 use App\Http\Controllers\Admin\AminRegistrationController;
+use App\Http\Controllers\Admin\AdminLogoutController;
 
 use App\Http\Controllers\User\UserDashboardController;
 
@@ -20,13 +21,17 @@ Route::middleware(['auth', 'verified'])->prefix('user')->group(function () {
 
 
 // Admin route
-Route::prefix('admin')->group(function () {
-    Route::get('login', [AminLoginController::class, 'index'])->name('admin.login');
-    Route::post('login', [AminLoginController::class, 'create'])->name('admin.login.post');
-    Route::get('registration', [AminRegistrationController::class, 'index'])->name('admin.registration');
-    Route::post('registration', [AminRegistrationController::class, 'store'])->name('admin.registration.post');
-    Route::get('dashboard', [AdminDashboardController::class, 'index'])->middleware('admin');
+Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->group(function () {
+    Route::name('admin.')->group(function () {
+        Route::resource('login', AminLoginController::class)->only(['index', 'store']);
+        Route::resource('registration', AminRegistrationController::class)->only(['index', 'store']);
+        Route::get('logout', [AdminLogoutController::class, 'index'])->name('admin.logout');
+        Route::get('dashboard', [AdminDashboardController::class, 'index'])
+            ->middleware('admin')
+            ->name('dashboard');
+    });
 });
+
 
 //Normal User Profiles
 Route::middleware('auth')->group(function () {
