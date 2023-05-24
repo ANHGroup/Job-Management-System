@@ -17,22 +17,7 @@
           </a>
           <ul class="nav-second-level" aria-expanded="false">
             <li>
-              <a href="apps-kanbanboard.html">Kanban Board</a>
-            </li>
-            <li>
-              <a href="apps-calendar.html">Calendar</a>
-            </li>
-            <li>
-              <a href="apps-contacts.html">Contacts</a>
-            </li>
-            <li>
-              <a href="apps-projects.html">Projects</a>
-            </li>
-            <li>
-              <a href="apps-tickets.html">Tickets</a>
-            </li>
-            <li>
-              <a href="apps-companies.html">Companies</a>
+              <a href="{{ route('job-postings.index') }}">Add Job</a>
             </li>
           </ul>
         </li>

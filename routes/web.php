@@ -6,7 +6,7 @@ use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AminLoginController;
 use App\Http\Controllers\Admin\AminRegistrationController;
 use App\Http\Controllers\Admin\AdminLogoutController;
-
+use App\Http\Controllers\Job\JobPostingController;
 use App\Http\Controllers\User\UserDashboardController;
 
 //Home route
@@ -41,5 +41,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+//Job route
+Route::resource('job-postings', JobPostingController::class)->middleware('admin');
+
 
 require __DIR__.'/auth.php';
