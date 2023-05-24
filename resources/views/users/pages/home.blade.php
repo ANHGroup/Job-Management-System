@@ -48,63 +48,39 @@
 
                                         <tbody>
                                             <tr>
-                                                <td>
+                                                <td class="align-middle">
                                                     <h5 class="m-0">
                                                         <i class="fe-fast-forward mr-1 text-primary"></i>
                                                         Senior Software Engineer at ANH Group
                                                     </h5>
                                                 </td>
-                                                <td><a class="btn btn-link waves-effect" href="#" target="_blank">See
-                                                        Details
+                                                <td class="align-middle">
+                                                    <a class="btn btn-link waves-effect" href="#" target="_blank">Apply
                                                     </a>
                                                 </td>
                                             </tr>
 
                                             <tr>
-                                                <td>
+                                                <td class="align-middle">
                                                     <h5 class="m-0">
                                                         <i class="fe-fast-forward mr-1 text-primary"></i>
-                                                        Senior Software Engineer at ANH Group
+                                                        Senior Graphic Designer at ANH Group
                                                     </h5>
                                                 </td>
-                                                <td><a class="btn btn-link waves-effect" href="#" target="_blank">See
-                                                        Details
+                                                <td class="align-middle">
+                                                    <a class="btn btn-link waves-effect" href="#" target="_blank">Apply
                                                     </a>
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>
+                                                <td class="align-middle">
                                                     <h5 class="m-0">
                                                         <i class="fe-fast-forward mr-1 text-primary"></i>
-                                                        Senior Software Engineer at ANH Group
+                                                        Senior Degital Marketer at ANH Group
                                                     </h5>
                                                 </td>
-                                                <td><a class="btn btn-link waves-effect" href="#" target="_blank">See
-                                                        Details
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <h5 class="m-0">
-                                                        <i class="fe-fast-forward mr-1 text-primary"></i>
-                                                        Senior Software Engineer at ANH Group
-                                                    </h5>
-                                                </td>
-                                                <td><a class="btn btn-link waves-effect" href="#" target="_blank">See
-                                                        Details
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <h5 class="m-0">
-                                                        <i class="fe-fast-forward mr-1 text-primary"></i>
-                                                        Senior Software Engineer at ANH Group
-                                                    </h5>
-                                                </td>
-                                                <td><a class="btn btn-link waves-effect" href="#" target="_blank">See
-                                                        Details
+                                                <td class="align-middle">
+                                                    <a class="btn btn-link waves-effect" href="#" target="_blank">Apply
                                                     </a>
                                                 </td>
                                             </tr>
