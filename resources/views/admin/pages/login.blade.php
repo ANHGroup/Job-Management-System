@@ -26,13 +26,13 @@
                   @csrf
                   <div class="form-group mb-3">
                     <label for="emailaddress">Email address</label>
-                    <input name="email" class="form-control" type="email" id="emailaddress" required=""
+                    <input name="email" class="form-control" type="email" id="emailaddress" required
                       placeholder="Enter your email">
                   </div>
 
                   <div class="form-group mb-3">
                     <label for="password">Password</label>
-                    <input name="password" class="form-control" type="password" required="" id="password"
+                    <input name="password" class="form-control" type="password" required id="password"
                       placeholder="Enter your password">
                   </div>
 

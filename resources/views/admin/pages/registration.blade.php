@@ -26,16 +26,25 @@
                     <label for="fullname">Full Name</label>
                     <input name="name" class="form-control" type="text" id="fullname" placeholder="Enter your name"
                       required>
+                    @error('name')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
                   </div>
                   <div class="form-group">
                     <label for="emailaddress">Email address</label>
                     <input name="email" class="form-control" type="email" id="emailaddress" required
                       placeholder="Enter your email">
+                    @error('email')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
                   </div>
                   <div class="form-group">
                     <label for="password">Password</label>
                     <input name="password" class="form-control" type="password" required id="password"
                       placeholder="Enter your password">
+                    @error('password')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
                   </div>
                   <div class="form-group">
                     <div class="custom-control custom-checkbox">
