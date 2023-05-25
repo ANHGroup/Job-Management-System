@@ -4,14 +4,12 @@
 
     <!--- Sidemenu -->
     <div id="sidebar-menu">
-
       <ul class="metismenu" id="side-menu">
 
         <li class="menu-title">Navigation</li>
 
         <li>
           <a href="javascript: void(0);">
-            <i class="fe-arrow-right"></i>
             <span> Jobs </span>
             <span class="menu-arrow"></span>
           </a>
@@ -24,9 +22,21 @@
             </li>
           </ul>
         </li>
-
+        <li>
+          <a href="javascript: void(0);">
+            <span> Companies </span>
+            <span class="menu-arrow"></span>
+          </a>
+          <ul class="nav-second-level" aria-expanded="false">
+            <li>
+              <a href="{{ route('companies.create') }}">Add Company</a>
+            </li>
+            <li>
+              <a href="{{ route('companies.index') }}">All Company</a>
+            </li>
+          </ul>
+        </li>
       </ul>
-
     </div>
     <!-- End Sidebar -->
 

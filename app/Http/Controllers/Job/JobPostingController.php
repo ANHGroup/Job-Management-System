@@ -64,7 +64,8 @@ class JobPostingController extends Controller
      */
     public function edit(JobAdding $jobPosting)
     {
-        return view('job-postings.edit', compact('jobPosting'));
+        return view('admin.pages.jobs.edit', compact('jobPosting'));
+        
     }
 
     /**
@@ -84,7 +85,8 @@ class JobPostingController extends Controller
         $jobPosting->update($request->all());
 
         return redirect()->route('job-postings.index')
-            ->with('success', 'Job posting updated successfully.');
+            ->with('flash_notification.message', 'Job Updated Successfully.')
+            ->with('flash_notification.level', 'success');
     }
     
 
@@ -96,7 +98,8 @@ class JobPostingController extends Controller
         $jobPosting->delete();
 
         return redirect()->route('job-postings.index')
-            ->with('success', 'Job posting deleted successfully.');
+            ->with('flash_notification.message', 'Job deleted Successfully.')
+            ->with('flash_notification.level', 'danger');
 
     }
 }
