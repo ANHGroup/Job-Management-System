@@ -1,63 +1,86 @@
 @extends('admin.layouts.master')
 @section('content')
-<div class="content-page">
+<div class="content-page mt-10">
   <div class="content">
-
     <!-- Start Content-->
-    <div class="container-fluid">
+    <div class="container-fluid" style="margin-top: 10px;">
       <div class="row">
-        <div class="col-lg-12">
+        <div class="col-sm-12">
           <div class="card-box">
-            <h4 class="header-title m-t-0">Create Job Posting</h4>
-            <form action="#" class="parsley-examples" novalidate="">
-              <div class="form-group">
-                <label for="title">Title<span class="text-danger">*</span></label>
-                <input type="text" name="nick" parsley-trigger="change" required="" placeholder="Enter Title"
-                  class="form-control" id="title">
+            @if (session('flash_notification.message'))
+            <div class="alert alert-{{ session('flash_notification.level') }}">
+              {{ session('flash_notification.message') }}
+            </div>
+            @endif
+            <div class="bootstrap-table">
+              <div class="fixed-table-toolbar"></div>
+              <div class="fixed-table-container" style="padding-bottom: 0px;">
+                <div class="fixed-table-header" style="display: none;">
+                  <table></table>
+                </div>
+                <div class="fixed-table-body">
+                  <table data-toggle="table" data-show-columns="false" data-page-list="[5, 10, 20]" data-page-size="5"
+                    data-buttons-class="xs btn-light" data-pagination="true" class="table-borderless table table-hover"
+                    style="display: table;">
+
+                    <tbody>
+                      @foreach ($jobPostings as $jobPosting)
+                      <tr>
+                        <td class="align-middle">
+                          <h5 class="m-0">
+                            <i class="fe-fast-forward mr-1 text-primary"></i>
+                            {{ $jobPosting->title }}
+                          </h5>
+                        </td>
+                        <td class="align-middle">
+                          <a class="btn btn-link waves-effect" href="{{ route('job-postings.show', $jobPosting->id) }}"
+                            target="_blank">Details
+                          </a>
+                        </td>
+                      </tr>
+                      @endforeach
+                    </tbody>
+                  </table>
+                </div>
+                <!-- <div class="fixed-table-footer" style="display: none;">
+                                    <table>
+                                        <tbody>
+                                            <tr></tr>
+                                        </tbody>
+                                    </table>
+                                </div> -->
               </div>
-              <div class="form-group">
-                <label for="description">Description<span class="text-danger">*</span></label>
-                <textarea type="description" name="description" parsley-trigger="change" required=""
-                  placeholder="Enter description" class="form-control" id="description"></textarea>
-              </div>
-              <div class="form-group">
-                <label for="company_id">Company<span class="text-danger">*</span></label>
-                <select name="company_id" id="company_id" class="form-control" required="">
-                  <option value="">Choose..</option>
-                  <option value="press">Press</option>
-                  <option value="net">Internet</option>
-                  <option value="mouth">Word of mouth</option>
-                  <option value="other">Other..</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="location">Location<span class="text-danger">*</span></label>
-                <input name="location" type="text" required placeholder="Password" class="form-control" id="location">
-              </div>
-              <div class="form-group">
-                <label for="salary">Salary<span class="text-danger">*</span></label>
-                <input name="salary" type="number" required placeholder="Password" class="form-control" id="salary">
-              </div>
-              <div class="form-group">
-                <label for="requirements">Requirements<span class="text-danger">*</span></label>
-                <textarea name="requirements" type="number" required placeholder="Password" class="form-control"
-                  id="requirements"></textarea>
-              </div>
-              <div class="form-group text-right m-b-0">
-                <button class="btn btn-primary waves-effect waves-light" type="submit">
-                  Submit
-                </button>
-                <button type="reset" class="btn btn-secondary waves-effect m-l-5">
-                  Cancel
-                </button>
-              </div>
-            </form>
+              <!-- <div class="fixed-table-pagination">
+                                <div class="float-left pagination-detail"><span class="pagination-info">Showing 1 to 5
+                                        of 30
+                                        rows</span><span class="page-list"><span class="btn-group dropup"><button
+                                                type="button" class="btn btn-xs btn-light dropdown-toggle"
+                                                data-toggle="dropdown"><span class="page-size">5</span> <span
+                                                    class="caret"></span></button>
+                                            <div class="dropdown-menu"><a class="dropdown-item active" href="#">5</a><a
+                                                    class="dropdown-item " href="#">10</a><a class="dropdown-item "
+                                                    href="#">20</a>
+                                            </div>
+                                        </span> rows per page</span></div>
+                                <div class="float-right pagination">
+                                    <ul class="pagination">
+                                        <li class="page-item page-pre"><a class="page-link" href="#">‹</a></li>
+                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">4</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">5</a></li>
+                                        <li class="page-item page-last"><a class="page-link" href="#">6</a></li>
+                                        <li class="page-item page-next"><a class="page-link" href="#">›</a></li>
+                                    </ul>
+                                </div>
+                            </div> -->
+            </div>
+            <div class="clearfix"></div>
           </div>
         </div>
       </div>
-    </div> <!-- container -->
-
-  </div> <!-- content -->
-
+    </div>
+  </div>
 </div>
 @endsection

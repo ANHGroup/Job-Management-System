@@ -10,18 +10,17 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('job_postings', function (Blueprint $table) {
+        Schema::create('job_addings', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->text('description');
             $table->unsignedBigInteger('company_id');
             $table->string('location');
-            $table->decimal('salary', 8, 2);
+            $table->string('salary');
             $table->text('requirements');
             $table->timestamps();
-
             // Add foreign key constraint for company_id
-            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
+            // $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
 
         });
     }
@@ -31,6 +30,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('job_postings');
+        Schema::dropIfExists('job_addings');
     }
 };

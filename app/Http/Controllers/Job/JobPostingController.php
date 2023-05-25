@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Job;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\JobPosting;
+use App\Models\JobAdding;
 
 class JobPostingController extends Controller
 {
@@ -13,7 +13,7 @@ class JobPostingController extends Controller
      */
     public function index()
     {
-        $jobPostings = JobPosting::all();
+        $jobPostings = JobAdding::all();
         return view('admin.pages.jobs.index', compact('jobPostings'));
 
     }
@@ -23,7 +23,7 @@ class JobPostingController extends Controller
      */
     public function create()
     {
-        return view('job-postings.create');
+        return view('admin.pages.jobs.create');
 
     }
 
@@ -32,7 +32,7 @@ class JobPostingController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $validatedData = $request->validate([
             'title' => 'required',
             'description' => 'required',
             'company_id' => 'required',
@@ -41,26 +41,28 @@ class JobPostingController extends Controller
             'requirements' => 'required',
         ]);
 
-        JobPosting::create($request->all());
+        JobAdding::create($validatedData);
 
         return redirect()->route('job-postings.index')
-            ->with('success', 'Job posting created successfully.');
+            ->with('flash_notification.message', 'Job Added Successfully.')
+            ->with('flash_notification.level', 'success');
+
 
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(JobPosting $jobPosting)
+    public function show(JobAdding $jobPosting)
     {
-        return view('job-postings.show', compact('jobPosting'));
+        return view('admin.pages.jobs.show', compact('jobPosting'));
 
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(JobPosting $jobPosting)
+    public function edit(JobAdding $jobPosting)
     {
         return view('job-postings.edit', compact('jobPosting'));
     }
@@ -68,7 +70,7 @@ class JobPostingController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, JobPosting $jobPosting)
+    public function update(Request $request, JobAdding $jobPosting)
     {
         $request->validate([
             'title' => 'required',
@@ -89,7 +91,7 @@ class JobPostingController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(JobPosting $jobPosting)
+    public function destroy(JobAdding $jobPosting)
     {
         $jobPosting->delete();
 
