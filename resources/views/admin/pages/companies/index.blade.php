@@ -22,25 +22,22 @@
                   <table data-toggle="table" data-show-columns="false" data-page-list="[5, 10, 20]" data-page-size="5"
                     data-buttons-class="xs btn-light" data-pagination="true" class="table-borderless table table-hover"
                     style="display: table;">
-
+                    @foreach($companies as $company)
                     <tbody>
-                      @foreach ($jobPostings as $jobPosting)
                       <tr>
                         <td class="align-middle">
                           <h5 class="m-0">
                             <i class="fe-fast-forward mr-1 text-primary"></i>
-                            {{ $jobPosting->title }}
+                            {{ $company->name }}
                           </h5>
                         </td>
-                        <td class="align-middle" style="text-align:right;">
-                          <a class="btn btn-success waves-effect"
-                            href="{{ route('job-postings.edit', $jobPosting->id) }}" target="_blank">Edit
+                        <td class="" style="text-align:right;">
+                          <a class="btn btn-success waves-effect" href="{{ route('companies.edit', $company->id) }}"
+                            target="_blank">Edit
                           </a>
-                          <a class="btn btn-info waves-effect" href="{{ route('job-postings.show', $jobPosting->id) }}"
-                            target="_blank">Show
+                          <a class="btn btn-info waves-effect" href="{{ route('companies.show', $company->id) }}">show
                           </a>
-                          <form action="{{ route('job-postings.destroy', $jobPosting->id) }}" method="POST"
-                            class="d-inline">
+                          <form action="{{ route('companies.destroy', $company->id) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger waves-effect">Delete

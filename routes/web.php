@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\AminLoginController;
 use App\Http\Controllers\Admin\AminRegistrationController;
 use App\Http\Controllers\Admin\AdminLogoutController;
 use App\Http\Controllers\Job\JobPostingController;
+use App\Http\Controllers\Job\CompanyController;
 use App\Http\Controllers\User\UserDashboardController;
 
 //Home route
@@ -44,6 +45,9 @@ Route::middleware('auth')->group(function () {
 
 //Job route
 Route::resource('job-postings', JobPostingController::class)->middleware('admin');
+
+//Companies route
+Route::resource('companies', CompanyController::class)->middleware('admin');
 
 
 require __DIR__.'/auth.php';
