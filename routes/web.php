@@ -8,16 +8,19 @@ use App\Http\Controllers\Admin\AminRegistrationController;
 use App\Http\Controllers\Admin\AdminLogoutController;
 use App\Http\Controllers\Job\JobPostingController;
 use App\Http\Controllers\Job\CompanyController;
-use App\Http\Controllers\User\UserDashboardController;
+use App\Http\Controllers\Job\JobApplicationController;
+use App\Http\Controllers\User\UserController;
+use App\Models\JobAdding;
 
 //Home route
 Route::get('/', function () {
-    return view('users.pages.home')->with('user', auth()->user());
+    $jobs = JobAdding::get();
+    return view('users.pages.home', compact('jobs'))->with('user', auth()->user());
 });
 
 // Normal user route
 Route::middleware(['auth', 'verified'])->prefix('user')->group(function () {
-    Route::get('dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
+    Route::get('dashboard', [UserController::class, 'index'])->name('user.dashboard');
 });
 
 
@@ -45,9 +48,10 @@ Route::middleware('auth')->group(function () {
 
 //Job route
 Route::resource('job-postings', JobPostingController::class)->middleware('admin');
+Route::resource('job_aplication', JobApplicationController::class);
+
 
 //Companies route
 Route::resource('companies', CompanyController::class)->middleware('admin');
-
 
 require __DIR__.'/auth.php';
