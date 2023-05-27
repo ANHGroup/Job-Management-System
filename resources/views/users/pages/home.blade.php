@@ -47,43 +47,22 @@
                                         class="table-borderless table table-hover" style="display: table;">
 
                                         <tbody>
+                                            @foreach($jobs as $job)
                                             <tr>
                                                 <td class="align-middle">
                                                     <h5 class="m-0">
                                                         <i class="fe-fast-forward mr-1 text-primary"></i>
-                                                        Senior Software Engineer at ANH Group
+                                                        {{ $job->title }}
                                                     </h5>
                                                 </td>
-                                                <td class="align-middle">
-                                                    <a class="btn btn-link waves-effect" href="#" target="_blank">Apply
+                                                <td class="align-middle" style="text-align:right;">
+                                                    <a class="btn btn-link waves-effect"
+                                                        href="{{ route('job_aplication.show', $job->id )}}"
+                                                        target="_blank">Apply
                                                     </a>
                                                 </td>
                                             </tr>
-
-                                            <tr>
-                                                <td class="align-middle">
-                                                    <h5 class="m-0">
-                                                        <i class="fe-fast-forward mr-1 text-primary"></i>
-                                                        Senior Graphic Designer at ANH Group
-                                                    </h5>
-                                                </td>
-                                                <td class="align-middle">
-                                                    <a class="btn btn-link waves-effect" href="#" target="_blank">Apply
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="align-middle">
-                                                    <h5 class="m-0">
-                                                        <i class="fe-fast-forward mr-1 text-primary"></i>
-                                                        Senior Degital Marketer at ANH Group
-                                                    </h5>
-                                                </td>
-                                                <td class="align-middle">
-                                                    <a class="btn btn-link waves-effect" href="#" target="_blank">Apply
-                                                    </a>
-                                                </td>
-                                            </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
