@@ -2,15 +2,21 @@
 @section('content')
 <div class="wrapper">
   <div class="container-fluid">
-    <!-- <h2></h2>
-      <p></p> -->
     <!-- Display other job details -->
     <div class="row">
-      <div class="col-lg-12">
+      <div class="col-lg-8">
         <div class="card-box">
+          <h4>Job Title: {{ $jobPosting->title }}</h4>
           @if (Auth::check())
-          <form action="{{ route('job_aplication.create') }}" method="POST" enctype="multipart/form-data" id="myForm">
+          @if (session('flash_notification.message'))
+          <div class="alert alert-{{ session('flash_notification.level') }}">
+            {{ session('flash_notification.message') }}
+          </div>
+          @endif
+          <form action="{{ route('job_aplication.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
+            <input type="hidden" name="job_id" value="{{ $jobPosting->id }}">
+            <input type="hidden" name="company_id" value="{{ $jobPosting->company_id }}">
             <div class="form-group">
               <label for="cover_letter">Name</label>
               <input type="text" name="user_name" value="{{ Auth::user()->name }}" class="form-control" disabled>
@@ -21,7 +27,12 @@
             </div>
             <div class="form-group">
               <label for="cover_letter">Phone</label>
-              <input type="number" name="user_email" class="form-control" value="{{ Auth::user()->email }}">
+              <input type="number" name="phone" class="form-control" value="{{ Auth::user()->email }}">
+            </div>
+
+            <div class="form-group">
+              <label for="year_of_experience">Year of Experience</label>
+              <input type="number" class="form-control" id="year_of_experience" name="year_of_experience" rows="5">
             </div>
 
             <div class="form-group">
@@ -41,6 +52,7 @@
           @else
           <p>Please <a href="{{ route('login') }}">log in</a> to apply for this job.</p>
           @endif
+
         </div>
       </div>
     </div>

@@ -17,8 +17,7 @@
             <div>{!! $job->requirements !!}</div>
             @auth
             <!-- Display apply button or form -->
-            <a class="btn btn-success waves-effect" href="{{ route('job_aplication.create') }}" target="_blank">Apply
-              Now
+            <a class="btn btn-success waves-effect" href="{{ url('/apply', ['jobPostingId' => $job->id]) }}">Apply Now
             </a>
             @else
             <!-- Display message or prompt to log in -->

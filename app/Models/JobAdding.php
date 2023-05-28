@@ -9,4 +9,8 @@ class JobAdding extends Model
 {
     use HasFactory;
     protected $fillable = ['title', 'description', 'company_id', 'location', 'salary', 'requirements'];
+    public function applicants()
+    {
+        return $this->belongsToMany(User::class, 'job_applications')->withTimestamps();
+    }
 }
