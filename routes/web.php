@@ -49,6 +49,8 @@ Route::middleware('auth')->group(function () {
 //Job route
 Route::resource('job-postings', JobPostingController::class)->middleware('admin');
 Route::resource('job_aplication', JobApplicationController::class);
+Route::get('/apply/{jobPostingId}', [JobApplicationController::class, 'showApplicationForm']);
+
 
 
 //Companies route

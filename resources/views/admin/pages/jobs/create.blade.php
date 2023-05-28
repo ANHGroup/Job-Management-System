@@ -22,10 +22,10 @@
                 <label for="company_id">Company</label>
                 <select name="company_id" id="company_id" class="form-control" required>
                   <option value="1">ANH Group</option>
-                  <option value="1">ANH Enterprise</option>
-                  <option value="1">ANH Limited</option>
-                  <option value="1">RAY Consumer Limited</option>
-                  <option value="1">SRD Limited</option>
+                  <option value="2">ANH Enterprise</option>
+                  <option value="3">ANH Limited</option>
+                  <option value="4">RAY Consumer Limited</option>
+                  <option value="5">SRD Limited</option>
                 </select>
               </div>
               <div class="form-group">

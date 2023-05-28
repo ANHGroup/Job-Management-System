@@ -24,44 +24,44 @@ class JobApplicationController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(JobAdding $jobPosting)
     {
-        $job = JobAdding::all();
-        return view('users.pages.jobs.create', compact('job'));
+        // $job = JobAdding::find();
+        
+        return view('users.pages.jobs.create');
     }
-
+   
+    public function showApplicationForm($jobPostingId)
+    {
+        $jobPosting = JobAdding::find($jobPostingId);
+        if (!$jobPosting) {
+            abort(404); // Or handle the case when the job posting is not found
+        }
+        return view('users.pages.jobs.create', compact('jobPosting'));
+    }
     /**
-     * Store a newly created resource in storage.
-     */
+ * Store a newly created resource in storage.
+ */
     public function store(Request $request)
     {
-        $job = JobAdding::all();
-        $company = Company::all();
-
-        // Validate the submitted application data
-        $validatedData = $request->validate([
-            'cover_letter' => 'required',
-            'resume' => 'required|mimes:pdf|max:2048', // Only allow PDF files up to 2MB
-        ]);
-
-        // Create a new job application instance
+        $resumePath = $request->file('resume')->store('resumes', 'public');
         $jobApplication = new JobApplication();
-        $jobApplication->job_id = $job->id;
-        $jobApplication->user_id = Auth::id();
-        $jobApplication->company_id = $company->id;
-        $jobApplication->cover_letter = $validatedData['cover_letter'];
+        $jobApplication->name = Auth::user()->name;
+        $jobApplication->email = Auth::user()->email;
+        $jobApplication->phone = $request->phone;
+        $jobApplication->year_of_experience = $request->year_of_experience;
+        $jobApplication->job_id = $request->job_id;
+        $jobApplication->user_id = Auth::user()->id;
+        $jobApplication->company_id = $request->company_id;
+        $jobApplication->cover_letter = $request->cover_letter;
+        $jobApplication->resume = $resumePath;
 
-        // Upload and store the resume file
-        if ($request->hasFile('resume')) {
-            $resumePath = $request->file('resume')->store('resumes', 'public');
-            $jobApplication->resume = $resumePath;
-        }
 
-        // Save the job application to the database
         $jobApplication->save();
+        return redirect()->back()
+                    ->with('flash_notification.message', 'Application submitted successfully!')
+                    ->with('flash_notification.level', 'success');
 
-        // Redirect to the desired job page after successful application submission
-        return redirect()->route('job.show', $job->id)->with('success', 'Application submitted successfully!');
 
     }
 
