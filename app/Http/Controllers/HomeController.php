@@ -12,8 +12,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $jobs = JobAdding::get();
-        return view('users.pages.home', compact('jobs'))->with('user', auth()->user());
+        
+        return view('welcome');
 
     }
 
