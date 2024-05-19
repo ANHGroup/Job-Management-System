@@ -16,7 +16,7 @@
               </div>
               <div class="form-group">
                 <label for="default-editor">Description</label>
-                <textarea name="description" id="default-editor"></textarea>
+                <input type="text" name="description" id="default-editor" class="form-control"></input>
               </div>
               <div class="form-group">
                 <label for="company_id">Company</label>
@@ -37,8 +37,8 @@
                 <input type="text" name="salary" id="salary" class="form-control" required>
               </div>
               <div class="form-group">
-                <label for="default-editor">Requirements</label>
-                <textarea name="requirements" id="default-editor"></textarea>
+                <label for="requirements">Requirements</label>
+                <input type="text" name="requirements" id="requirements" class="form-control"></input>
               </div>
               <button type="submit" class="btn btn-primary">Create</button>
             </form>
