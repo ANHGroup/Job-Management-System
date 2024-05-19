@@ -1,38 +1,59 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
+use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\AminLoginController;
+use App\Http\Controllers\Admin\AminRegistrationController;
+use App\Http\Controllers\Admin\AdminLogoutController;
+use App\Http\Controllers\Job\JobPostingController;
+use App\Http\Controllers\Job\CompanyController;
+use App\Http\Controllers\Job\JobApplicationController;
+use App\Http\Controllers\User\UserController;
+use App\Models\JobAdding;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
+//Home route
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
+    $jobs = JobAdding::get();
+    return view('users.pages.home', compact('jobs'))->with('user', auth()->user());
 });
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Normal user route
+Route::middleware(['auth', 'verified'])->prefix('user')->group(function () {
+    Route::get('dashboard', [UserController::class, 'index'])->name('user.dashboard');
+});
 
+
+// Admin route
+Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->group(function () {
+    Route::name('admin.')->group(function () {
+        Route::resource('login', AminLoginController::class)->only(['index', 'store']);
+        Route::resource('registration', AminRegistrationController::class)->only(['index', 'store']);
+        Route::get('logout', [AdminLogoutController::class, 'index'])->name('admin.logout');
+        Route::get('dashboard', [AdminDashboardController::class, 'index'])
+            ->middleware('admin')
+            ->name('dashboard');
+    });
+});
+
+
+//Normal User Profiles
 Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+//Job route
+Route::resource('job-postings', JobPostingController::class)->middleware('admin');
+Route::resource('job_aplication', JobApplicationController::class);
+Route::get('/apply/{jobPostingId}', [JobApplicationController::class, 'showApplicationForm']);
+
+
+
+//Companies route
+Route::resource('companies', CompanyController::class)->middleware('admin');
 
 require __DIR__.'/auth.php';
